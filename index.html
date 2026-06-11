@@ -137,81 +137,52 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .btn-wine:hover{background:var(--wd);transform:translateY(-3px);box-shadow:0 14px 36px rgba(183,53,74,.4)}
 
-/* ── TICKER ──────────────────────────────────── */
-.ticker{
-  background:var(--w);overflow:hidden;
-  padding:.65rem 0;border-top:1px solid rgba(255,255,255,.08);
-}
-.ticker__track{
-  display:flex;width:max-content;
-  animation:tickerMove 28s linear infinite;
-}
-.ticker__item{
-  white-space:nowrap;
-  padding:0 2rem;
-  font-size:.75rem;font-weight:600;
-  color:rgba(255,255,255,.9);
-  letter-spacing:.04em;
-}
-.ticker__dot{
-  color:rgba(255,255,255,.35);padding:0 .5rem;
-}
-@keyframes tickerMove{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
-}
-
-/* ── 3D BOOK INTERACTIVE ─────────────────────── */
+/* ── 3D BOOK ─────────────────────────────────── */
 .book-stage{
   display:flex;justify-content:center;align-items:center;
-  perspective:1100px;
-  padding:2rem 2rem 3rem;
+  perspective:900px;
+  padding:2rem 2rem 4rem;
 }
 .book-3d{
+  margin:0;
   position:relative;
-  display:inline-block;
   transform-style:preserve-3d;
-  transform:rotateY(-22deg) rotateX(3deg);
-  transition:transform .08s linear;
+  transform:rotateY(-20deg) rotateX(4deg);
+  transition:transform .1s linear;
   will-change:transform;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.75));
   cursor:grab;
 }
-/* Cover image — direct child, no wrapper */
-#bookCoverImg{
-  display:block;
-  width:240px;height:343px;
-  object-fit:cover;object-position:center top;
-  border-radius:2px 8px 8px 2px;
-  box-shadow:0 40px 90px rgba(0,0,0,.85),0 15px 35px rgba(0,0,0,.6);
-  pointer-events:none;user-select:none;
-  position:relative;z-index:1;
-}
-/* Spine — left edge, folds to the left */
-.book-3d__spine{
-  position:absolute;top:0;left:0;
-  width:26px;height:343px;
-  background:linear-gradient(to right,#5a3d80,#8b6aae,#9880b8);
-  transform-origin:right center;
-  transform:rotateY(-90deg);
-  display:flex;align-items:center;justify-content:center;
-}
-.book-3d__spine-txt{
-  writing-mode:vertical-rl;transform:rotate(180deg);
-  font-size:.4rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.5);white-space:nowrap;
-}
-/* Pages — right edge, extends back */
-.book-3d__pages{
-  position:absolute;top:3px;right:0;
-  width:14px;height:337px;
+/* Pages — right edge */
+.book-3d::before{
+  content:'';
+  position:absolute;
+  top:2px;right:-18px;bottom:2px;
+  width:18px;
   background:repeating-linear-gradient(
-    180deg,
-    #f8f2ea 0px,#f8f2ea 1px,
-    #e6ddd3 1px,#e6ddd3 2.5px
+    180deg,#f8f2ea,#f8f2ea 1px,#e2d8cc 1px,#e2d8cc 2.5px
   );
   transform-origin:left center;
   transform:rotateY(90deg);
   border-radius:0 2px 2px 0;
+}
+/* Spine — left edge */
+.book-3d::after{
+  content:'';
+  position:absolute;
+  top:0;left:-24px;bottom:0;
+  width:24px;
+  background:linear-gradient(to right,#3a2258,#6b4d96,#8b6aae);
+  transform-origin:right center;
+  transform:rotateY(-90deg);
+}
+#bookCoverImg{
+  display:block;
+  width:224px;height:320px;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:2px 6px 6px 2px;
+  pointer-events:none;user-select:none;
 }
 /* Hint */
 .book-hint{
@@ -526,26 +497,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 </header>
 
-<!-- ── TICKER ────────────────────────────────── -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <span class="ticker__item">Vino sin poses</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Disfrutar vino sin sentir que estás en examen</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vino sin miedo</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Aprender de vino sin volverse insoportable</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vino sin tecnicismos</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vino sin sentirte juzgado</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Una guía para disfrutar vino sin pretensión</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vino sin poses</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Disfrutar vino sin sentir que estás en examen</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vino sin miedo</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Aprender de vino sin volverse insoportable</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vino sin tecnicismos</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vino sin sentirte juzgado</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Una guía para disfrutar vino sin pretensión</span><span class="ticker__dot">·</span>
-  </div>
-</div>
-
 <!-- ══════════════════════════════════════════════
      1. LIBRO 3D
 ══════════════════════════════════════════════ -->
@@ -553,13 +504,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   <div class="book-sec__in">
 
     <div class="book-text" data-rl>
-      <div class="book-text__kicker">El producto</div>
+      <div class="book-text__kicker">Vino sin poses</div>
       <h2 class="book-text__title">
         204 páginas de<br/>
         <em>vino sin drama.</em>
       </h2>
       <p class="book-text__body">
-        Un manual para que cualquier persona entienda el mundo del vino sin intimidación. Desde cero hasta elegir con criterio en restaurantes, catas y reuniones.
+        Disfrutar vino sin sentir que estás en examen. Aprender de vino sin volverse insoportable. Este manual te da las herramientas para elegir, hablar y brindar con criterio propio.
       </p>
       <div class="book-text__meta">
         <div class="book-meta"><strong>204</strong><span>páginas</span></div>
@@ -573,13 +524,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
     <div data-rr>
       <div class="book-stage">
-        <div class="book-3d" id="book">
+        <figure class="book-3d" id="book">
           <img id="bookCoverImg" src="img/portada.jpg" alt="Portada del Manual Anti-Snob del Vino"/>
-          <div class="book-3d__spine">
-            <span class="book-3d__spine-txt">Manual Anti-Snob del Vino · Vinoso</span>
-          </div>
-          <div class="book-3d__pages"></div>
-        </div>
+        </figure>
       </div>
       <p class="book-hint">← Mueve el mouse sobre el libro →</p>
       <div style="text-align:center;margin-top:1.2rem">
@@ -598,7 +545,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <section class="stats" id="stats">
   <div class="stats__in">
     <div class="sec-header" data-r>
-      <p class="sec-kicker">Datos reales</p>
+      <p class="sec-kicker">Vino sin miedo</p>
       <h2 class="sec-title">Números que <em>hablan solos</em></h2>
     </div>
     <div class="stats__grid">
@@ -632,7 +579,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <section class="reviews" id="reviews">
   <div class="reviews__in">
     <div class="sec-header" data-r>
-      <p class="sec-kicker">Testimonios reales</p>
+      <p class="sec-kicker">Aprender de vino sin volverse insoportable</p>
       <h2 class="sec-title">Lo que dicen quienes<br/><em>ya lo leyeron.</em></h2>
       <div class="reviews__score-row">
         <span class="reviews__stars">★★★★★</span>
@@ -710,7 +657,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <section class="temas" id="temas">
   <div class="temas__in">
     <div class="sec-header" data-r>
-      <p class="sec-kicker">Contenido</p>
+      <p class="sec-kicker">Vino sin tecnicismos</p>
       <h2 class="sec-title">Temas del <em>manual</em></h2>
     </div>
     <div class="temas__grid" data-r>
@@ -729,6 +676,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <div class="tema"><span class="tema__num">—</span><div><p class="tema__title">La guía rápida del vino, en una página</p><p class="tema__desc">p. 79</p></div><img class="tema__icon" src="img/icons/icon-13.png" alt=""/></div>
     </div>
     <div class="temas__cta" data-r>
+      <p style="font-size:.88rem;color:var(--gr);margin-bottom:1.25rem;font-style:italic;">Una guía para disfrutar vino sin pretensión.</p>
       <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar el manual →</a>
     </div>
   </div>
@@ -741,7 +689,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   <div class="postits__in">
     <div class="sec-header" data-r>
       <p class="sec-kicker">Situaciones que ya no te van a pasar</p>
-      <h2 class="sec-title">¿Te suena <em>familiar?</em></h2>
+      <h2 class="sec-title">Vino sin sentirte <em>juzgado.</em></h2>
     </div>
     <p class="postits__sub" data-r>Toca cada post-it para despedirte de esa situación para siempre.</p>
 
