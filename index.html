@@ -406,10 +406,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .rev-card__head{display:flex;align-items:center;gap:.7rem;margin-bottom:.1rem}
 .rev-card__av{
   width:42px;height:42px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--p),var(--pl));
-  display:flex;align-items:center;justify-content:center;
-  font-size:1rem;font-weight:800;color:#fff;
+  overflow:hidden;
 }
+.rev-card__av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
 .rev-card__meta{flex:1;min-width:0}
 .rev-card__name{font-size:.82rem;font-weight:700;color:#0f0f0f;display:flex;align-items:center;gap:.3rem}
 .rev-card__check{
@@ -826,7 +825,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div class="carousel__track" id="revTrack">
       <div class="rev-card">
         <div class="rev-card__head">
-          <div class="rev-card__av">R</div>
+          <div class="rev-card__av"><img src="https://i.pravatar.cc/80?img=12" alt="Rodrigo Leal" loading="lazy"/></div>
           <div class="rev-card__meta">
             <p class="rev-card__name">Rodrigo Leal <span class="rev-card__check">✓</span></p>
             <p class="rev-card__handle">@rodri.cdmx</p>
@@ -838,7 +837,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="rev-card">
         <div class="rev-card__head">
-          <div class="rev-card__av">S</div>
+          <div class="rev-card__av"><img src="https://i.pravatar.cc/80?img=47" alt="Sofía Marroquín" loading="lazy"/></div>
           <div class="rev-card__meta">
             <p class="rev-card__name">Sofía Marroquín</p>
             <p class="rev-card__handle">@so.marroquin</p>
@@ -850,7 +849,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="rev-card">
         <div class="rev-card__head">
-          <div class="rev-card__av">D</div>
+          <div class="rev-card__av"><img src="https://i.pravatar.cc/80?img=15" alt="Diego Fuentes" loading="lazy"/></div>
           <div class="rev-card__meta">
             <p class="rev-card__name">Diego Fuentes</p>
             <p class="rev-card__handle">@diego.fuentes.mx</p>
@@ -862,7 +861,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="rev-card">
         <div class="rev-card__head">
-          <div class="rev-card__av">V</div>
+          <div class="rev-card__av"><img src="https://i.pravatar.cc/80?img=49" alt="Valentina Torres" loading="lazy"/></div>
           <div class="rev-card__meta">
             <p class="rev-card__name">Valentina Torres</p>
             <p class="rev-card__handle">@vale.torres</p>
@@ -874,7 +873,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="rev-card">
         <div class="rev-card__head">
-          <div class="rev-card__av">A</div>
+          <div class="rev-card__av"><img src="https://i.pravatar.cc/80?img=33" alt="Alejandro Ríos" loading="lazy"/></div>
           <div class="rev-card__meta">
             <p class="rev-card__name">Alejandro Ríos</p>
             <p class="rev-card__handle">@alejo.rios</p>
@@ -886,7 +885,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="rev-card">
         <div class="rev-card__head">
-          <div class="rev-card__av">L</div>
+          <div class="rev-card__av"><img src="https://i.pravatar.cc/80?img=56" alt="Laura Becerra" loading="lazy"/></div>
           <div class="rev-card__meta">
             <p class="rev-card__name">Laura Becerra</p>
             <p class="rev-card__handle">@laurabecerra</p>
