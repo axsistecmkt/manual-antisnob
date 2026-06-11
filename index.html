@@ -5,10 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Manual Anti-Snob del Vino — Vinoso</title>
   <meta name="description" content="Entiende, elige y disfruta el vino con seguridad en 15 días."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
   <style>
+
+/* ── POPPINS LOCAL ───────────────────────────── */
+@font-face{font-family:'Poppins';src:url('fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Poppins';src:url('fonts/Poppins-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Poppins';src:url('fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Poppins';src:url('fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Poppins';src:url('fonts/Poppins-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Poppins';src:url('fonts/Poppins-BoldItalic.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap}
+@font-face{font-family:'Poppins';src:url('fonts/Poppins-ExtraBold.ttf') format('truetype');font-weight:800;font-style:normal;font-display:swap}
 
 /* ── TOKENS ──────────────────────────────────── */
 :root{
@@ -18,7 +25,7 @@
   --w:#B7354A; --wd:#7B2631;
   --wh:#FFFFFF; --blk:#0D0A14; --gr:#6B6472;
   --serif:'Playfair Display',Georgia,serif;
-  --sans:'Space Grotesk',system-ui,sans-serif;
+  --sans:'Poppins',system-ui,sans-serif;
   --ease:cubic-bezier(0.16,1,0.3,1);
 }
 
@@ -76,7 +83,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 /* ── BOOK SECTION ────────────────────────────── */
 .book-sec{
   background:var(--pd);
-  padding:clamp(4rem,9vw,8rem) 0;
+  padding:clamp(2rem,4vw,3.5rem) 0 clamp(3rem,6vw,6rem);
   overflow:hidden;
   position:relative;
 }
@@ -133,87 +140,86 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 /* ── 3D BOOK INTERACTIVE ─────────────────────── */
 .book-stage{
   display:flex;justify-content:center;align-items:center;
-  perspective:900px;
-  padding:3rem 2rem;
+  perspective:1100px;
+  padding:2rem 2rem 3rem;
+}
+.book-wrap{
+  position:relative;
 }
 .book-3d{
   position:relative;
-  width:200px;
+  width:240px;height:343px;
   transform-style:preserve-3d;
-  transform:rotateY(-20deg) rotateX(4deg);
+  transform:rotateY(-22deg) rotateX(3deg);
   transition:transform .08s linear;
   will-change:transform;
 }
-/* Front cover */
-.book-3d__front{
-  width:200px;height:286px;
-  border-radius:2px 8px 8px 2px;
+/* Shared face styles */
+.book-3d__front,
+.book-3d__back{
+  position:absolute;inset:0;
   overflow:hidden;
-  box-shadow:0 50px 100px rgba(0,0,0,.75),0 20px 40px rgba(0,0,0,.5);
-  position:relative;
-  transform:translateZ(1px);
+  border-radius:2px 8px 8px 2px;
   backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 }
-.book-3d__front img{
-  width:100%;height:100%;object-fit:cover;
-  pointer-events:none;
-  user-select:none;
+.book-3d__front img,
+.book-3d__back img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  pointer-events:none;user-select:none;
+  display:block;
+}
+/* Front face — pushed slightly forward */
+.book-3d__front{
+  transform:translateZ(13px);
+  box-shadow:0 40px 90px rgba(0,0,0,.8),0 15px 35px rgba(0,0,0,.55);
+}
+/* Back face — rotated 180deg, same Z offset */
+.book-3d__back{
+  transform:rotateY(180deg) translateZ(13px);
 }
 /* Spine */
 .book-3d__spine{
   position:absolute;
-  top:0;left:-24px;
-  width:24px;height:286px;
-  background:linear-gradient(to right,#9880b8,var(--lavd));
-  transform-origin:right center;
-  transform:rotateY(-90deg);
+  top:0;left:0;
+  width:26px;height:343px;
+  background:linear-gradient(to right,#7a5fa0,var(--lavd) 60%,#9880b8);
+  transform-origin:left center;
+  transform:rotateY(90deg) translateZ(-13px);
   display:flex;align-items:center;justify-content:center;
-  border-radius:3px 0 0 3px;
-  box-shadow:-6px 0 20px rgba(0,0,0,.5);
+  box-shadow:-8px 0 24px rgba(0,0,0,.6);
 }
 .book-3d__spine-txt{
   writing-mode:vertical-rl;transform:rotate(180deg);
   font-size:.42rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(65,41,95,.7);white-space:nowrap;
+  color:rgba(255,255,255,.55);white-space:nowrap;
 }
 /* Pages */
 .book-3d__pages{
-  position:absolute;top:3px;right:-14px;
-  width:14px;height:280px;
+  position:absolute;top:3px;right:0;
+  width:14px;height:337px;
   background:repeating-linear-gradient(
     180deg,
-    #f4ede4 0px,#f4ede4 1.2px,
-    #e5dbd0 1.2px,#e5dbd0 2.4px
+    #f7f0e8 0px,#f7f0e8 1px,
+    #e8dfd5 1px,#e8dfd5 2.5px
   );
-  transform-origin:left center;
-  transform:rotateY(90deg);
+  transform-origin:right center;
+  transform:rotateY(-90deg) translateZ(-13px);
   border-radius:0 2px 2px 0;
 }
-/* Back cover */
-.book-3d__back{
-  position:absolute;top:0;left:0;
-  width:200px;height:286px;
-  border-radius:2px 8px 8px 2px;
-  overflow:hidden;
-  backface-visibility:hidden;
-  transform:rotateY(180deg) translateZ(0px);
-}
-.book-3d__back img{
-  width:100%;height:100%;object-fit:cover;
-  pointer-events:none;user-select:none;
-}
-/* Shadow */
+/* Shadow under book */
 .book-3d__shadow{
-  position:absolute;bottom:-24px;left:50%;
-  transform:translateX(-50%);
-  width:160px;height:16px;
-  background:rgba(0,0,0,.55);
-  border-radius:50%;filter:blur(14px);
+  position:absolute;bottom:-20px;left:50%;
+  transform:translateX(-50%) rotateX(90deg);
+  width:200px;height:20px;
+  background:rgba(0,0,0,.5);
+  border-radius:50%;filter:blur(16px);
 }
 /* Hint */
 .book-hint{
-  text-align:center;margin-top:1.5rem;
-  font-size:.68rem;color:rgba(201,190,221,.3);
+  text-align:center;margin-top:1.2rem;
+  font-size:.65rem;color:rgba(201,190,221,.28);
   letter-spacing:.08em;
 }
 
@@ -551,18 +557,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
     <div data-rr>
       <div class="book-stage">
-        <div class="book-3d" id="book">
-          <div class="book-3d__pages"></div>
-          <div class="book-3d__spine">
-            <span class="book-3d__spine-txt">Manual Anti-Snob del Vino · Vinoso</span>
+        <div class="book-wrap">
+          <div class="book-3d" id="book">
+            <div class="book-3d__front">
+              <img src="img/portada.jpg" alt="Portada del Manual Anti-Snob del Vino"/>
+            </div>
+            <div class="book-3d__back">
+              <img src="img/contraportada.jpg" alt="Contraportada del Manual Anti-Snob del Vino"/>
+            </div>
+            <div class="book-3d__spine">
+              <span class="book-3d__spine-txt">Manual Anti-Snob del Vino · Vinoso</span>
+            </div>
+            <div class="book-3d__pages"></div>
+            <div class="book-3d__shadow"></div>
           </div>
-          <div class="book-3d__front">
-            <img src="img/portada.jpg" alt="Portada del Manual Anti-Snob del Vino"/>
-          </div>
-          <div class="book-3d__back">
-            <img src="img/contraportada.jpg" alt="Contraportada"/>
-          </div>
-          <div class="book-3d__shadow"></div>
         </div>
       </div>
       <p class="book-hint">← Mueve el mouse sobre el libro →</p>
