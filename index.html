@@ -36,6 +36,18 @@ img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 
+/* ── PROMO BELT ──────────────────────────────── */
+.promo-belt{
+  background:var(--w);
+  text-align:center;
+  padding:.42rem 1rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;
+  color:#fff;
+  white-space:nowrap;overflow:hidden;
+}
+.promo-belt a{color:#fff;text-decoration:underline;text-underline-offset:2px;margin-left:.5rem;opacity:.85}
+.promo-belt a:hover{opacity:1}
+
 /* ── HEADER ──────────────────────────────────── */
 .header{
   position:sticky;top:0;z-index:300;
@@ -105,12 +117,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .book-text__kicker::before{content:'';width:26px;height:1px;background:var(--lavd)}
 .book-text__title{
-  font-family:var(--serif);
+  font-family:var(--sans);
   font-size:clamp(2rem,4vw,3.8rem);
   font-weight:900;color:var(--wh);line-height:1.02;
   margin-bottom:1.1rem;
 }
-.book-text__title em{font-style:italic;color:var(--lavl)}
+.book-text__title em{font-family:var(--serif);font-style:italic;color:var(--lavl)}
 .book-text__body{
   font-size:.9rem;color:rgba(201,190,221,.55);
   line-height:1.85;margin-bottom:2rem;
@@ -295,11 +307,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   color:var(--w);margin-bottom:.8rem;
 }
 .sec-title{
-  font-family:var(--serif);
+  font-family:var(--sans);
   font-size:clamp(1.8rem,3.5vw,3rem);
   font-weight:900;color:var(--p);line-height:1.05;
 }
-.sec-title em{font-style:italic}
+.sec-title em{font-family:var(--serif);font-style:italic}
 .stats__grid{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;
 }
@@ -356,39 +368,35 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .carousel__track::-webkit-scrollbar{display:none}
 .rev-card{
-  flex:0 0 clamp(270px,34vw,380px);scroll-snap-align:start;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(201,190,221,.1);
-  border-radius:18px;padding:1.75rem;
-  display:flex;flex-direction:column;gap:.9rem;
-  transition:background .3s;
+  flex:0 0 clamp(270px,34vw,340px);scroll-snap-align:start;
+  background:#fff;
+  border:1px solid #e6e6e6;
+  border-radius:16px;padding:1.4rem 1.5rem;
+  display:flex;flex-direction:column;gap:.75rem;
+  transition:box-shadow .25s;
 }
-.rev-card:hover{background:rgba(255,255,255,.1)}
-.rev-card__stars{color:#F5C842;font-size:.85rem}
-.rev-card__text{
-  font-size:.86rem;color:rgba(226,216,201,.7);line-height:1.75;
-  flex:1;font-style:italic;
-}
-.rev-card__text::before{
-  content:'"';font-size:1.8rem;
-  color:var(--lavd);line-height:0;vertical-align:-.45rem;margin-right:.15rem;
-}
-.rev-card__author{
-  display:flex;align-items:center;gap:.75rem;
-  border-top:1px solid rgba(201,190,221,.08);padding-top:.9rem;
-}
+.rev-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.09)}
+.rev-card__head{display:flex;align-items:center;gap:.7rem;margin-bottom:.1rem}
 .rev-card__av{
-  width:34px;height:34px;border-radius:50%;flex-shrink:0;
-  background:var(--lav);display:flex;align-items:center;justify-content:center;
-  font-size:.95rem;font-weight:700;color:var(--p);
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--p),var(--pl));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;font-weight:800;color:#fff;
 }
-.rev-card__name{font-size:.8rem;font-weight:700;color:var(--lavl)}
-.rev-card__handle{font-size:.68rem;color:rgba(201,190,221,.35)}
-.rev-card__badge{
-  margin-left:auto;font-size:.58rem;font-weight:700;letter-spacing:.06em;
-  color:var(--w);background:rgba(183,53,74,.15);
-  padding:.2em .55em;border-radius:4px;text-transform:uppercase;
+.rev-card__meta{flex:1;min-width:0}
+.rev-card__name{font-size:.82rem;font-weight:700;color:#0f0f0f;display:flex;align-items:center;gap:.3rem}
+.rev-card__check{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:14px;height:14px;border-radius:50%;background:#1d9bf0;
+  font-size:.5rem;color:#fff;flex-shrink:0;
 }
+.rev-card__handle{font-size:.72rem;color:#6b7280;margin-top:.05rem}
+.rev-card__x{margin-left:auto;color:#6b7280;font-size:.85rem;font-weight:800;letter-spacing:-.03em;flex-shrink:0}
+.rev-card__stars{color:#F5C842;font-size:.82rem;letter-spacing:.05em}
+.rev-card__text{
+  font-size:.86rem;color:#1a1a2e;line-height:1.72;flex:1;
+}
+.rev-card__badge{display:none}
 .carousel__btns{
   display:flex;gap:.65rem;justify-content:center;margin-top:2.25rem;
 }
@@ -510,6 +518,64 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   display:flex;align-items:center;gap:.35rem;justify-content:center;
 }
 
+/* ── FINAL CTA ───────────────────────────────── */
+.finalcta{
+  background:var(--pd);
+  padding:clamp(4rem,8vw,7rem) 0;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.finalcta::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(183,53,74,.18),transparent 65%);
+  pointer-events:none;
+}
+.finalcta__in{
+  max-width:680px;margin:0 auto;
+  padding:0 clamp(1.25rem,4vw,3rem);
+  position:relative;z-index:1;
+}
+.finalcta__title{
+  font-family:var(--sans);
+  font-size:clamp(2.2rem,5vw,4rem);
+  font-weight:900;color:#fff;
+  line-height:1.05;margin:1rem 0 1.25rem;
+}
+.finalcta__title em{font-family:var(--serif);font-style:italic;color:var(--lavl)}
+.finalcta__sub{
+  font-size:.92rem;color:rgba(201,190,221,.55);
+  line-height:1.8;margin-bottom:2rem;
+}
+.finalcta__offer{
+  display:flex;align-items:center;justify-content:center;
+  gap:.9rem;flex-wrap:wrap;margin-bottom:2rem;
+}
+.finalcta__price-old{
+  font-size:1rem;color:rgba(201,190,221,.3);
+  text-decoration:line-through;font-weight:600;
+}
+.finalcta__price{
+  font-size:2rem;font-weight:900;color:#fff;line-height:1;
+}
+.finalcta__badge{
+  background:var(--w);color:#fff;
+  font-size:.65rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:.32em .85em;border-radius:999px;
+}
+.finalcta__btn{
+  display:inline-block;
+  background:var(--w);color:#fff;
+  font-size:.95rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+  padding:1.1rem 3rem;border-radius:999px;
+  transition:background .25s,transform .2s,box-shadow .3s;
+  margin-bottom:1.25rem;
+}
+.finalcta__btn:hover{background:var(--wd);transform:translateY(-3px);box-shadow:0 16px 40px rgba(183,53,74,.45)}
+.finalcta__lock{
+  font-size:.7rem;color:rgba(201,190,221,.28);
+  display:flex;align-items:center;gap:.35rem;justify-content:center;
+}
+
 /* ── FOOTER ──────────────────────────────────── */
 .footer{
   background:#07050F;
@@ -556,6 +622,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <a href="https://vinoso.mx" target="_blank" rel="noopener" class="header__cta">Comprar →</a>
     <button class="header__ham" aria-label="Menú"><span></span><span></span><span></span></button>
   </div>
+  <div class="promo-belt">🍷 Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a></div>
 </header>
 
 <!-- ══════════════════════════════════════════════
@@ -685,65 +752,83 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <h2 class="sec-title">Lo que dicen quienes<br/><em>ya lo leyeron.</em></h2>
       <div class="reviews__score-row">
         <span class="reviews__stars">★★★★★</span>
-        <span class="reviews__score-num">4.9</span>
+        <span class="reviews__score-num">4.7</span>
         <span class="reviews__count">calificación promedio</span>
       </div>
     </div>
 
     <div class="carousel__track" id="revTrack">
       <div class="rev-card">
-        <div class="rev-card__stars">★★★★★</div>
-        <p class="rev-card__text">Llevaba años intimidado en restaurantes. Ahora pido vino como si supiera lo que hago — y cada vez más lo hago de verdad.</p>
-        <div class="rev-card__author">
+        <div class="rev-card__head">
           <div class="rev-card__av">R</div>
-          <div><p class="rev-card__name">Rodrigo Leal</p><p class="rev-card__handle">@rodri.cdmx</p></div>
-          <span class="rev-card__badge">Verificado</span>
+          <div class="rev-card__meta">
+            <p class="rev-card__name">Rodrigo Leal <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__handle">@rodri.cdmx</p>
+          </div>
+          <span class="rev-card__x">𝕏</span>
         </div>
+        <p class="rev-card__text">Llevaba años intimidado en restaurantes. Ahora pido vino como si supiera lo que hago — y cada vez más lo hago de verdad.</p>
+        <div class="rev-card__stars">★★★★★</div>
       </div>
       <div class="rev-card">
-        <div class="rev-card__stars">★★★★★</div>
-        <p class="rev-card__text">Lo compré pensando que era básico, pero tiene profundidad real. El capítulo de maridaje me voló la cabeza.</p>
-        <div class="rev-card__author">
+        <div class="rev-card__head">
           <div class="rev-card__av">S</div>
-          <div><p class="rev-card__name">Sofía Marroquín</p><p class="rev-card__handle">@so.marroquin</p></div>
-          <span class="rev-card__badge">Verificado</span>
+          <div class="rev-card__meta">
+            <p class="rev-card__name">Sofía Marroquín <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__handle">@so.marroquin</p>
+          </div>
+          <span class="rev-card__x">𝕏</span>
         </div>
+        <p class="rev-card__text">Lo compré pensando que era básico, pero tiene profundidad real. El capítulo de maridaje me voló la cabeza.</p>
+        <div class="rev-card__stars">★★★★★</div>
       </div>
       <div class="rev-card">
-        <div class="rev-card__stars">★★★★★</div>
-        <p class="rev-card__text">Por fin alguien lo explicó en español sin pretensiones. Lo terminé en una semana y ya lo recomendé a cuatro personas.</p>
-        <div class="rev-card__author">
+        <div class="rev-card__head">
           <div class="rev-card__av">D</div>
-          <div><p class="rev-card__name">Diego Fuentes</p><p class="rev-card__handle">@diego.fuentes.mx</p></div>
-          <span class="rev-card__badge">Verificado</span>
+          <div class="rev-card__meta">
+            <p class="rev-card__name">Diego Fuentes <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__handle">@diego.fuentes.mx</p>
+          </div>
+          <span class="rev-card__x">𝕏</span>
         </div>
+        <p class="rev-card__text">Por fin alguien lo explicó en español sin pretensiones. Lo terminé en una semana y ya lo recomendé a cuatro personas.</p>
+        <div class="rev-card__stars">★★★★★</div>
       </div>
       <div class="rev-card">
-        <div class="rev-card__stars">★★★★★</div>
-        <p class="rev-card__text">Fui a una cata después de leerlo y por primera vez entendí lo que el sommelier decía. Incluso pregunté cosas inteligentes.</p>
-        <div class="rev-card__author">
+        <div class="rev-card__head">
           <div class="rev-card__av">V</div>
-          <div><p class="rev-card__name">Valentina Torres</p><p class="rev-card__handle">@vale.torres</p></div>
-          <span class="rev-card__badge">Verificado</span>
+          <div class="rev-card__meta">
+            <p class="rev-card__name">Valentina Torres <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__handle">@vale.torres</p>
+          </div>
+          <span class="rev-card__x">𝕏</span>
         </div>
-      </div>
-      <div class="rev-card">
+        <p class="rev-card__text">Fui a una cata después de leerlo y por primera vez entendí lo que el sommelier decía. Incluso pregunté cosas inteligentes.</p>
         <div class="rev-card__stars">★★★★☆</div>
-        <p class="rev-card__text">Excelente contenido y muy bien organizado. Lo que hay de Valle de Guadalupe está muy bueno. Totalmente recomendado.</p>
-        <div class="rev-card__author">
-          <div class="rev-card__av">A</div>
-          <div><p class="rev-card__name">Alejandro Ríos</p><p class="rev-card__handle">@alejo.rios</p></div>
-          <span class="rev-card__badge">Verificado</span>
-        </div>
       </div>
       <div class="rev-card">
-        <div class="rev-card__stars">★★★★★</div>
-        <p class="rev-card__text">Lo leí con mi pareja y ahora elegir el vino para cenar es una conversación, no un conflicto. Vale cada peso.</p>
-        <div class="rev-card__author">
-          <div class="rev-card__av">L</div>
-          <div><p class="rev-card__name">Laura Becerra</p><p class="rev-card__handle">@laurabecerra</p></div>
-          <span class="rev-card__badge">Verificado</span>
+        <div class="rev-card__head">
+          <div class="rev-card__av">A</div>
+          <div class="rev-card__meta">
+            <p class="rev-card__name">Alejandro Ríos <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__handle">@alejo.rios</p>
+          </div>
+          <span class="rev-card__x">𝕏</span>
         </div>
+        <p class="rev-card__text">Excelente contenido y muy bien organizado. Lo que hay de Valle de Guadalupe está muy bueno. Totalmente recomendado.</p>
+        <div class="rev-card__stars">★★★★☆</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-card__head">
+          <div class="rev-card__av">L</div>
+          <div class="rev-card__meta">
+            <p class="rev-card__name">Laura Becerra <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__handle">@laurabecerra</p>
+          </div>
+          <span class="rev-card__x">𝕏</span>
+        </div>
+        <p class="rev-card__text">Lo leí con mi pareja y ahora elegir el vino para cenar es una conversación, no un conflicto. Vale cada peso.</p>
+        <div class="rev-card__stars">★★★★★</div>
       </div>
     </div>
     <div class="carousel__btns">
@@ -818,6 +903,24 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     </div>
 
     <p class="postits__note" data-r>El manual resuelve todo esto — y más.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════════ -->
+<section class="finalcta">
+  <div class="finalcta__in" data-r>
+    <p class="sec-kicker" style="color:var(--lavd)">Sin excusas, sin poses</p>
+    <h2 class="finalcta__title">El vino es tuyo.<br><em>Empieza hoy.</em></h2>
+    <p class="finalcta__sub">204 páginas. Sin tecnicismos. Sin relleno.<br>Todo lo que necesitas para disfrutar el vino con confianza real.</p>
+    <div class="finalcta__offer">
+      <span class="finalcta__price-old">$299</span>
+      <span class="finalcta__price">$149 MXN</span>
+      <span class="finalcta__badge">50% OFF este mes</span>
+    </div>
+    <a href="https://vinoso.mx" target="_blank" rel="noopener" class="finalcta__btn">Quiero mi manual →</a>
+    <p class="finalcta__lock">🔒 Acceso inmediato · Pago seguro · PDF descargable</p>
   </div>
 </section>
 
