@@ -46,12 +46,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   white-space:nowrap;overflow:hidden;
 }
 .promo-belt__track{display:inline}
+.promo-belt__dup{display:none}
 .promo-belt a{color:#fff;text-decoration:underline;text-underline-offset:2px;margin-left:.5rem;opacity:.85}
 .promo-belt a:hover{opacity:1}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:860px){
-  .promo-belt{padding:.42rem 0;text-align:left}
-  .promo-belt__track{display:inline-block;animation:marquee 22s linear infinite}
+  .promo-belt{padding:.38rem 0;text-align:left;font-size:.62rem}
+  .promo-belt__dup{display:inline}
+  .promo-belt__track{display:inline-block;animation:marquee 22s linear infinite;white-space:nowrap}
 }
 
 /* ── HEADER ──────────────────────────────────── */
@@ -436,6 +438,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .carousel__btn:hover{background:rgba(255,255,255,.16);border-color:var(--lavd)}
 
 /* ── TEMAS ───────────────────────────────────── */
+#temas{scroll-margin-top:90px}
 .temas{
   background:var(--cl);
   padding:3rem 0 2.5rem;
@@ -680,7 +683,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <a href="https://vinoso.mx" target="_blank" rel="noopener" class="header__cta">Comprar →</a>
     <button class="header__ham" aria-label="Menú"><span></span><span></span><span></span></button>
   </div>
-  <div class="promo-belt"><span class="promo-belt__track">Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a> &nbsp;&nbsp;·&nbsp;&nbsp; Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a> &nbsp;&nbsp;·&nbsp;&nbsp;</span></div>
+  <div class="promo-belt"><span class="promo-belt__track">Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a><span class="promo-belt__dup" aria-hidden="true"> &nbsp;&nbsp;·&nbsp;&nbsp; Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a> &nbsp;&nbsp;·&nbsp;&nbsp;</span></span></div>
 </header>
 
 <!-- ══════════════════════════════════════════════
