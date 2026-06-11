@@ -88,7 +88,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .header__ham{display:none;flex-direction:column;gap:5px;padding:.35rem}
 .header__ham span{display:block;width:20px;height:1.5px;background:var(--p);border-radius:2px}
 @media(max-width:860px){
-  .header__nav{display:none}
+  .header__in{flex-wrap:wrap;position:relative}
+  .header__nav{display:none;width:100%;order:99;flex-direction:column;gap:0;padding:.5rem 0 .3rem}
+  .header__nav.open{display:flex}
+  .header__nav a{padding:.65rem .85rem;font-size:.85rem;width:100%;border-radius:8px}
   .header__ham{display:flex}
 }
 
@@ -133,13 +136,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .book-text__price{
   display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;
   margin-bottom:1.75rem;
+  border-left:3px solid var(--w);
+  padding:.65rem 1.1rem;
+  background:rgba(183,53,74,.1);
+  border-radius:0 8px 8px 0;
 }
-.btp-old{font-size:.9rem;color:rgba(201,190,221,.35);text-decoration:line-through;font-weight:600}
-.btp-new{font-size:1.9rem;font-weight:900;color:var(--wh);line-height:1}
-.btp-new small{font-size:.75rem;font-weight:600;opacity:.7}
+.btp-old{font-size:.85rem;color:rgba(201,190,221,.45);text-decoration:line-through;font-weight:600}
+.btp-new{font-size:1.8rem;font-weight:900;color:var(--wh);line-height:1}
+.btp-new small{font-size:.72rem;font-weight:600;opacity:.7}
 .btp-badge{
   background:var(--w);color:#fff;
-  font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  font-size:.58rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
   padding:.3em .8em;border-radius:999px;
 }
 .book-meta strong{
@@ -680,11 +687,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="book-meta"><strong>204</strong><span>páginas</span></div>
         <div class="book-meta"><strong>15</strong><span>días para aprender</span></div>
         <div class="book-meta"><strong>100%</strong><span>sin esnobismo</span></div>
-        <div class="book-text__price">
-          <span class="btp-old">$400</span>
-          <span class="btp-new">$199 <small>MXN</small></span>
-          <span class="btp-badge">50% OFF</span>
-        </div>
+      </div>
+      <div class="book-text__price">
+        <span class="btp-old">$400</span>
+        <span class="btp-new">$199 <small>MXN</small></span>
+        <span class="btp-badge">50% OFF este mes</span>
       </div>
       <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">
         Quiero el manual digital →
@@ -974,6 +981,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 </footer>
 
 <script>
+/* ── Mobile menu ─────────────────────── */
+document.querySelector('.header__ham').addEventListener('click', () => {
+  document.querySelector('.header__nav').classList.toggle('open');
+});
+
 /* ── Reveal ───────────────────────────── */
 const io = new IntersectionObserver(es => {
   es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
@@ -1091,7 +1103,7 @@ document.querySelectorAll('.postit').forEach(p => {
     const gone = document.querySelectorAll('.postit.gone');
     if (all.length === gone.length) {
       document.querySelector('.postits__note').textContent =
-        '¡Listo! Ya los resolviste todos. Ahora compra el manual. 🍷';
+        '¡Listo! Ya los resolviste todos. Ahora compra el manual.';
     }
   });
 });
