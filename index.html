@@ -45,7 +45,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   display:flex;align-items:center;gap:.6rem;flex-shrink:0;
 }
 .header__logo img{
-  height:34px;width:auto;
+  height:52px;width:auto;
 }
 .header__nav{
   display:flex;align-items:center;gap:.2rem;
@@ -151,7 +151,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   overflow:hidden;
   box-shadow:0 50px 100px rgba(0,0,0,.75),0 20px 40px rgba(0,0,0,.5);
   position:relative;
-  transform:translateZ(0px);
+  transform:translateZ(1px);
+  backface-visibility:hidden;
 }
 .book-3d__front img{
   width:100%;height:100%;object-fit:cover;
@@ -565,6 +566,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         </div>
       </div>
       <p class="book-hint">← Mueve el mouse sobre el libro →</p>
+      <div style="text-align:center;margin-top:1.2rem">
+        <button id="flipBtn" style="background:rgba(201,190,221,.12);border:1px solid rgba(201,190,221,.2);color:rgba(201,190,221,.6);font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.4rem;border-radius:999px;cursor:pointer;transition:background .25s,color .25s">
+          ↩ Ver contraportada
+        </button>
+      </div>
     </div>
 
   </div>
@@ -815,29 +821,33 @@ const co = new IntersectionObserver(es => {
 }, { threshold: .5 });
 document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
 
-/* ── 3D Book — mouse tracking ─────────── */
+/* ── 3D Book — mouse tracking + flip ─────── */
 const book = document.getElementById('book');
 const stage = book.closest('.book-stage');
+const flipBtn = document.getElementById('flipBtn');
+let flipped = false;
 let baseY = -20, baseX = 4;
-let animFrame;
+
+function getBaseY(){ return flipped ? 160 : -20; }
+
+function applyRest(instant){
+  book.style.transition = instant ? 'none' : 'transform .8s cubic-bezier(0.16,1,0.3,1)';
+  book.style.transform = `rotateY(${getBaseY()}deg) rotateX(${baseX}deg)`;
+}
 
 stage.addEventListener('mousemove', e => {
   const rect = stage.getBoundingClientRect();
   const cx = rect.left + rect.width / 2;
   const cy = rect.top + rect.height / 2;
-  const dx = (e.clientX - cx) / (rect.width / 2);   // -1 to 1
-  const dy = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
-  const targetY = baseY + dx * 30;   // rotate around Y axis
-  const targetX = baseX - dy * 12;   // tilt on X axis
-  cancelAnimationFrame(animFrame);
+  const dx = (e.clientX - cx) / (rect.width / 2);
+  const dy = (e.clientY - cy) / (rect.height / 2);
+  const targetY = getBaseY() + dx * 30;
+  const targetX = baseX - dy * 12;
   book.style.transition = 'transform .08s linear';
   book.style.transform = `rotateY(${targetY}deg) rotateX(${targetX}deg)`;
 });
 
-stage.addEventListener('mouseleave', () => {
-  book.style.transition = 'transform .8s cubic-bezier(0.16,1,0.3,1)';
-  book.style.transform = `rotateY(${baseY}deg) rotateX(${baseX}deg)`;
-});
+stage.addEventListener('mouseleave', () => applyRest(false));
 
 /* Touch tilt for mobile */
 stage.addEventListener('touchmove', e => {
@@ -846,8 +856,15 @@ stage.addEventListener('touchmove', e => {
   const rect = stage.getBoundingClientRect();
   const dx = (t.clientX - rect.left - rect.width / 2) / (rect.width / 2);
   book.style.transition = 'transform .1s linear';
-  book.style.transform = `rotateY(${baseY + dx * 25}deg) rotateX(${baseX}deg)`;
+  book.style.transform = `rotateY(${getBaseY() + dx * 25}deg) rotateX(${baseX}deg)`;
 }, { passive: false });
+
+/* Flip button */
+flipBtn.addEventListener('click', () => {
+  flipped = !flipped;
+  flipBtn.textContent = flipped ? '↩ Ver portada' : '↩ Ver contraportada';
+  applyRest(false);
+});
 
 /* ── Carousel ─────────────────────────── */
 const track = document.getElementById('revTrack');
