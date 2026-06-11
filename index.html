@@ -350,11 +350,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .sec-title em{font-family:var(--serif);font-style:italic}
 .stats__grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
 }
 .stat-c{
   background:var(--cl);border-radius:18px;
-  padding:2rem 1.5rem;text-align:center;
+  padding:1.75rem 1.5rem;text-align:center;
   border:1px solid rgba(65,41,95,.07);
   transition:transform .35s var(--ease),box-shadow .35s;
 }
@@ -369,6 +369,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .stat-c__lbl{
   font-size:.76rem;font-weight:600;
   color:var(--gr);line-height:1.4;
+}
+.stat-c__topic{
+  font-size:.95rem;font-weight:700;
+  color:var(--p);line-height:1.35;margin-top:.3rem;
 }
 @media(max-width:860px){.stats__grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.stats__grid{grid-template-columns:1fr}}
@@ -788,29 +792,32 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <section class="stats" id="stats">
   <div class="stats__in">
     <div class="sec-header" data-r>
-      <p class="sec-kicker">La gente como tú lo dice</p>
-      <h2 class="sec-title">Los aficionados del vino <em>opinan</em></h2>
+      <h2 class="sec-title">Los aficionados del vino <em>aprenderán.</em></h2>
     </div>
     <div class="stats__grid">
       <div class="stat-c" data-r data-d1>
         <div class="stat-c__icon"><img src="img/icons/icon-1.png" alt=""/></div>
-        <div class="stat-c__num" data-count="1" data-suffix=" manual">0</div>
-        <div class="stat-c__lbl">fue todo lo que necesitaron como guía para adentrarse al mundo del vino</div>
+        <div class="stat-c__topic">Saber cómo catar vino</div>
       </div>
       <div class="stat-c" data-r data-d2>
         <div class="stat-c__icon"><img src="img/icons/icon-5.png" alt=""/></div>
-        <div class="stat-c__num red" data-count="15" data-suffix=" días">0</div>
-        <div class="stat-c__lbl">bastaron para notar un cambio real en cómo eligen su vino</div>
+        <div class="stat-c__topic">Sobre uvas vinícolas</div>
       </div>
       <div class="stat-c" data-r data-d3>
         <div class="stat-c__icon"><img src="img/icons/icon-3.png" alt=""/></div>
-        <div class="stat-c__num" data-count="8" data-suffix=" de cada 10">0</div>
-        <div class="stat-c__lbl">ya sabe qué vino pedir — precio, sabor y momento — al salir a cenar o con su crush</div>
+        <div class="stat-c__topic">Países y regiones del vino</div>
       </div>
       <div class="stat-c" data-r data-d4>
         <div class="stat-c__icon"><img src="img/icons/icon-8.png" alt=""/></div>
-        <div class="stat-c__num red" data-count="100" data-suffix="%">0</div>
-        <div class="stat-c__lbl">de los lectores del manual lo ha consultado en al menos una conversación sobre vino</div>
+        <div class="stat-c__topic">Cómo leer una etiqueta</div>
+      </div>
+      <div class="stat-c" data-r data-d1>
+        <div class="stat-c__icon"><img src="img/icons/icon-2.png" alt=""/></div>
+        <div class="stat-c__topic">Maridaje, vino y comida</div>
+      </div>
+      <div class="stat-c" data-r data-d2>
+        <div class="stat-c__icon"><img src="img/icons/icon-4.png" alt=""/></div>
+        <div class="stat-c__topic">Cómo elegir un vino</div>
       </div>
     </div>
   </div>
