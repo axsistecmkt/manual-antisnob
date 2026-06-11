@@ -45,8 +45,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   color:#fff;
   white-space:nowrap;overflow:hidden;
 }
+.promo-belt__track{display:inline}
 .promo-belt a{color:#fff;text-decoration:underline;text-underline-offset:2px;margin-left:.5rem;opacity:.85}
 .promo-belt a:hover{opacity:1}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:860px){
+  .promo-belt{padding:.42rem 0;text-align:left}
+  .promo-belt__track{display:inline-block;animation:marquee 22s linear infinite}
+}
 
 /* ── HEADER ──────────────────────────────────── */
 .header{
@@ -89,9 +95,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .header__ham span{display:block;width:20px;height:1.5px;background:var(--p);border-radius:2px}
 @media(max-width:860px){
   .header__in{flex-wrap:wrap;position:relative}
-  .header__nav{display:none;width:100%;order:99;flex-direction:column;gap:0;padding:.5rem 0 .3rem}
+  .header__nav{display:none;width:100%;order:99;flex-direction:column;gap:.25rem;padding:.75rem 0 .5rem}
   .header__nav.open{display:flex}
-  .header__nav a{padding:.65rem .85rem;font-size:.85rem;width:100%;border-radius:8px}
+  .header__nav a{padding:1rem .85rem;font-size:.95rem;width:100%;border-radius:8px;border-bottom:1px solid rgba(65,41,95,.07)}
   .header__ham{display:flex}
 }
 
@@ -674,7 +680,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <a href="https://vinoso.mx" target="_blank" rel="noopener" class="header__cta">Comprar →</a>
     <button class="header__ham" aria-label="Menú"><span></span><span></span><span></span></button>
   </div>
-  <div class="promo-belt">Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a></div>
+  <div class="promo-belt"><span class="promo-belt__track">Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a> &nbsp;&nbsp;·&nbsp;&nbsp; Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a> &nbsp;&nbsp;·&nbsp;&nbsp;</span></div>
 </header>
 
 <!-- ══════════════════════════════════════════════
@@ -991,9 +997,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 <script>
 /* ── Mobile menu ─────────────────────── */
-document.querySelector('.header__ham').addEventListener('click', () => {
-  document.querySelector('.header__nav').classList.toggle('open');
-});
+const ham = document.querySelector('.header__ham');
+const mobileNav = document.querySelector('.header__nav');
+ham.addEventListener('click', () => mobileNav.classList.toggle('open'));
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
 
 /* ── Reveal ───────────────────────────── */
 const io = new IntersectionObserver(es => {
