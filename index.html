@@ -181,6 +181,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   color:rgba(210,185,240,.4);
 }
 
+.book-cover-img{
+  display:block;
+  width:224px;height:320px;
+  object-fit:cover;object-position:center top;
+  border-radius:2px 6px 6px 2px;
+  box-shadow:16px 24px 60px rgba(0,0,0,.85),4px 6px 20px rgba(0,0,0,.5);
+  pointer-events:none;user-select:none;
+}
+
 /* NO filter here — filter flattens transform-style:preserve-3d */
 .book-3d{
   position:relative;
@@ -577,25 +586,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div data-rr>
       <div class="book-stage">
         <div class="book-3d" id="book">
-          <div class="book-cover" id="bookCoverFront">
-            <div class="book-cover__deco"></div>
-            <div class="book-cover__inner">
-              <p class="book-cover__tag">Manual Anti-Snob del Vino</p>
-              <h2 class="book-cover__title">El vino<br><em>sin poses</em></h2>
-              <div class="book-cover__rule"></div>
-              <p class="book-cover__sub">vinoso.mx</p>
-            </div>
-          </div>
-          <div class="book-cover book-cover--back" id="bookCoverBack" style="display:none">
-            <div class="book-cover__deco"></div>
-            <div class="book-cover__inner">
-              <p class="book-cover__tag">Manual Anti-Snob del Vino</p>
-              <div class="book-cover__rule"></div>
-              <p style="font-size:.62rem;color:rgba(210,185,240,.65);line-height:1.7;margin-bottom:1rem;">Aprende a disfrutar el vino<br>sin sentirte juzgado.<br>Sin poses. Sin pretensión.</p>
-              <div class="book-cover__rule"></div>
-              <p class="book-cover__sub" style="margin-top:.8rem">vinoso.mx</p>
-            </div>
-          </div>
+          <img id="bookCoverFront" src="img/portada-web.jpg" alt="Portada del Manual Anti-Snob del Vino" class="book-cover-img"/>
+          <img id="bookCoverBack"  src="img/contraportada-web.jpg" alt="Contraportada del Manual Anti-Snob del Vino" class="book-cover-img" style="display:none"/>
           <div class="book-spine"></div>
           <div class="book-pages"></div>
         </div>
@@ -911,8 +903,8 @@ flipBtn.addEventListener('click', () => {
   book.addEventListener('transitionend', function swapHandler(){
     book.removeEventListener('transitionend', swapHandler);
     flipped = !flipped;
-    bookCoverFront.style.display = flipped ? 'none' : 'flex';
-    bookCoverBack.style.display  = flipped ? 'flex' : 'none';
+    bookCoverFront.style.display = flipped ? 'none' : 'block';
+    bookCoverBack.style.display  = flipped ? 'block' : 'none';
     flipBtn.textContent = flipped ? '↩ Ver portada' : '↩ Ver contraportada';
 
     book.style.transition = 'none';
