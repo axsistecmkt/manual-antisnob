@@ -381,6 +381,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 @media(max-width:560px){.temas__grid{grid-template-columns:1fr}}
 
 /* ── POST-ITS ────────────────────────────────── */
+.postit.gone{
+  animation:fallFade .6s var(--ease) forwards !important;
+}
+@keyframes fallFade{
+  0%  { opacity:1; transform:var(--base-rot,rotate(0deg)) translateY(0) scale(1); }
+  40% { opacity:.6; transform:var(--base-rot,rotate(0deg)) translateY(30px) rotate(15deg) scale(.95); }
+  100%{ opacity:0; transform:var(--base-rot,rotate(0deg)) translateY(120px) rotate(25deg) scale(.8); }
+}
+
 .postits{
   background:var(--lav);
   padding:clamp(4rem,8vw,7rem) 0;
@@ -430,10 +439,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   background:linear-gradient(225deg,rgba(0,0,0,.12) 50%,transparent 50%);
   border-top-left-radius:3px;
 }
-.postit.gone{
-  opacity:0;transform:scale(.85) rotate(5deg);
-  pointer-events:none;
-}
+.postit.gone{pointer-events:none;}
 .postit__emoji{font-size:1.3rem;line-height:1}
 .postit__text{
   font-size:.76rem;font-weight:600;
@@ -451,41 +457,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   font-size:1rem;color:var(--p);opacity:.55;
 }
 
-/* ── BIG CTA ─────────────────────────────────── */
-.bigcta{
-  background:var(--pd);
-  padding:clamp(5rem,10vw,8rem) 0;
-  text-align:center;
-  position:relative;overflow:hidden;
-}
-.bigcta::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(201,190,221,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(201,190,221,.04) 1px,transparent 1px);
-  background-size:40px 40px;
-}
-.bigcta__in{
-  max-width:700px;margin:0 auto;
-  padding:0 clamp(1.25rem,4vw,3rem);
-  position:relative;z-index:1;
-}
-.bigcta__img{
-  width:clamp(90px,14vw,130px);margin:0 auto 2rem;
-  animation:float 5s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.bigcta__title{
-  font-family:var(--serif);
-  font-size:clamp(2.5rem,6vw,5.5rem);
-  font-weight:900;color:var(--wh);line-height:.95;
-  margin-bottom:1.1rem;
-}
-.bigcta__title em{font-style:italic;color:var(--w)}
-.bigcta__sub{
-  font-size:.9rem;color:rgba(201,190,221,.5);
-  line-height:1.75;max-width:420px;margin:0 auto 2.5rem;
-}
+/* ── BIG CTA (removed) ── */
 .bigcta__btns{
   display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
   margin-bottom:1.25rem;
@@ -720,15 +692,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <h2 class="sec-title">Temas del <em>manual</em></h2>
     </div>
     <div class="temas__grid" data-r>
-      <div class="tema"><span class="tema__num">01</span><div><p class="tema__title">Historia del vino sin aburrirte</p><p class="tema__desc">Orígenes y evolución para entender lo que bebes.</p></div><img class="tema__icon" src="img/icons/icon-2.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">02</span><div><p class="tema__title">Tipos de vino y sus diferencias</p><p class="tema__desc">Tinto, blanco, rosado, espumoso, dulce, seco.</p></div><img class="tema__icon" src="img/icons/icon-1.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">03</span><div><p class="tema__title">Las uvas que más importan</p><p class="tema__desc">Perfiles de Cabernet, Malbec, Chardonnay y más.</p></div><img class="tema__icon" src="img/icons/icon-9.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">04</span><div><p class="tema__title">Cómo leer una etiqueta</p><p class="tema__desc">Qué dice y qué oculta la etiqueta de una botella.</p></div><img class="tema__icon" src="img/icons/icon-4.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">05</span><div><p class="tema__title">Regiones vinícolas del mundo</p><p class="tema__desc">Europa, Latinoamérica, México. Dónde nace cada vino.</p></div><img class="tema__icon" src="img/icons/icon-6.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">06</span><div><p class="tema__title">Maridaje sin misterio</p><p class="tema__desc">Las combinaciones que funcionan y las que no.</p></div><img class="tema__icon" src="img/icons/icon-7.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">07</span><div><p class="tema__title">Cómo servir y almacenar</p><p class="tema__desc">Temperatura, copas, decantación, conservación.</p></div><img class="tema__icon" src="img/icons/icon-10.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">08</span><div><p class="tema__title">Elegir en restaurantes y catas</p><p class="tema__desc">Moverte con criterio sin sentirte intimidado.</p></div><img class="tema__icon" src="img/icons/icon-11.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">09</span><div><p class="tema__title">Glosario anti-pretensioso</p><p class="tema__desc">Las palabras del vino explicadas en humano.</p></div><img class="tema__icon" src="img/icons/icon-12.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">00</span><div><p class="tema__title">Bienvenida al mundo del vino</p><p class="tema__desc">p. 2</p></div><img class="tema__icon" src="img/icons/icon-2.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">01</span><div><p class="tema__title">El ABC del vino que desbloquea todo</p><p class="tema__desc">p. 8</p></div><img class="tema__icon" src="img/icons/icon-1.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">02</span><div><p class="tema__title">Cómo catar vino sin ser experto</p><p class="tema__desc">p. 13</p></div><img class="tema__icon" src="img/icons/icon-9.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">03</span><div><p class="tema__title">Cómo hablar del vino sin sonar falso</p><p class="tema__desc">p. 18</p></div><img class="tema__icon" src="img/icons/icon-4.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">04</span><div><p class="tema__title">Las uvas que realmente importan</p><p class="tema__desc">p. 22</p></div><img class="tema__icon" src="img/icons/icon-6.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">05</span><div><p class="tema__title">Países y regiones que debes ubicar</p><p class="tema__desc">p. 31</p></div><img class="tema__icon" src="img/icons/icon-7.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">06</span><div><p class="tema__title">Cómo leer una etiqueta y elegir bien</p><p class="tema__desc">p. 40</p></div><img class="tema__icon" src="img/icons/icon-10.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">07</span><div><p class="tema__title">Cómo se hace el vino (sin tecnicismos)</p><p class="tema__desc">p. 47</p></div><img class="tema__icon" src="img/icons/icon-11.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">08</span><div><p class="tema__title">Servicio y protocolo social del vino</p><p class="tema__desc">p. 52</p></div><img class="tema__icon" src="img/icons/icon-12.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">09</span><div><p class="tema__title">Maridaje, vino y comida sin complicaciones</p><p class="tema__desc">p. 59</p></div><img class="tema__icon" src="img/icons/icon-3.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">10</span><div><p class="tema__title">Cómo comprar vino y desarrollar tu gusto</p><p class="tema__desc">p. 66</p></div><img class="tema__icon" src="img/icons/icon-5.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">11</span><div><p class="tema__title">Plan práctico de 15 días</p><p class="tema__desc">p. 74</p></div><img class="tema__icon" src="img/icons/icon-8.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">—</span><div><p class="tema__title">La guía rápida del vino, en una página</p><p class="tema__desc">p. 79</p></div><img class="tema__icon" src="img/icons/icon-13.png" alt=""/></div>
     </div>
     <div class="temas__cta" data-r>
       <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar el manual →</a>
@@ -748,52 +724,52 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <p class="postits__sub" data-r>Toca cada post-it para despedirte de esa situación para siempre.</p>
 
     <div class="postits__board" data-r>
-      <div class="postit" style="--color:#F9E87B;transform:rotate(-2.1deg)">
+      <div class="postit" style="--color:#C9BEDD;transform:rotate(-2.1deg)">
         <span class="postit__emoji">😰</span>
         <p class="postit__text">La carta de vinos te paraliza y pides lo más barato</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
-      <div class="postit" style="--color:#FFCF77;transform:rotate(1.4deg)">
+      <div class="postit" style="--color:#E2D8C9;transform:rotate(1.4deg)">
         <span class="postit__emoji">🤷</span>
         <p class="postit__text">No entiendes qué significa "Reserva" o "Gran Reserva"</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
-      <div class="postit" style="--color:#A8D8EA;transform:rotate(-1.2deg)">
+      <div class="postit" style="--color:#DDD5EA;transform:rotate(-1.2deg)">
         <span class="postit__emoji">😬</span>
         <p class="postit__text">En catas finges entender lo que dice el sommelier</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
-      <div class="postit" style="--color:#F9E87B;transform:rotate(2.3deg)">
+      <div class="postit" style="--color:#F5F0E8;transform:rotate(2.3deg)">
         <span class="postit__emoji">💸</span>
         <p class="postit__text">Crees que más caro siempre significa mejor vino</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
-      <div class="postit" style="--color:#B8F0C8;transform:rotate(-1.8deg)">
+      <div class="postit" style="--color:#C9BEDD;transform:rotate(-1.8deg)">
         <span class="postit__emoji">🍽️</span>
         <p class="postit__text">No sabes qué vino va con qué comida</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
-      <div class="postit" style="--color:#FFCF77;transform:rotate(1.1deg)">
+      <div class="postit" style="--color:#E2D8C9;transform:rotate(1.1deg)">
         <span class="postit__emoji">🏪</span>
         <p class="postit__text">En la tienda tomas la botella que tiene la etiqueta más bonita</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
-      <div class="postit" style="--color:#F9C0C0;transform:rotate(-2.5deg)">
+      <div class="postit" style="--color:#DDD5EA;transform:rotate(-2.5deg)">
         <span class="postit__emoji">🌡️</span>
         <p class="postit__text">Sirves el vino tinto directo del refrigerador</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
-      <div class="postit" style="--color:#A8D8EA;transform:rotate(1.7deg)">
+      <div class="postit" style="--color:#F5F0E8;transform:rotate(1.7deg)">
         <span class="postit__emoji">🍇</span>
         <p class="postit__text">No distingues la diferencia entre Merlot y Malbec</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
-      <div class="postit" style="--color:#B8F0C8;transform:rotate(-1deg)">
+      <div class="postit" style="--color:#C9BEDD;transform:rotate(-1deg)">
         <span class="postit__emoji">🗣️</span>
         <p class="postit__text">No sabes hablar de vino sin sonar pretencioso o ignorante</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
-      <div class="postit" style="--color:#F9C0C0;transform:rotate(2.2deg)">
+      <div class="postit" style="--color:#E2D8C9;transform:rotate(2.2deg)">
         <span class="postit__emoji">📦</span>
         <p class="postit__text">Nunca sabes si guardar la botella o abrirla ya</p>
         <span class="postit__hint">toca para eliminar</span>
@@ -801,27 +777,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     </div>
 
     <p class="postits__note" data-r>El manual resuelve todo esto — y más.</p>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════
-     CTA FINAL
-══════════════════════════════════════════════ -->
-<section class="bigcta">
-  <div class="bigcta__in" data-r>
-    <img class="bigcta__img" src="img/ilust/ilust-1.png" alt="Brindando"/>
-    <h2 class="bigcta__title">
-      No te compliques.<br/>
-      <em>Vive el vino.</em>
-    </h2>
-    <p class="bigcta__sub">
-      204 páginas para dejar de fingir y empezar a disfrutar.
-    </p>
-    <div class="bigcta__btns">
-      <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar en vinoso.mx →</a>
-      <a href="#reviews" class="btn-lav">Leer opiniones</a>
-    </div>
-    <p class="bigcta__lock">🔒 Pago seguro · Acceso inmediato · vinoso.mx</p>
   </div>
 </section>
 
