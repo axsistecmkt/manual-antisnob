@@ -128,7 +128,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   line-height:1.85;margin-bottom:2rem;
 }
 .book-text__meta{
-  display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:2.25rem;
+  display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;
+}
+.book-text__price{
+  display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;
+  margin-bottom:1.75rem;
+}
+.btp-old{font-size:.9rem;color:rgba(201,190,221,.35);text-decoration:line-through;font-weight:600}
+.btp-new{font-size:1.9rem;font-weight:900;color:var(--wh);line-height:1}
+.btp-new small{font-size:.75rem;font-weight:600;opacity:.7}
+.btp-badge{
+  background:var(--w);color:#fff;
+  font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:.3em .8em;border-radius:999px;
 }
 .book-meta strong{
   display:block;
@@ -656,12 +668,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <em>vino sin drama.</em>
       </h2>
       <p class="book-text__body">
-        Disfrutar vino sin sentir que estás en examen. Aprender de vino sin volverse insoportable. Este manual te da las herramientas para elegir, hablar y brindar con criterio propio.
+        Disfrutar vino sin sentir que estás en examen. Aprender de vino sin volverse insoportable. Con un manual 100% digital que te guiará para elegir, hablar y brindar con criterio propio.
       </p>
       <div class="book-text__meta">
         <div class="book-meta"><strong>204</strong><span>páginas</span></div>
         <div class="book-meta"><strong>15</strong><span>días para aprender</span></div>
         <div class="book-meta"><strong>100%</strong><span>sin esnobismo</span></div>
+      </div>
+      <div class="book-text__price">
+        <span class="btp-old">$400</span>
+        <span class="btp-new">$199 <small>MXN</small></span>
+        <span class="btp-badge">50% OFF este mes</span>
       </div>
       <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">
         Quiero el manual digital →
