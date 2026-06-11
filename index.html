@@ -120,8 +120,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:2.25rem;
 }
 .book-meta strong{
-  display:block;font-family:var(--serif);
-  font-size:1.7rem;font-weight:900;
+  display:block;
+  font-size:1.7rem;font-weight:800;
   color:var(--wh);line-height:1;margin-bottom:.15rem;
 }
 .book-meta span{
@@ -154,30 +154,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   transition:transform .08s linear;
   will-change:transform;
 }
-/* Shared face styles */
-.book-3d__front,
-.book-3d__back{
+/* Single visible face */
+.book-3d__front{
   position:absolute;inset:0;
   overflow:hidden;
   border-radius:2px 8px 8px 2px;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
+  transform:translateZ(13px);
+  box-shadow:0 40px 90px rgba(0,0,0,.8),0 15px 35px rgba(0,0,0,.55);
 }
-.book-3d__front img,
-.book-3d__back img{
+.book-3d__front img{
   width:100%;height:100%;
   object-fit:cover;object-position:center top;
   pointer-events:none;user-select:none;
   display:block;
-}
-/* Front face — pushed slightly forward */
-.book-3d__front{
-  transform:translateZ(13px);
-  box-shadow:0 40px 90px rgba(0,0,0,.8),0 15px 35px rgba(0,0,0,.55);
-}
-/* Back face — rotated 180deg, same Z offset */
-.book-3d__back{
-  transform:rotateY(180deg) translateZ(13px);
 }
 /* Spine */
 .book-3d__spine{
@@ -262,9 +251,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .stat-c:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(65,41,95,.09)}
 .stat-c__icon{width:44px;height:44px;margin:0 auto .9rem;opacity:.8}
 .stat-c__num{
-  font-family:var(--serif);
   font-size:clamp(2.4rem,4vw,3.5rem);
-  font-weight:900;line-height:1;
+  font-weight:800;line-height:1;
   color:var(--p);margin-bottom:.3rem;
 }
 .stat-c__num.red{color:var(--w)}
@@ -294,7 +282,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .reviews__stars{color:#F5C842;font-size:1rem;letter-spacing:.1em}
 .reviews__score-num{
-  font-family:var(--serif);font-size:1.1rem;font-weight:900;color:var(--wh);
+  font-size:1.1rem;font-weight:800;color:var(--wh);
 }
 .reviews__count{font-size:.72rem;color:rgba(201,190,221,.4)}
 
@@ -321,7 +309,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   flex:1;font-style:italic;
 }
 .rev-card__text::before{
-  content:'"';font-size:1.8rem;font-family:var(--serif);
+  content:'"';font-size:1.8rem;
   color:var(--lavd);line-height:0;vertical-align:-.45rem;margin-right:.15rem;
 }
 .rev-card__author{
@@ -331,7 +319,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .rev-card__av{
   width:34px;height:34px;border-radius:50%;flex-shrink:0;
   background:var(--lav);display:flex;align-items:center;justify-content:center;
-  font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--p);
+  font-size:.95rem;font-weight:700;color:var(--p);
 }
 .rev-card__name{font-size:.8rem;font-weight:700;color:var(--lavl)}
 .rev-card__handle{font-size:.68rem;color:rgba(201,190,221,.35)}
@@ -376,7 +364,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .tema:hover{background:#faf8ff}
 .tema__num{
-  font-family:var(--serif);font-size:.72rem;font-weight:700;
+  font-size:.72rem;font-weight:700;
   color:var(--w);min-width:1.4rem;padding-top:.1rem;flex-shrink:0;
 }
 .tema__icon{width:28px;height:28px;flex-shrink:0;opacity:.2;margin-left:auto}
@@ -460,7 +448,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 .postits__note{
   text-align:center;margin-top:2.5rem;
-  font-family:var(--serif);font-style:italic;
+  font-style:italic;
   font-size:1rem;color:var(--p);opacity:.55;
 }
 
@@ -493,7 +481,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
 }
 .footer__logo{
-  font-family:var(--serif);font-size:1rem;font-weight:700;
+  font-size:1rem;font-weight:700;
   color:rgba(201,190,221,.4);
 }
 .footer__logo span{color:var(--w)}
@@ -560,10 +548,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="book-wrap">
           <div class="book-3d" id="book">
             <div class="book-3d__front">
-              <img src="img/portada.jpg" alt="Portada del Manual Anti-Snob del Vino"/>
-            </div>
-            <div class="book-3d__back">
-              <img src="img/contraportada.jpg" alt="Contraportada del Manual Anti-Snob del Vino"/>
+              <img id="bookCoverImg" src="img/portada.jpg" alt="Portada del Manual Anti-Snob del Vino"/>
             </div>
             <div class="book-3d__spine">
               <span class="book-3d__spine-txt">Manual Anti-Snob del Vino · Vinoso</span>
@@ -831,47 +816,72 @@ document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
 
 /* ── 3D Book — mouse tracking + flip ─────── */
 const book = document.getElementById('book');
+const bookCoverImg = document.getElementById('bookCoverImg');
 const stage = book.closest('.book-stage');
 const flipBtn = document.getElementById('flipBtn');
 let flipped = false;
-let baseY = -20, baseX = 4;
+let flipping = false;
+const baseX = 4;
+const covers = {
+  front: { src:'img/portada.jpg',      alt:'Portada del Manual Anti-Snob del Vino' },
+  back:  { src:'img/contraportada.jpg', alt:'Contraportada del Manual Anti-Snob del Vino' }
+};
 
-function getBaseY(){ return flipped ? 160 : -20; }
+function baseY(){ return -22; }   // same resting angle both sides
 
-function applyRest(instant){
-  book.style.transition = instant ? 'none' : 'transform .8s cubic-bezier(0.16,1,0.3,1)';
-  book.style.transform = `rotateY(${getBaseY()}deg) rotateX(${baseX}deg)`;
+function applyRest(){
+  book.style.transition = 'transform .8s cubic-bezier(0.16,1,0.3,1)';
+  book.style.transform = `rotateY(${baseY()}deg) rotateX(${baseX}deg)`;
 }
 
 stage.addEventListener('mousemove', e => {
+  if(flipping) return;
   const rect = stage.getBoundingClientRect();
-  const cx = rect.left + rect.width / 2;
-  const cy = rect.top + rect.height / 2;
-  const dx = (e.clientX - cx) / (rect.width / 2);
-  const dy = (e.clientY - cy) / (rect.height / 2);
-  const targetY = getBaseY() + dx * 30;
-  const targetX = baseX - dy * 12;
+  const dx = (e.clientX - rect.left - rect.width/2)  / (rect.width/2);
+  const dy = (e.clientY - rect.top  - rect.height/2) / (rect.height/2);
   book.style.transition = 'transform .08s linear';
-  book.style.transform = `rotateY(${targetY}deg) rotateX(${targetX}deg)`;
+  book.style.transform = `rotateY(${baseY() + dx*30}deg) rotateX(${baseX - dy*12}deg)`;
 });
+stage.addEventListener('mouseleave', () => { if(!flipping) applyRest(); });
 
-stage.addEventListener('mouseleave', () => applyRest(false));
-
-/* Touch tilt for mobile */
 stage.addEventListener('touchmove', e => {
+  if(flipping) return;
   e.preventDefault();
-  const t = e.touches[0];
-  const rect = stage.getBoundingClientRect();
-  const dx = (t.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+  const dx = (e.touches[0].clientX - stage.getBoundingClientRect().left - stage.offsetWidth/2) / (stage.offsetWidth/2);
   book.style.transition = 'transform .1s linear';
-  book.style.transform = `rotateY(${getBaseY() + dx * 25}deg) rotateX(${baseX}deg)`;
-}, { passive: false });
+  book.style.transform = `rotateY(${baseY() + dx*25}deg) rotateX(${baseX}deg)`;
+}, { passive:false });
 
-/* Flip button */
+/* Flip: spin to 90° (edge-on) → swap image → spin to rest */
 flipBtn.addEventListener('click', () => {
-  flipped = !flipped;
-  flipBtn.textContent = flipped ? '↩ Ver portada' : '↩ Ver contraportada';
-  applyRest(false);
+  if(flipping) return;
+  flipping = true;
+  flipBtn.disabled = true;
+
+  book.style.transition = 'transform .28s ease-in';
+  book.style.transform = `rotateY(90deg) rotateX(${baseX}deg)`;
+
+  book.addEventListener('transitionend', function swapHandler(){
+    book.removeEventListener('transitionend', swapHandler);
+    flipped = !flipped;
+    const c = flipped ? covers.back : covers.front;
+    bookCoverImg.src = c.src;
+    bookCoverImg.alt = c.alt;
+    flipBtn.textContent = flipped ? '↩ Ver portada' : '↩ Ver contraportada';
+
+    book.style.transition = 'none';
+    book.style.transform = `rotateY(-90deg) rotateX(${baseX}deg)`;
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      book.style.transition = 'transform .28s ease-out';
+      book.style.transform = `rotateY(${baseY()}deg) rotateX(${baseX}deg)`;
+      book.addEventListener('transitionend', function doneHandler(){
+        book.removeEventListener('transitionend', doneHandler);
+        flipping = false;
+        flipBtn.disabled = false;
+      }, { once:true });
+    }));
+  }, { once:true });
 });
 
 /* ── Carousel ─────────────────────────── */
