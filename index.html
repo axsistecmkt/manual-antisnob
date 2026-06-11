@@ -586,7 +586,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
               <p class="book-cover__sub">vinoso.mx</p>
             </div>
           </div>
-          <img id="bookCoverImg" src="img/contraportada-web.jpg" alt="Contraportada del Manual Anti-Snob del Vino" style="display:none;width:224px;height:320px;object-fit:cover;object-position:center top;border-radius:2px 6px 6px 2px;box-shadow:16px 24px 60px rgba(0,0,0,.85),4px 6px 20px rgba(0,0,0,.5);pointer-events:none;user-select:none;"/>
+          <div class="book-cover book-cover--back" id="bookCoverBack" style="display:none">
+            <div class="book-cover__deco"></div>
+            <div class="book-cover__inner">
+              <p class="book-cover__tag">Manual Anti-Snob del Vino</p>
+              <div class="book-cover__rule"></div>
+              <p style="font-size:.62rem;color:rgba(210,185,240,.65);line-height:1.7;margin-bottom:1rem;">Aprende a disfrutar el vino<br>sin sentirte juzgado.<br>Sin poses. Sin pretensión.</p>
+              <div class="book-cover__rule"></div>
+              <p class="book-cover__sub" style="margin-top:.8rem">vinoso.mx</p>
+            </div>
+          </div>
           <div class="book-spine"></div>
           <div class="book-pages"></div>
         </div>
@@ -603,7 +612,45 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 </section>
 
 <!-- ══════════════════════════════════════════════
-     2. STATS
+     2. TEMAS
+══════════════════════════════════════════════ -->
+<section class="temas" id="temas">
+  <div class="temas__in">
+    <div class="temas__header" data-r>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+        <p class="sec-kicker" style="margin:0">Vino sin tecnicismos</p>
+        <span style="font-size:1rem;font-weight:700;color:var(--p)">Temas del <em>manual</em></span>
+      </div>
+      <button class="temas__toggle-btn" id="temasBtn" aria-expanded="false">
+        Ver 13 capítulos <span class="temas__arrow">▾</span>
+      </button>
+    </div>
+    <div class="temas__list" id="temasList">
+      <div class="temas__rows">
+        <div class="tema-row"><span class="tema-num">00</span><span class="tema-title">Bienvenida al mundo del vino</span></div>
+        <div class="tema-row"><span class="tema-num">01</span><span class="tema-title">El ABC del vino que desbloquea todo</span></div>
+        <div class="tema-row"><span class="tema-num">02</span><span class="tema-title">Cómo catar vino sin ser experto</span></div>
+        <div class="tema-row"><span class="tema-num">03</span><span class="tema-title">Cómo hablar del vino sin sonar falso</span></div>
+        <div class="tema-row"><span class="tema-num">04</span><span class="tema-title">Las uvas que realmente importan</span></div>
+        <div class="tema-row"><span class="tema-num">05</span><span class="tema-title">Países y regiones que debes ubicar</span></div>
+        <div class="tema-row"><span class="tema-num">06</span><span class="tema-title">Cómo leer una etiqueta y elegir bien</span></div>
+        <div class="tema-row"><span class="tema-num">07</span><span class="tema-title">Cómo se hace el vino (sin tecnicismos)</span></div>
+        <div class="tema-row"><span class="tema-num">08</span><span class="tema-title">Servicio y protocolo social del vino</span></div>
+        <div class="tema-row"><span class="tema-num">09</span><span class="tema-title">Maridaje, vino y comida sin complicaciones</span></div>
+        <div class="tema-row"><span class="tema-num">10</span><span class="tema-title">Cómo comprar vino y desarrollar tu gusto</span></div>
+        <div class="tema-row"><span class="tema-num">11</span><span class="tema-title">Plan práctico de 15 días</span></div>
+        <div class="tema-row"><span class="tema-num">—</span><span class="tema-title">La guía rápida del vino, en una página</span></div>
+      </div>
+      <div class="temas__cta">
+        <p style="font-size:.88rem;color:var(--gr);margin-bottom:1.25rem;font-style:italic;">Una guía para disfrutar vino sin pretensión.</p>
+        <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar el manual →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     3. STATS
 ══════════════════════════════════════════════ -->
 <section class="stats" id="stats">
   <div class="stats__in">
@@ -715,44 +762,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 </section>
 
 <!-- ══════════════════════════════════════════════
-     4. TEMAS
-══════════════════════════════════════════════ -->
-<section class="temas" id="temas">
-  <div class="temas__in">
-    <div class="temas__header" data-r>
-      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
-        <p class="sec-kicker" style="margin:0">Vino sin tecnicismos</p>
-        <span style="font-size:1rem;font-weight:700;color:var(--p)">Temas del <em>manual</em></span>
-      </div>
-      <button class="temas__toggle-btn" id="temasBtn" aria-expanded="false">
-        Ver 13 capítulos <span class="temas__arrow">▾</span>
-      </button>
-    </div>
-    <div class="temas__list" id="temasList">
-      <div class="temas__rows">
-        <div class="tema-row"><span class="tema-num">00</span><span class="tema-title">Bienvenida al mundo del vino</span></div>
-        <div class="tema-row"><span class="tema-num">01</span><span class="tema-title">El ABC del vino que desbloquea todo</span></div>
-        <div class="tema-row"><span class="tema-num">02</span><span class="tema-title">Cómo catar vino sin ser experto</span></div>
-        <div class="tema-row"><span class="tema-num">03</span><span class="tema-title">Cómo hablar del vino sin sonar falso</span></div>
-        <div class="tema-row"><span class="tema-num">04</span><span class="tema-title">Las uvas que realmente importan</span></div>
-        <div class="tema-row"><span class="tema-num">05</span><span class="tema-title">Países y regiones que debes ubicar</span></div>
-        <div class="tema-row"><span class="tema-num">06</span><span class="tema-title">Cómo leer una etiqueta y elegir bien</span></div>
-        <div class="tema-row"><span class="tema-num">07</span><span class="tema-title">Cómo se hace el vino (sin tecnicismos)</span></div>
-        <div class="tema-row"><span class="tema-num">08</span><span class="tema-title">Servicio y protocolo social del vino</span></div>
-        <div class="tema-row"><span class="tema-num">09</span><span class="tema-title">Maridaje, vino y comida sin complicaciones</span></div>
-        <div class="tema-row"><span class="tema-num">10</span><span class="tema-title">Cómo comprar vino y desarrollar tu gusto</span></div>
-        <div class="tema-row"><span class="tema-num">11</span><span class="tema-title">Plan práctico de 15 días</span></div>
-        <div class="tema-row"><span class="tema-num">—</span><span class="tema-title">La guía rápida del vino, en una página</span></div>
-      </div>
-      <div class="temas__cta">
-        <p style="font-size:.88rem;color:var(--gr);margin-bottom:1.25rem;font-style:italic;">Una guía para disfrutar vino sin pretensión.</p>
-        <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar el manual →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════
      5. POST-ITS
 ══════════════════════════════════════════════ -->
 <section class="postits">
@@ -858,7 +867,7 @@ document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
 /* ── 3D Book — mouse tracking + flip ─────── */
 const book = document.getElementById('book');
 const bookCoverFront = document.getElementById('bookCoverFront');
-const bookCoverImg   = document.getElementById('bookCoverImg');
+const bookCoverBack  = document.getElementById('bookCoverBack');
 const stage = book.closest('.book-stage');
 const flipBtn = document.getElementById('flipBtn');
 let flipped = false;
@@ -903,7 +912,7 @@ flipBtn.addEventListener('click', () => {
     book.removeEventListener('transitionend', swapHandler);
     flipped = !flipped;
     bookCoverFront.style.display = flipped ? 'none' : 'flex';
-    bookCoverImg.style.display   = flipped ? 'block' : 'none';
+    bookCoverBack.style.display  = flipped ? 'flex' : 'none';
     flipBtn.textContent = flipped ? '↩ Ver portada' : '↩ Ver contraportada';
 
     book.style.transition = 'none';
