@@ -142,6 +142,45 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   perspective:900px;
   padding:2rem 2rem 4rem;
 }
+/* ── CSS Purple Cover ───────────────── */
+.book-cover{
+  display:flex;
+  width:224px;height:320px;
+  background:linear-gradient(145deg,#2e1650 0%,#5a2d82 45%,#3b1f5e 100%);
+  border-radius:2px 6px 6px 2px;
+  box-shadow:16px 24px 60px rgba(0,0,0,.85),4px 6px 20px rgba(0,0,0,.5);
+  position:relative;
+  flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:1.4rem 1.1rem;
+  box-sizing:border-box;
+}
+.book-cover__deco{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  border-radius:2px 6px 6px 2px;
+  background:
+    radial-gradient(ellipse 120% 60% at 50% 0%,rgba(183,53,74,.22),transparent 60%),
+    radial-gradient(ellipse 80% 80% at 80% 110%,rgba(122,95,160,.3),transparent 65%);
+  pointer-events:none;
+}
+.book-cover__inner{position:relative;z-index:1}
+.book-cover__tag{
+  font-size:.5rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(210,185,240,.55);margin-bottom:1.3rem;
+}
+.book-cover__title{
+  font-family:var(--serif);
+  font-size:1.4rem;font-weight:900;color:#fff;
+  line-height:1.08;margin-bottom:.9rem;
+}
+.book-cover__title em{color:#c9b2e8;font-style:italic}
+.book-cover__rule{width:24px;height:2px;background:var(--w);margin:.6rem auto .9rem}
+.book-cover__sub{
+  font-size:.5rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(210,185,240,.4);
+}
+
 /* NO filter here — filter flattens transform-style:preserve-3d */
 .book-3d{
   position:relative;
@@ -193,10 +232,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   gap:1rem;flex-wrap:wrap;
 }
 .temas__toggle-btn{
-  display:flex;align-items:center;gap:.4rem;
-  font-size:.73rem;font-weight:600;color:var(--pl);
-  background:none;border:1px solid rgba(65,41,95,.18);border-radius:999px;
-  padding:.38rem 1rem;cursor:pointer;
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.88rem;font-weight:700;color:var(--pl);
+  background:none;border:2px solid rgba(65,41,95,.25);border-radius:999px;
+  padding:.65rem 1.6rem;cursor:pointer;
   transition:background .2s,border-color .2s;white-space:nowrap;
 }
 .temas__toggle-btn:hover{background:rgba(65,41,95,.06);border-color:var(--lavd)}
@@ -357,7 +396,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 /* ── TEMAS ───────────────────────────────────── */
 .temas{
   background:var(--cl);
-  padding:1.5rem 0;
+  padding:3rem 0 2.5rem;
   border-top:1px solid rgba(65,41,95,.08);
   border-bottom:1px solid rgba(65,41,95,.08);
 }
@@ -538,7 +577,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div data-rr>
       <div class="book-stage">
         <div class="book-3d" id="book">
-          <img id="bookCoverImg" src="img/portada-web.jpg" alt="Portada del Manual Anti-Snob del Vino"/>
+          <div class="book-cover" id="bookCoverFront">
+            <div class="book-cover__deco"></div>
+            <div class="book-cover__inner">
+              <p class="book-cover__tag">Manual Anti-Snob del Vino</p>
+              <h2 class="book-cover__title">El vino<br><em>sin poses</em></h2>
+              <div class="book-cover__rule"></div>
+              <p class="book-cover__sub">vinoso.mx</p>
+            </div>
+          </div>
+          <img id="bookCoverImg" src="img/contraportada-web.jpg" alt="Contraportada del Manual Anti-Snob del Vino" style="display:none;width:224px;height:320px;object-fit:cover;object-position:center top;border-radius:2px 6px 6px 2px;box-shadow:16px 24px 60px rgba(0,0,0,.85),4px 6px 20px rgba(0,0,0,.5);pointer-events:none;user-select:none;"/>
           <div class="book-spine"></div>
           <div class="book-pages"></div>
         </div>
@@ -809,16 +857,13 @@ document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
 
 /* ── 3D Book — mouse tracking + flip ─────── */
 const book = document.getElementById('book');
-const bookCoverImg = document.getElementById('bookCoverImg');
+const bookCoverFront = document.getElementById('bookCoverFront');
+const bookCoverImg   = document.getElementById('bookCoverImg');
 const stage = book.closest('.book-stage');
 const flipBtn = document.getElementById('flipBtn');
 let flipped = false;
 let flipping = false;
 const baseX = 4;
-const covers = {
-  front: { src:'img/portada-web.jpg',      alt:'Portada del Manual Anti-Snob del Vino' },
-  back:  { src:'img/contraportada-web.jpg', alt:'Contraportada del Manual Anti-Snob del Vino' }
-};
 
 function baseY(){ return -22; }   // same resting angle both sides
 
@@ -857,9 +902,8 @@ flipBtn.addEventListener('click', () => {
   book.addEventListener('transitionend', function swapHandler(){
     book.removeEventListener('transitionend', swapHandler);
     flipped = !flipped;
-    const c = flipped ? covers.back : covers.front;
-    bookCoverImg.src = c.src;
-    bookCoverImg.alt = c.alt;
+    bookCoverFront.style.display = flipped ? 'none' : 'flex';
+    bookCoverImg.style.display   = flipped ? 'block' : 'none';
     flipBtn.textContent = flipped ? '↩ Ver portada' : '↩ Ver contraportada';
 
     book.style.transition = 'none';
