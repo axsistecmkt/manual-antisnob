@@ -483,7 +483,25 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   border-top-left-radius:3px;
 }
 .postit.gone{pointer-events:none;}
-.postit__emoji{font-size:1.3rem;line-height:1}
+.postit__tack{
+  display:block;
+  width:22px;height:22px;
+  border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,#ff7c7c,#c0392b 55%,#7b1a1a);
+  box-shadow:1px 2px 5px rgba(0,0,0,.35),inset -1px -1px 3px rgba(0,0,0,.25),inset 1px 1px 2px rgba(255,180,180,.3);
+  position:relative;
+  flex-shrink:0;
+}
+.postit__tack::after{
+  content:'';
+  position:absolute;
+  bottom:-9px;left:50%;
+  transform:translateX(-50%);
+  width:4px;height:11px;
+  background:linear-gradient(to bottom,#bbb 0%,#e0e0e0 40%,#aaa 100%);
+  border-radius:0 0 2px 2px;
+  box-shadow:0 1px 2px rgba(0,0,0,.2);
+}
 .postit__text{
   font-size:.76rem;font-weight:600;
   color:rgba(0,0,0,.65);line-height:1.5;
@@ -578,7 +596,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* ── FOOTER ──────────────────────────────────── */
 .footer{
-  background:#07050F;
+  background:var(--p);
   padding:2rem 0;
 }
 .footer__in{
@@ -588,10 +606,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .footer__logo{
   font-size:1rem;font-weight:700;
-  color:rgba(201,190,221,.4);
+  color:rgba(255,255,255,.7);
 }
-.footer__logo span{color:var(--w)}
-.footer__copy{font-size:.72rem;color:rgba(201,190,221,.18)}
+.footer__logo span{color:var(--lavl)}
+.footer__copy{font-size:.72rem;color:rgba(255,255,255,.4)}
 
 /* ── REVEAL ──────────────────────────────────── */
 [data-r]{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
@@ -622,7 +640,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <a href="https://vinoso.mx" target="_blank" rel="noopener" class="header__cta">Comprar →</a>
     <button class="header__ham" aria-label="Menú"><span></span><span></span><span></span></button>
   </div>
-  <div class="promo-belt">🍷 Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a></div>
+  <div class="promo-belt">Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a></div>
 </header>
 
 <!-- ══════════════════════════════════════════════
@@ -646,7 +664,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="book-meta"><strong>100%</strong><span>sin esnobismo</span></div>
       </div>
       <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">
-        Quiero el manual →
+        Quiero el manual digital →
       </a>
     </div>
 
@@ -702,7 +720,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="temas__cta">
         <p style="font-size:.88rem;color:var(--gr);margin-bottom:1.25rem;font-style:italic;">Una guía para disfrutar vino sin pretensión.</p>
-        <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar el manual →</a>
+        <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar el manual digital →</a>
       </div>
     </div>
   </div>
@@ -774,7 +792,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="rev-card__head">
           <div class="rev-card__av">S</div>
           <div class="rev-card__meta">
-            <p class="rev-card__name">Sofía Marroquín <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__name">Sofía Marroquín</p>
             <p class="rev-card__handle">@so.marroquin</p>
           </div>
           <span class="rev-card__x">𝕏</span>
@@ -786,7 +804,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="rev-card__head">
           <div class="rev-card__av">D</div>
           <div class="rev-card__meta">
-            <p class="rev-card__name">Diego Fuentes <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__name">Diego Fuentes</p>
             <p class="rev-card__handle">@diego.fuentes.mx</p>
           </div>
           <span class="rev-card__x">𝕏</span>
@@ -798,7 +816,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="rev-card__head">
           <div class="rev-card__av">V</div>
           <div class="rev-card__meta">
-            <p class="rev-card__name">Valentina Torres <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__name">Valentina Torres</p>
             <p class="rev-card__handle">@vale.torres</p>
           </div>
           <span class="rev-card__x">𝕏</span>
@@ -810,7 +828,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="rev-card__head">
           <div class="rev-card__av">A</div>
           <div class="rev-card__meta">
-            <p class="rev-card__name">Alejandro Ríos <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__name">Alejandro Ríos</p>
             <p class="rev-card__handle">@alejo.rios</p>
           </div>
           <span class="rev-card__x">𝕏</span>
@@ -822,7 +840,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="rev-card__head">
           <div class="rev-card__av">L</div>
           <div class="rev-card__meta">
-            <p class="rev-card__name">Laura Becerra <span class="rev-card__check">✓</span></p>
+            <p class="rev-card__name">Laura Becerra</p>
             <p class="rev-card__handle">@laurabecerra</p>
           </div>
           <span class="rev-card__x">𝕏</span>
@@ -851,52 +869,52 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
     <div class="postits__board" data-r>
       <div class="postit" style="--color:#C9BEDD;transform:rotate(-2.1deg)">
-        <span class="postit__emoji">😰</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">La carta de vinos te paraliza y pides lo más barato</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
       <div class="postit" style="--color:#E2D8C9;transform:rotate(1.4deg)">
-        <span class="postit__emoji">🤷</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">No entiendes qué significa "Reserva" o "Gran Reserva"</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
       <div class="postit" style="--color:#DDD5EA;transform:rotate(-1.2deg)">
-        <span class="postit__emoji">😬</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">En catas finges entender lo que dice el sommelier</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
       <div class="postit" style="--color:#F5F0E8;transform:rotate(2.3deg)">
-        <span class="postit__emoji">💸</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">Crees que más caro siempre significa mejor vino</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
       <div class="postit" style="--color:#C9BEDD;transform:rotate(-1.8deg)">
-        <span class="postit__emoji">🍽️</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">No sabes qué vino va con qué comida</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
       <div class="postit" style="--color:#E2D8C9;transform:rotate(1.1deg)">
-        <span class="postit__emoji">🏪</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">En la tienda tomas la botella que tiene la etiqueta más bonita</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
       <div class="postit" style="--color:#DDD5EA;transform:rotate(-2.5deg)">
-        <span class="postit__emoji">🌡️</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">Sirves el vino tinto directo del refrigerador</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
       <div class="postit" style="--color:#F5F0E8;transform:rotate(1.7deg)">
-        <span class="postit__emoji">🍇</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">No distingues la diferencia entre Merlot y Malbec</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
       <div class="postit" style="--color:#C9BEDD;transform:rotate(-1deg)">
-        <span class="postit__emoji">🗣️</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">No sabes hablar de vino sin sonar pretencioso o ignorante</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
       <div class="postit" style="--color:#E2D8C9;transform:rotate(2.2deg)">
-        <span class="postit__emoji">📦</span>
+        <span class="postit__tack"></span>
         <p class="postit__text">Nunca sabes si guardar la botella o abrirla ya</p>
         <span class="postit__hint">toca para eliminar</span>
       </div>
@@ -915,12 +933,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <h2 class="finalcta__title">El vino es tuyo.<br><em>Empieza hoy.</em></h2>
     <p class="finalcta__sub">204 páginas. Sin tecnicismos. Sin relleno.<br>Todo lo que necesitas para disfrutar el vino con confianza real.</p>
     <div class="finalcta__offer">
-      <span class="finalcta__price-old">$299</span>
-      <span class="finalcta__price">$149 MXN</span>
+      <span class="finalcta__price-old">$400</span>
+      <span class="finalcta__price">$199 MXN</span>
       <span class="finalcta__badge">50% OFF este mes</span>
     </div>
-    <a href="https://vinoso.mx" target="_blank" rel="noopener" class="finalcta__btn">Quiero mi manual →</a>
-    <p class="finalcta__lock">🔒 Acceso inmediato · Pago seguro · PDF descargable</p>
+    <a href="https://vinoso.mx" target="_blank" rel="noopener" class="finalcta__btn">Quiero el manual digital →</a>
+    <p class="finalcta__lock">Acceso inmediato · Pago seguro · PDF descargable</p>
   </div>
 </section>
 
