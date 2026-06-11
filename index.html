@@ -4,924 +4,528 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Manual Anti-Snob del Vino — Vinoso</title>
-  <meta name="description" content="Entiende, elige y disfruta el vino con seguridad en 15 días. El Manual Anti-Snob del Vino de Vinoso."/>
+  <meta name="description" content="Entiende, elige y disfruta el vino con seguridad en 15 días."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet"/>
-
   <style>
-/* ══════════════════════════════════════
-   TOKENS
-══════════════════════════════════════ */
-:root {
-  --p:    #41295F;
-  --pd:   #23163A;
-  --pl:   #5E3D7F;
-  --lav:  #C9BEDD;   /* lavender cover color */
-  --lavl: #DDD5EA;
-  --lavd: #B0A2CC;
-  --c:    #E2D8C9;
-  --cl:   #F5F0E8;
-  --w:    #B7354A;
-  --wd:   #7B2631;
-  --wh:   #FFFFFF;
-  --blk:  #0D0A14;
-  --gr:   #6B6472;
 
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans:  'Space Grotesk', system-ui, sans-serif;
-  --ease:  cubic-bezier(0.16,1,0.3,1);
+/* ── TOKENS ──────────────────────────────────── */
+:root{
+  --p:#41295F; --pd:#23163A; --pl:#5E3D7F;
+  --lav:#C9BEDD; --lavl:#DDD5EA; --lavd:#A090BF;
+  --c:#E2D8C9; --cl:#F5F0E8;
+  --w:#B7354A; --wd:#7B2631;
+  --wh:#FFFFFF; --blk:#0D0A14; --gr:#6B6472;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--wh);color:var(--blk);overflow-x:hidden}
+body{font-family:var(--sans);background:var(--cl);color:var(--blk);overflow-x:hidden}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
 
-/* ══════════════════════════════════════
-   HEADER / NAV
-══════════════════════════════════════ */
+/* ── HEADER ──────────────────────────────────── */
 .header{
-  position:sticky;top:0;z-index:200;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(65,41,95,.08);
+  position:sticky;top:0;z-index:300;
+  background:rgba(245,240,232,.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(65,41,95,.09);
 }
 .header__in{
-  max-width:1300px;margin:0 auto;
-  padding:.9rem clamp(1.25rem,4vw,3rem);
-  display:flex;align-items:center;gap:2rem;
+  max-width:1200px;margin:0 auto;
+  padding:.85rem clamp(1.25rem,4vw,3rem);
+  display:flex;align-items:center;gap:1.5rem;
 }
 .header__logo{
   display:flex;align-items:center;gap:.6rem;flex-shrink:0;
 }
-.header__logo-badge{
-  width:38px;height:38px;
-  background:var(--p);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-}
-.header__logo-badge svg{width:22px;height:22px}
-.header__logo-text{
-  line-height:1;
-}
-.header__logo-title{
-  font-family:var(--sans);
-  font-size:.7rem;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;
-  color:var(--p);
-}
-.header__logo-sub{
-  font-size:.6rem;color:var(--gr);letter-spacing:.06em;
+.header__logo img{
+  height:34px;width:auto;
 }
 .header__nav{
-  display:flex;align-items:center;gap:.25rem;
+  display:flex;align-items:center;gap:.2rem;
   list-style:none;flex:1;
 }
 .header__nav a{
-  font-size:.78rem;font-weight:500;color:var(--gr);
-  padding:.45rem .9rem;border-radius:8px;
+  font-size:.75rem;font-weight:500;color:var(--gr);
+  padding:.4rem .85rem;border-radius:8px;
   transition:background .2s,color .2s;white-space:nowrap;
 }
 .header__nav a:hover{background:var(--lavl);color:var(--p)}
 .header__cta{
   margin-left:auto;flex-shrink:0;
   background:var(--p);color:var(--wh);
-  font-size:.78rem;font-weight:700;
+  font-size:.75rem;font-weight:700;
   letter-spacing:.06em;text-transform:uppercase;
-  padding:.65rem 1.5rem;border-radius:999px;
+  padding:.6rem 1.4rem;border-radius:999px;
   transition:background .25s,transform .2s,box-shadow .25s;
-  white-space:nowrap;
 }
-.header__cta:hover{
+.header__cta:hover{background:var(--pd);transform:translateY(-2px);box-shadow:0 8px 20px rgba(65,41,95,.3)}
+.header__ham{display:none;flex-direction:column;gap:5px;padding:.35rem}
+.header__ham span{display:block;width:20px;height:1.5px;background:var(--p);border-radius:2px}
+@media(max-width:860px){
+  .header__nav{display:none}
+  .header__ham{display:flex}
+}
+
+/* ── BOOK SECTION ────────────────────────────── */
+.book-sec{
   background:var(--pd);
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(65,41,95,.35);
-}
-.header__hamburger{
-  display:none;margin-left:auto;
-  flex-direction:column;gap:5px;
-  background:none;border:none;cursor:pointer;padding:.4rem;
-}
-.header__hamburger span{display:block;width:22px;height:2px;background:var(--p);border-radius:2px}
-
-@media(max-width:900px){
-  .header__nav,.header__cta{display:none}
-  .header__hamburger{display:flex}
-}
-
-/* ══════════════════════════════════════
-   HERO
-══════════════════════════════════════ */
-.hero{
-  background:var(--lav);
-  position:relative;overflow:hidden;
-  padding:clamp(4rem,8vw,7rem) 0 0;
-}
-/* grid pattern */
-.hero::before{
-  content:'';
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(65,41,95,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(65,41,95,.07) 1px,transparent 1px);
-  background-size:40px 40px;
-  pointer-events:none;
-}
-.hero__in{
-  max-width:1300px;margin:0 auto;
-  padding:0 clamp(1.25rem,4vw,3rem);
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:3rem;align-items:flex-end;
-  position:relative;z-index:1;
-}
-.hero__text{
-  padding-bottom:clamp(3rem,6vw,5rem);
-}
-.hero__kicker{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:var(--p);color:var(--wh);
-  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  padding:.4rem 1rem;border-radius:999px;
-  margin-bottom:1.75rem;
-}
-.hero__title{
-  font-family:var(--serif);
-  font-size:clamp(2.8rem,5.5vw,5.5rem);
-  font-weight:900;line-height:.96;
-  color:var(--p);
-  margin-bottom:1.25rem;
-}
-.hero__title em{
-  font-style:italic;
-  color:var(--w);
-  display:block;
-}
-.hero__subtitle{
-  font-size:clamp(1rem,1.8vw,1.2rem);
-  font-weight:500;color:var(--pd);
-  line-height:1.5;margin-bottom:.75rem;
-  opacity:.8;
-}
-.hero__desc{
-  font-size:.9rem;color:var(--pl);
-  line-height:1.75;margin-bottom:2.5rem;
-  max-width:440px;opacity:.75;
-}
-.hero__btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-main{
-  background:var(--w);color:var(--wh);
-  font-size:.85rem;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  padding:1rem 2.25rem;border-radius:999px;
-  transition:background .25s,transform .2s,box-shadow .3s;
-  display:inline-block;
-}
-.btn-main:hover{
-  background:var(--wd);
-  transform:translateY(-3px);
-  box-shadow:0 14px 36px rgba(183,53,74,.4);
-}
-.btn-sec{
-  background:rgba(255,255,255,.6);color:var(--p);
-  font-size:.85rem;font-weight:600;
-  padding:1rem 2rem;border-radius:999px;
-  border:1.5px solid var(--lavd);
-  transition:background .25s,border-color .25s;
-  display:inline-block;
-}
-.btn-sec:hover{background:var(--wh);border-color:var(--p)}
-
-.hero__ilust{
-  display:flex;align-items:flex-end;justify-content:center;
-  position:relative;
-}
-.hero__ilust img{
-  width:clamp(220px,45vw,480px);
-  filter:drop-shadow(0 30px 50px rgba(65,41,95,.2));
-  animation:floatImg 6s ease-in-out infinite;
-}
-@keyframes floatImg{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-14px)}
-}
-.hero__ilust-deco{
-  position:absolute;
-  top:10%;right:5%;
-  width:80px;height:80px;
-  opacity:.25;
-  animation:spin 18s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-@media(max-width:768px){
-  .hero__in{grid-template-columns:1fr;text-align:center}
-  .hero__btns{justify-content:center}
-  .hero__desc{margin:0 auto 2.5rem}
-  .hero__ilust{margin-top:2rem}
-}
-
-/* ══════════════════════════════════════
-   TICKER
-══════════════════════════════════════ */
-.ticker{
-  background:var(--p);padding:.85rem 0;overflow:hidden;
-}
-.ticker__wrap{display:flex;width:max-content;animation:ticker 20s linear infinite}
-.ticker__item{
-  font-family:var(--serif);font-style:italic;font-size:.95rem;
-  color:var(--lavl);padding:0 2rem;white-space:nowrap;
-}
-.ticker__dot{color:var(--w);padding:0 .5rem}
-@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ══════════════════════════════════════
-   3D BOOK
-══════════════════════════════════════ */
-.book-section{
-  background:var(--pd);
-  padding:clamp(5rem,10vw,8rem) 0;
+  padding:clamp(4rem,9vw,8rem) 0;
   overflow:hidden;
   position:relative;
 }
-.book-section::before{
-  content:'';
-  position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(183,53,74,.15), transparent),
-    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(65,41,95,.3), transparent);
+.book-sec::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 90% 70% at 60% 50%,rgba(183,53,74,.1),transparent 65%);
+  pointer-events:none;
 }
-.book-section__in{
-  max-width:1300px;margin:0 auto;
+.book-sec__in{
+  max-width:1200px;margin:0 auto;
   padding:0 clamp(1.25rem,4vw,3rem);
   display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:center;
+  gap:clamp(3rem,6vw,7rem);align-items:center;
   position:relative;z-index:1;
 }
 .book-text__kicker{
-  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--lavd);margin-bottom:1.25rem;
+  font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--lavd);margin-bottom:1.1rem;
   display:flex;align-items:center;gap:.6rem;
 }
-.book-text__kicker::before{content:'';width:28px;height:1px;background:var(--lavd)}
+.book-text__kicker::before{content:'';width:26px;height:1px;background:var(--lavd)}
 .book-text__title{
   font-family:var(--serif);
   font-size:clamp(2rem,4vw,3.8rem);
-  font-weight:900;color:var(--wh);line-height:1.05;
-  margin-bottom:1.25rem;
+  font-weight:900;color:var(--wh);line-height:1.02;
+  margin-bottom:1.1rem;
 }
 .book-text__title em{font-style:italic;color:var(--lavl)}
 .book-text__body{
-  font-size:.92rem;color:rgba(201,190,221,.65);
-  line-height:1.85;margin-bottom:2.5rem;
+  font-size:.9rem;color:rgba(201,190,221,.55);
+  line-height:1.85;margin-bottom:2rem;
 }
 .book-text__meta{
-  display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem;
+  display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:2.25rem;
 }
-.book-meta-item strong{
-  display:block;
-  font-family:var(--serif);font-size:1.6rem;font-weight:900;
-  color:var(--wh);line-height:1;margin-bottom:.2rem;
+.book-meta strong{
+  display:block;font-family:var(--serif);
+  font-size:1.7rem;font-weight:900;
+  color:var(--wh);line-height:1;margin-bottom:.15rem;
 }
-.book-meta-item span{
-  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(201,190,221,.45);
+.book-meta span{
+  font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(201,190,221,.35);
 }
+.btn-wine{
+  background:var(--w);color:var(--wh);
+  font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.9rem 2.1rem;border-radius:999px;
+  display:inline-block;
+  transition:background .25s,transform .2s,box-shadow .3s;
+}
+.btn-wine:hover{background:var(--wd);transform:translateY(-3px);box-shadow:0 14px 36px rgba(183,53,74,.4)}
 
-/* ── 3D Book CSS ── */
-.book3d-wrap{
+/* ── 3D BOOK INTERACTIVE ─────────────────────── */
+.book-stage{
   display:flex;justify-content:center;align-items:center;
-  padding:3rem 0;
-  perspective:1200px;
+  perspective:900px;
+  padding:3rem 2rem;
 }
-.book3d{
+.book-3d{
   position:relative;
-  width:220px;
+  width:200px;
   transform-style:preserve-3d;
-  transform:rotateY(-25deg) rotateX(5deg);
-  transition:transform .8s var(--ease);
-  cursor:pointer;
-  animation:bookHover 8s ease-in-out infinite;
+  transform:rotateY(-20deg) rotateX(4deg);
+  transition:transform .08s linear;
+  will-change:transform;
 }
-.book3d:hover{
-  animation:none;
-  transform:rotateY(-10deg) rotateX(3deg);
-}
-@keyframes bookHover{
-  0%,100%{transform:rotateY(-25deg) rotateX(5deg)}
-  50%{transform:rotateY(-18deg) rotateX(3deg)}
-}
-
 /* Front cover */
-.book3d__front{
-  position:relative;
-  width:220px;
-  height:314px; /* roughly A5 ratio */
-  background:var(--lav);
-  border-radius:2px 6px 6px 2px;
+.book-3d__front{
+  width:200px;height:286px;
+  border-radius:2px 8px 8px 2px;
   overflow:hidden;
-  box-shadow:
-    0 40px 80px rgba(0,0,0,.7),
-    inset 0 0 0 1px rgba(65,41,95,.15);
-  transform:translateZ(0);
+  box-shadow:0 50px 100px rgba(0,0,0,.75),0 20px 40px rgba(0,0,0,.5);
+  position:relative;
+  transform:translateZ(0px);
 }
-/* grid on cover */
-.book3d__front::before{
-  content:'';
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(65,41,95,.08) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(65,41,95,.08) 1px,transparent 1px);
-  background-size:22px 22px;
+.book-3d__front img{
+  width:100%;height:100%;object-fit:cover;
+  pointer-events:none;
+  user-select:none;
 }
-.book3d__cover-content{
-  position:relative;z-index:1;
-  padding:1.25rem 1.1rem 1rem;
-  height:100%;display:flex;flex-direction:column;
-}
-.book3d__tagline{
-  font-size:.52rem;font-weight:600;color:var(--p);
-  text-align:center;line-height:1.4;margin-bottom:.75rem;
-  opacity:.75;
-}
-.book3d__tagline strong{font-weight:700}
-.book3d__ilust-wrap{
-  flex:1;display:flex;align-items:center;justify-content:center;
-}
-.book3d__ilust-wrap img{
-  width:110px;
-  opacity:.85;
-  filter:drop-shadow(0 4px 8px rgba(65,41,95,.15));
-}
-.book3d__cover-title{
-  font-family:var(--serif);
-  font-size:1.45rem;font-weight:900;
-  color:var(--p);line-height:1;
-  text-align:center;margin-bottom:.6rem;
-  letter-spacing:-.01em;
-}
-.book3d__cover-sub{
-  font-size:.5rem;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:var(--pl);text-align:center;opacity:.6;
-  margin-bottom:.75rem;
-}
-.book3d__cover-logo{
-  display:flex;align-items:center;justify-content:center;gap:.4rem;
-}
-.book3d__cover-logo-circle{
-  width:22px;height:22px;
-  background:var(--p);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-}
-.book3d__cover-logo-circle svg{width:13px;height:13px}
-.book3d__cover-logo-text{
-  font-size:.5rem;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--p);
-}
-/* Side (spine) */
-.book3d__spine{
+/* Spine */
+.book-3d__spine{
   position:absolute;
-  top:0;left:-30px;
-  width:30px;height:314px;
-  background:linear-gradient(180deg,var(--lavd),var(--lav));
+  top:0;left:-24px;
+  width:24px;height:286px;
+  background:linear-gradient(to right,#9880b8,var(--lavd));
   transform-origin:right center;
-  transform:rotateY(-90deg) translateZ(0);
+  transform:rotateY(-90deg);
   display:flex;align-items:center;justify-content:center;
-  border-radius:2px 0 0 2px;
-  box-shadow:-4px 0 12px rgba(0,0,0,.4);
+  border-radius:3px 0 0 3px;
+  box-shadow:-6px 0 20px rgba(0,0,0,.5);
 }
-.book3d__spine-text{
-  writing-mode:vertical-rl;
-  text-orientation:mixed;
-  transform:rotate(180deg);
-  font-size:.48rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--pl);white-space:nowrap;
+.book-3d__spine-txt{
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-size:.42rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(65,41,95,.7);white-space:nowrap;
 }
-/* Pages block */
-.book3d__pages{
-  position:absolute;
-  top:3px;right:-18px;
-  width:18px;height:308px;
+/* Pages */
+.book-3d__pages{
+  position:absolute;top:3px;right:-14px;
+  width:14px;height:280px;
   background:repeating-linear-gradient(
     180deg,
-    #f5f0eb 0px,#f5f0eb 1.5px,
-    #e8e0d8 1.5px,#e8e0d8 3px
+    #f4ede4 0px,#f4ede4 1.2px,
+    #e5dbd0 1.2px,#e5dbd0 2.4px
   );
   transform-origin:left center;
-  transform:rotateY(90deg) translateZ(0);
-  border-radius:0 3px 3px 0;
+  transform:rotateY(90deg);
+  border-radius:0 2px 2px 0;
 }
-/* Book shadow */
-.book3d__shadow{
-  position:absolute;
-  bottom:-30px;left:50%;
+/* Back cover */
+.book-3d__back{
+  position:absolute;top:0;left:0;
+  width:200px;height:286px;
+  border-radius:2px 8px 8px 2px;
+  overflow:hidden;
+  backface-visibility:hidden;
+  transform:rotateY(180deg) translateZ(0px);
+}
+.book-3d__back img{
+  width:100%;height:100%;object-fit:cover;
+  pointer-events:none;user-select:none;
+}
+/* Shadow */
+.book-3d__shadow{
+  position:absolute;bottom:-24px;left:50%;
   transform:translateX(-50%);
-  width:180px;height:20px;
-  background:rgba(0,0,0,.5);
-  border-radius:50%;
-  filter:blur(16px);
+  width:160px;height:16px;
+  background:rgba(0,0,0,.55);
+  border-radius:50%;filter:blur(14px);
+}
+/* Hint */
+.book-hint{
+  text-align:center;margin-top:1.5rem;
+  font-size:.68rem;color:rgba(201,190,221,.3);
+  letter-spacing:.08em;
 }
 
 @media(max-width:768px){
-  .book-section__in{grid-template-columns:1fr;text-align:center}
+  .book-sec__in{grid-template-columns:1fr;text-align:center}
   .book-text__kicker{justify-content:center}
   .book-text__meta{justify-content:center}
-  .book3d-wrap{order:-1}
+  .book-stage{order:-1}
 }
 
-/* ══════════════════════════════════════
-   STATS / NUMBERS
-══════════════════════════════════════ */
+/* ── STATS ───────────────────────────────────── */
 .stats{
   background:var(--wh);
-  padding:clamp(4rem,8vw,6rem) 0;
-  border-bottom:1px solid rgba(65,41,95,.07);
+  padding:clamp(4rem,8vw,6.5rem) 0;
 }
 .stats__in{
-  max-width:1300px;margin:0 auto;
+  max-width:1200px;margin:0 auto;
   padding:0 clamp(1.25rem,4vw,3rem);
 }
-.stats__title{
-  text-align:center;
+.sec-header{text-align:center;margin-bottom:3.5rem}
+.sec-kicker{
+  font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--w);margin-bottom:.8rem;
+}
+.sec-title{
   font-family:var(--serif);
-  font-size:clamp(1.6rem,3vw,2.2rem);
-  font-weight:700;color:var(--p);
-  margin-bottom:.5rem;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:900;color:var(--p);line-height:1.05;
 }
-.stats__sub{
-  text-align:center;
-  font-size:.88rem;color:var(--gr);margin-bottom:4rem;
-}
+.sec-title em{font-style:italic}
 .stats__grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1.5rem;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;
 }
-.stat-card{
-  background:var(--cl);
-  border-radius:20px;
-  padding:2.25rem 1.5rem;
-  text-align:center;
+.stat-c{
+  background:var(--cl);border-radius:18px;
+  padding:2rem 1.5rem;text-align:center;
   border:1px solid rgba(65,41,95,.07);
-  position:relative;overflow:hidden;
   transition:transform .35s var(--ease),box-shadow .35s;
 }
-.stat-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 50px rgba(65,41,95,.1);
-}
-.stat-card__icon{
-  width:52px;height:52px;margin:0 auto 1rem;
-  opacity:.85;
-}
-.stat-card__num{
+.stat-c:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(65,41,95,.09)}
+.stat-c__icon{width:44px;height:44px;margin:0 auto .9rem;opacity:.8}
+.stat-c__num{
   font-family:var(--serif);
-  font-size:clamp(2.5rem,4vw,3.5rem);
+  font-size:clamp(2.4rem,4vw,3.5rem);
   font-weight:900;line-height:1;
-  color:var(--p);margin-bottom:.35rem;
+  color:var(--p);margin-bottom:.3rem;
 }
-.stat-card__num.red{color:var(--w)}
-.stat-card__label{
-  font-size:.78rem;font-weight:600;
-  letter-spacing:.06em;color:var(--gr);
-  line-height:1.4;
+.stat-c__num.red{color:var(--w)}
+.stat-c__lbl{
+  font-size:.76rem;font-weight:600;
+  color:var(--gr);line-height:1.4;
 }
-.stat-card__desc{
-  font-size:.72rem;color:var(--gr);
-  opacity:.65;margin-top:.4rem;line-height:1.5;
-}
-
-@media(max-width:900px){.stats__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.stats__grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.stats__grid{grid-template-columns:1fr}}
 
-/* ══════════════════════════════════════
-   PAIN POINTS
-══════════════════════════════════════ */
-.pain{
+/* ── REVIEWS ─────────────────────────────────── */
+.reviews{
+  background:var(--p);
+  padding:clamp(4rem,8vw,7rem) 0;
+  overflow:hidden;
+}
+.reviews__in{
+  max-width:1200px;margin:0 auto;
+  padding:0 clamp(1.25rem,4vw,3rem);
+}
+.reviews .sec-header{margin-bottom:3rem}
+.reviews .sec-kicker{color:var(--lavd)}
+.reviews .sec-title{color:var(--wh)}
+.reviews__score-row{
+  display:flex;align-items:center;justify-content:center;
+  gap:.6rem;margin-top:.6rem;
+}
+.reviews__stars{color:#F5C842;font-size:1rem;letter-spacing:.1em}
+.reviews__score-num{
+  font-family:var(--serif);font-size:1.1rem;font-weight:900;color:var(--wh);
+}
+.reviews__count{font-size:.72rem;color:rgba(201,190,221,.4)}
+
+/* Carousel */
+.carousel__track{
+  display:flex;gap:1.1rem;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:.5rem;scrollbar-width:none;
+}
+.carousel__track::-webkit-scrollbar{display:none}
+.rev-card{
+  flex:0 0 clamp(270px,34vw,380px);scroll-snap-align:start;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(201,190,221,.1);
+  border-radius:18px;padding:1.75rem;
+  display:flex;flex-direction:column;gap:.9rem;
+  transition:background .3s;
+}
+.rev-card:hover{background:rgba(255,255,255,.1)}
+.rev-card__stars{color:#F5C842;font-size:.85rem}
+.rev-card__text{
+  font-size:.86rem;color:rgba(226,216,201,.7);line-height:1.75;
+  flex:1;font-style:italic;
+}
+.rev-card__text::before{
+  content:'"';font-size:1.8rem;font-family:var(--serif);
+  color:var(--lavd);line-height:0;vertical-align:-.45rem;margin-right:.15rem;
+}
+.rev-card__author{
+  display:flex;align-items:center;gap:.75rem;
+  border-top:1px solid rgba(201,190,221,.08);padding-top:.9rem;
+}
+.rev-card__av{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;
+  background:var(--lav);display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--p);
+}
+.rev-card__name{font-size:.8rem;font-weight:700;color:var(--lavl)}
+.rev-card__handle{font-size:.68rem;color:rgba(201,190,221,.35)}
+.rev-card__badge{
+  margin-left:auto;font-size:.58rem;font-weight:700;letter-spacing:.06em;
+  color:var(--w);background:rgba(183,53,74,.15);
+  padding:.2em .55em;border-radius:4px;text-transform:uppercase;
+}
+.carousel__btns{
+  display:flex;gap:.65rem;justify-content:center;margin-top:2.25rem;
+}
+.carousel__btn{
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(201,190,221,.15);
+  color:var(--lavl);font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .25s,border-color .25s;
+}
+.carousel__btn:hover{background:rgba(255,255,255,.16);border-color:var(--lavd)}
+
+/* ── TEMAS ───────────────────────────────────── */
+.temas{
+  background:var(--cl);
+  padding:clamp(4rem,8vw,6.5rem) 0;
+}
+.temas__in{
+  max-width:1200px;margin:0 auto;
+  padding:0 clamp(1.25rem,4vw,3rem);
+}
+.temas__grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(65,41,95,.08);
+  border:1px solid rgba(65,41,95,.08);
+  border-radius:16px;overflow:hidden;
+  margin-top:3.5rem;
+}
+.tema{
+  background:var(--wh);padding:1.6rem 1.5rem;
+  display:flex;gap:.85rem;align-items:flex-start;
+  transition:background .25s;
+}
+.tema:hover{background:#faf8ff}
+.tema__num{
+  font-family:var(--serif);font-size:.72rem;font-weight:700;
+  color:var(--w);min-width:1.4rem;padding-top:.1rem;flex-shrink:0;
+}
+.tema__icon{width:28px;height:28px;flex-shrink:0;opacity:.2;margin-left:auto}
+.tema__title{font-size:.88rem;font-weight:700;color:var(--p);margin-bottom:.25rem}
+.tema__desc{font-size:.76rem;color:var(--gr);line-height:1.6}
+.temas__cta{text-align:center;margin-top:3rem}
+
+@media(max-width:860px){.temas__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.temas__grid{grid-template-columns:1fr}}
+
+/* ── POST-ITS ────────────────────────────────── */
+.postits{
   background:var(--lav);
   padding:clamp(4rem,8vw,7rem) 0;
   position:relative;overflow:hidden;
 }
-.pain::before{
+.postits::before{
   content:'';position:absolute;inset:0;
   background-image:
     linear-gradient(rgba(65,41,95,.06) 1px,transparent 1px),
     linear-gradient(90deg,rgba(65,41,95,.06) 1px,transparent 1px);
-  background-size:40px 40px;
+  background-size:38px 38px;pointer-events:none;
 }
-.pain__in{
-  max-width:1300px;margin:0 auto;
+.postits__in{
+  max-width:1200px;margin:0 auto;
   padding:0 clamp(1.25rem,4vw,3rem);
   position:relative;z-index:1;
 }
-.pain__header{text-align:center;margin-bottom:4rem}
-.pain__kicker{
-  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--w);margin-bottom:1rem;
-}
-.pain__title{
-  font-family:var(--serif);
-  font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:900;color:var(--p);line-height:1.1;
-}
-.pain__title em{font-style:italic}
-
-.pain__grid{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  gap:1.25rem;margin-bottom:4rem;
-}
-.pain-card{
-  background:var(--wh);
-  border-radius:16px;padding:2rem 1.75rem;
-  border:1px solid rgba(65,41,95,.08);
-  display:flex;flex-direction:column;gap:.75rem;
-  transition:transform .3s var(--ease),box-shadow .3s;
-}
-.pain-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(65,41,95,.1)}
-.pain-card__emoji{font-size:1.75rem}
-.pain-card__title{
-  font-weight:700;font-size:1rem;color:var(--p);
-}
-.pain-card__text{font-size:.85rem;color:var(--gr);line-height:1.7}
-
-.pain__solution{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:center;
-  background:var(--wh);
-  border-radius:24px;padding:3rem;
-  border:1px solid rgba(65,41,95,.08);
-}
-.pain__sol-kicker{
-  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--w);margin-bottom:1rem;
-}
-.pain__sol-title{
-  font-family:var(--serif);
-  font-size:clamp(1.75rem,3vw,2.8rem);
-  font-weight:900;color:var(--p);line-height:1.05;
-  margin-bottom:1rem;
-}
-.pain__sol-title em{font-style:italic;color:var(--w)}
-.pain__sol-text{font-size:.9rem;color:var(--gr);line-height:1.8;margin-bottom:2rem}
-.pain__sol-img{
-  display:flex;justify-content:center;
-}
-.pain__sol-img img{
-  width:clamp(200px,35vw,350px);
-  filter:drop-shadow(0 20px 40px rgba(65,41,95,.15));
+.postits .sec-header{margin-bottom:.5rem}
+.postits .sec-title{color:var(--p)}
+.postits__sub{
+  text-align:center;font-size:.85rem;color:var(--pl);
+  margin-bottom:3rem;opacity:.65;
 }
 
-@media(max-width:768px){
-  .pain__grid{grid-template-columns:1fr}
-  .pain__solution{grid-template-columns:1fr}
+.postits__board{
+  display:flex;flex-wrap:wrap;gap:1rem;
+  justify-content:center;
+}
+/* Each post-it */
+.postit{
+  width:clamp(140px,18vw,185px);
+  min-height:clamp(120px,15vw,165px);
+  padding:1.2rem 1rem 1rem;
+  border-radius:2px;
+  display:flex;flex-direction:column;gap:.4rem;
+  position:relative;
+  cursor:pointer;
+  transition:transform .3s var(--ease),box-shadow .3s,opacity .45s var(--ease);
+  /* fold effect */
+  background:var(--color,#F9E87B);
+  box-shadow:3px 4px 12px rgba(0,0,0,.18),inset 0 -1px 0 rgba(0,0,0,.06);
+}
+.postit::after{
+  content:'';
+  position:absolute;bottom:0;right:0;
+  width:18px;height:18px;
+  background:linear-gradient(225deg,rgba(0,0,0,.12) 50%,transparent 50%);
+  border-top-left-radius:3px;
+}
+.postit.gone{
+  opacity:0;transform:scale(.85) rotate(5deg);
+  pointer-events:none;
+}
+.postit__emoji{font-size:1.3rem;line-height:1}
+.postit__text{
+  font-size:.76rem;font-weight:600;
+  color:rgba(0,0,0,.65);line-height:1.5;
+  flex:1;
+}
+.postit__hint{
+  font-size:.58rem;color:rgba(0,0,0,.3);
+  text-align:right;
 }
 
-/* ══════════════════════════════════════
-   TEMAS / CONTENIDO
-══════════════════════════════════════ */
-.temas{
+.postits__note{
+  text-align:center;margin-top:2.5rem;
+  font-family:var(--serif);font-style:italic;
+  font-size:1rem;color:var(--p);opacity:.55;
+}
+
+/* ── BIG CTA ─────────────────────────────────── */
+.bigcta{
   background:var(--pd);
   padding:clamp(5rem,10vw,8rem) 0;
-  overflow:hidden;
-}
-.temas__in{
-  max-width:1300px;margin:0 auto;
-  padding:0 clamp(1.25rem,4vw,3rem);
-}
-.temas__header{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:end;margin-bottom:4rem;
-}
-.temas__kicker{
-  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--lavd);margin-bottom:1rem;
-  display:flex;align-items:center;gap:.6rem;
-}
-.temas__kicker::before{content:'';width:24px;height:1px;background:var(--lavd)}
-.temas__title{
-  font-family:var(--serif);
-  font-size:clamp(2rem,4vw,3.5rem);
-  font-weight:900;color:var(--wh);line-height:1.05;
-}
-.temas__title em{font-style:italic;color:var(--lavl)}
-.temas__desc{
-  font-size:.9rem;color:rgba(201,190,221,.55);
-  line-height:1.8;align-self:start;padding-top:.5rem;
-}
-
-.temas__grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  border:1px solid rgba(201,190,221,.1);
-  border-radius:16px;overflow:hidden;
-}
-.tema-item{
-  background:rgba(255,255,255,.03);
-  padding:2rem 1.75rem;
-  border-right:1px solid rgba(201,190,221,.08);
-  border-bottom:1px solid rgba(201,190,221,.08);
-  display:flex;gap:1rem;align-items:flex-start;
-  transition:background .3s;
-}
-.tema-item:hover{background:rgba(201,190,221,.06)}
-.tema-item__num{
-  font-family:var(--serif);
-  font-size:.75rem;font-weight:700;
-  color:var(--w);min-width:1.5rem;padding-top:.1rem;
-}
-.tema-item__content{}
-.tema-item__title{
-  font-size:.9rem;font-weight:700;
-  color:var(--lavl);margin-bottom:.35rem;
-}
-.tema-item__text{
-  font-size:.78rem;color:rgba(201,190,221,.45);line-height:1.6;
-}
-.tema-item__icon{
-  width:32px;height:32px;flex-shrink:0;margin-left:auto;
-  opacity:.25;
-}
-
-.temas__cta{
-  text-align:center;margin-top:4rem;
-}
-
-@media(max-width:900px){
-  .temas__header{grid-template-columns:1fr}
-  .temas__grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:600px){
-  .temas__grid{grid-template-columns:1fr}
-}
-
-/* ══════════════════════════════════════
-   ILUSTRACIONES SHOWCASE
-══════════════════════════════════════ */
-.showcase{
-  background:var(--cl);
-  padding:clamp(4rem,8vw,6rem) 0;
-  overflow:hidden;
-}
-.showcase__in{
-  max-width:1300px;margin:0 auto;
-  padding:0 clamp(1.25rem,4vw,3rem);
   text-align:center;
-}
-.showcase__kicker{
-  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--w);margin-bottom:1rem;
-}
-.showcase__title{
-  font-family:var(--serif);
-  font-size:clamp(1.75rem,3.5vw,3rem);
-  font-weight:900;color:var(--p);margin-bottom:4rem;
-}
-.showcase__title em{font-style:italic}
-.showcase__grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1.5rem;
-}
-.showcase-card{
-  background:var(--wh);border-radius:20px;
-  padding:2.5rem 1.5rem 2rem;
-  border:1px solid rgba(65,41,95,.07);
-  display:flex;flex-direction:column;align-items:center;gap:1.25rem;
-  transition:transform .35s var(--ease),box-shadow .35s;
-}
-.showcase-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(65,41,95,.1)}
-.showcase-card img{
-  width:clamp(120px,18vw,180px);
-  filter:drop-shadow(0 8px 16px rgba(65,41,95,.12));
-  transition:transform .5s var(--ease);
-}
-.showcase-card:hover img{transform:scale(1.08) rotate(-2deg)}
-.showcase-card__title{
-  font-weight:700;font-size:.95rem;color:var(--p);
-}
-.showcase-card__text{font-size:.82rem;color:var(--gr);line-height:1.65}
-
-@media(max-width:768px){.showcase__grid{grid-template-columns:1fr}}
-
-/* ══════════════════════════════════════
-   TESTIMONIOS / CARRUSEL
-══════════════════════════════════════ */
-.reviews{
-  background:var(--p);
-  padding:clamp(5rem,10vw,8rem) 0;
-  overflow:hidden;
-}
-.reviews__in{
-  max-width:1300px;margin:0 auto;
-  padding:0 clamp(1.25rem,4vw,3rem);
-}
-.reviews__header{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  gap:2rem;flex-wrap:wrap;margin-bottom:3.5rem;
-}
-.reviews__kicker{
-  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--lavd);margin-bottom:1rem;
-  display:flex;align-items:center;gap:.6rem;
-}
-.reviews__kicker::before{content:'';width:24px;height:1px;background:var(--lavd)}
-.reviews__title{
-  font-family:var(--serif);
-  font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:900;color:var(--wh);line-height:1.05;
-}
-.reviews__title em{font-style:italic;color:var(--lavl)}
-.reviews__score{
-  text-align:center;flex-shrink:0;
-}
-.reviews__score-num{
-  font-family:var(--serif);
-  font-size:3.5rem;font-weight:900;color:var(--wh);line-height:1;
-}
-.reviews__score-stars{color:#F5C842;font-size:1.1rem;letter-spacing:.1em;margin:.3rem 0}
-.reviews__score-label{font-size:.72rem;color:rgba(201,190,221,.5);letter-spacing:.08em}
-
-/* Carousel */
-.carousel{position:relative}
-.carousel__track{
-  display:flex;gap:1.25rem;
-  overflow-x:auto;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  padding-bottom:.5rem;
-  scrollbar-width:none;
-}
-.carousel__track::-webkit-scrollbar{display:none}
-.review-card{
-  flex:0 0 clamp(280px,36vw,400px);
-  scroll-snap-align:start;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(201,190,221,.12);
-  border-radius:20px;padding:2rem 1.75rem;
-  display:flex;flex-direction:column;gap:1rem;
-  transition:background .3s;
-}
-.review-card:hover{background:rgba(255,255,255,.1)}
-.review-card__stars{color:#F5C842;font-size:.9rem;letter-spacing:.08em}
-.review-card__text{
-  font-size:.88rem;color:rgba(226,216,201,.75);line-height:1.75;
-  flex:1;font-style:italic;
-}
-.review-card__text::before{content:'"';font-size:2rem;font-family:var(--serif);color:var(--lavd);line-height:0;vertical-align:-.5rem;margin-right:.2rem}
-.review-card__author{
-  display:flex;align-items:center;gap:.85rem;
-  border-top:1px solid rgba(201,190,221,.1);
-  padding-top:1rem;
-}
-.review-card__avatar{
-  width:38px;height:38px;border-radius:50%;
-  background:var(--lav);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1rem;flex-shrink:0;font-weight:700;
-  color:var(--p);font-family:var(--serif);
-}
-.review-card__name{
-  font-size:.82rem;font-weight:700;color:var(--lavl);
-}
-.review-card__handle{font-size:.72rem;color:rgba(201,190,221,.4)}
-.review-card__verified{
-  margin-left:auto;
-  font-size:.62rem;font-weight:700;letter-spacing:.06em;
-  color:var(--w);background:rgba(183,53,74,.15);
-  padding:.2em .6em;border-radius:4px;
-  text-transform:uppercase;
-}
-
-.carousel__controls{
-  display:flex;gap:.75rem;justify-content:center;
-  margin-top:2.5rem;
-}
-.carousel__btn{
-  width:44px;height:44px;border-radius:50%;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(201,190,221,.15);
-  color:var(--lavl);font-size:1.2rem;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:background .25s,border-color .25s;
-}
-.carousel__btn:hover{background:rgba(255,255,255,.15);border-color:var(--lavd)}
-
-/* ══════════════════════════════════════
-   GARANTIA / TRUST
-══════════════════════════════════════ */
-.trust{
-  background:var(--cl);
-  padding:clamp(4rem,8vw,6rem) 0;
-}
-.trust__in{
-  max-width:1300px;margin:0 auto;
-  padding:0 clamp(1.25rem,4vw,3rem);
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  gap:2rem;
-}
-.trust-item{
-  display:flex;align-items:flex-start;gap:1rem;
-  padding:1.75rem;background:var(--wh);border-radius:14px;
-  border:1px solid rgba(65,41,95,.07);
-}
-.trust-item__icon{
-  width:44px;height:44px;flex-shrink:0;
-  background:var(--lav);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.3rem;
-}
-.trust-item__title{font-weight:700;font-size:.9rem;color:var(--p);margin-bottom:.3rem}
-.trust-item__text{font-size:.8rem;color:var(--gr);line-height:1.65}
-
-@media(max-width:768px){.trust__in{grid-template-columns:1fr}}
-
-/* ══════════════════════════════════════
-   BIG CTA
-══════════════════════════════════════ */
-.bigcta{
-  background:var(--lav);
-  padding:clamp(5rem,10vw,9rem) 0;
   position:relative;overflow:hidden;
 }
 .bigcta::before{
   content:'';position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(65,41,95,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(65,41,95,.07) 1px,transparent 1px);
+    linear-gradient(rgba(201,190,221,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,190,221,.04) 1px,transparent 1px);
   background-size:40px 40px;
 }
 .bigcta__in{
-  max-width:900px;margin:0 auto;
+  max-width:700px;margin:0 auto;
   padding:0 clamp(1.25rem,4vw,3rem);
-  text-align:center;
   position:relative;z-index:1;
 }
-.bigcta__ilust{
-  width:clamp(120px,18vw,200px);
-  margin:0 auto 2rem;
-  animation:floatImg 5s ease-in-out infinite;
+.bigcta__img{
+  width:clamp(90px,14vw,130px);margin:0 auto 2rem;
+  animation:float 5s ease-in-out infinite;
 }
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .bigcta__title{
   font-family:var(--serif);
   font-size:clamp(2.5rem,6vw,5.5rem);
-  font-weight:900;color:var(--p);line-height:.95;
-  margin-bottom:1.25rem;
+  font-weight:900;color:var(--wh);line-height:.95;
+  margin-bottom:1.1rem;
 }
 .bigcta__title em{font-style:italic;color:var(--w)}
 .bigcta__sub{
-  font-size:1rem;color:var(--pl);
-  opacity:.75;line-height:1.75;
-  max-width:480px;margin:0 auto 3rem;
+  font-size:.9rem;color:rgba(201,190,221,.5);
+  line-height:1.75;max-width:420px;margin:0 auto 2.5rem;
 }
 .bigcta__btns{
   display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
-  margin-bottom:1.5rem;
+  margin-bottom:1.25rem;
 }
-.bigcta__note{
-  font-size:.75rem;color:var(--gr);
-  display:flex;align-items:center;gap:.4rem;justify-content:center;
+.btn-lav{
+  background:var(--lavl);color:var(--pd);
+  font-size:.82rem;font-weight:700;
+  padding:.9rem 2rem;border-radius:999px;
+  display:inline-block;
+  transition:background .25s,transform .2s;
 }
-.bigcta__note::before{content:'🔒';font-size:.75rem}
+.btn-lav:hover{background:var(--wh);transform:translateY(-2px)}
+.bigcta__lock{
+  font-size:.72rem;color:rgba(201,190,221,.25);
+  display:flex;align-items:center;gap:.35rem;justify-content:center;
+}
 
-/* ══════════════════════════════════════
-   FOOTER
-══════════════════════════════════════ */
+/* ── FOOTER ──────────────────────────────────── */
 .footer{
-  background:var(--pd);
-  padding:3rem 0 2rem;
+  background:#07050F;
+  padding:2rem 0;
 }
 .footer__in{
-  max-width:1300px;margin:0 auto;
+  max-width:1200px;margin:0 auto;
   padding:0 clamp(1.25rem,4vw,3rem);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1.5rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
 }
 .footer__logo{
-  font-family:var(--serif);font-size:1.1rem;font-weight:700;
-  color:var(--lavl);
+  font-family:var(--serif);font-size:1rem;font-weight:700;
+  color:rgba(201,190,221,.4);
 }
 .footer__logo span{color:var(--w)}
-.footer__links{
-  display:flex;gap:1.5rem;list-style:none;
-}
-.footer__links a{
-  font-size:.8rem;color:rgba(201,190,221,.4);transition:color .25s;
-}
-.footer__links a:hover{color:var(--lavl)}
-.footer__copy{
-  font-size:.75rem;color:rgba(201,190,221,.25);
-}
+.footer__copy{font-size:.72rem;color:rgba(201,190,221,.18)}
 
-/* ══════════════════════════════════════
-   REVEAL ANIMATIONS
-══════════════════════════════════════ */
-[data-r]{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+/* ── REVEAL ──────────────────────────────────── */
+[data-r]{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 [data-r].in{opacity:1;transform:none}
-[data-rl]{opacity:0;transform:translateX(-50px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+[data-rl]{opacity:0;transform:translateX(-46px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 [data-rl].in{opacity:1;transform:none}
-[data-rr]{opacity:0;transform:translateX(50px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+[data-rr]{opacity:0;transform:translateX(46px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 [data-rr].in{opacity:1;transform:none}
 [data-d1]{transition-delay:.1s}[data-d2]{transition-delay:.2s}[data-d3]{transition-delay:.3s}
 [data-d4]{transition-delay:.4s}[data-d5]{transition-delay:.5s}[data-d6]{transition-delay:.6s}
@@ -929,94 +533,30 @@ a{text-decoration:none;color:inherit}
 </head>
 <body>
 
-<!-- ── HEADER ──────────────────────────────── -->
+<!-- ── HEADER ────────────────────────────────── -->
 <header class="header">
   <div class="header__in">
     <a href="#" class="header__logo">
-      <div class="header__logo-badge">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 3C9 3 7 6 7 9c0 2 1 3.5 2.5 4.5L9 18h6l-.5-4.5C16 12.5 17 11 17 9c0-3-2-6-5-6z" fill="white" opacity=".9"/>
-          <path d="M9 18h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="header__logo-text">
-        <div class="header__logo-title">Manual Anti-Snob</div>
-        <div class="header__logo-sub">del Vino · Vinoso.mx</div>
-      </div>
+      <img src="img/logo-masdv.png" alt="Manual Anti-Snob del Vino"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span style="display:none;font-family:var(--serif);font-size:1rem;font-weight:900;color:var(--p)">MASDV</span>
     </a>
     <ul class="header__nav">
       <li><a href="#temas">Temas del manual</a></li>
       <li><a href="#reviews">Comentarios</a></li>
       <li><a href="#stats">Más información</a></li>
     </ul>
-    <a href="https://vinoso.mx" target="_blank" rel="noopener" class="header__cta">
-      Comprar ahora →
-    </a>
-    <button class="header__hamburger" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="https://vinoso.mx" target="_blank" rel="noopener" class="header__cta">Comprar →</a>
+    <button class="header__ham" aria-label="Menú"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- ── HERO ────────────────────────────────── -->
-<section class="hero">
-  <div class="hero__in">
-    <div class="hero__text" data-rl>
-      <span class="hero__kicker">
-        🍷 vinoso.mx
-      </span>
-      <h1 class="hero__title">
-        Entiende el vino.<br/>
-        <em>Sin rollos.</em>
-      </h1>
-      <p class="hero__subtitle">
-        Elige y disfruta el vino con seguridad en 15 días.
-      </p>
-      <p class="hero__desc">
-        El Manual Anti-Snob del Vino es la guía que nadie te dio pero que todos necesitan. Sin pretensiones, sin lenguaje rebuscado, sin esnobismo.
-      </p>
-      <div class="hero__btns">
-        <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-main">
-          Comprar ahora →
-        </a>
-        <a href="#temas" class="btn-sec">
-          Ver contenido
-        </a>
-      </div>
-    </div>
-    <div class="hero__ilust" data-rr>
-      <img
-        src="img/ilust/ilust-20.png"
-        alt="Persona eligiendo vino con confianza"
-      />
-      <img class="hero__ilust-deco" src="img/icons/icon-1.png" alt=""/>
-    </div>
-  </div>
-</section>
+<!-- ══════════════════════════════════════════════
+     1. LIBRO 3D
+══════════════════════════════════════════════ -->
+<section class="book-sec">
+  <div class="book-sec__in">
 
-<!-- ── TICKER ───────────────────────────────── -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__wrap">
-    <span class="ticker__item">Entiende el vino</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Elige con seguridad</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Sin esnobismo</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">15 días</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">204 páginas</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vive el vino</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vinoso.mx</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Entiende el vino</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Elige con seguridad</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Sin esnobismo</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">15 días</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">204 páginas</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vive el vino</span><span class="ticker__dot">·</span>
-    <span class="ticker__item">Vinoso.mx</span><span class="ticker__dot">·</span>
-  </div>
-</div>
-
-<!-- ── 3D BOOK ──────────────────────────────── -->
-<section class="book-section">
-  <div class="book-section__in">
     <div class="book-text" data-rl>
       <div class="book-text__kicker">El producto</div>
       <h2 class="book-text__title">
@@ -1024,467 +564,264 @@ a{text-decoration:none;color:inherit}
         <em>vino sin drama.</em>
       </h2>
       <p class="book-text__body">
-        Un manual diseñado para que cualquier persona pueda entender el mundo del vino sin intimidación. Desde cero hasta elegir con estilo en restaurantes, catas y reuniones.
+        Un manual para que cualquier persona entienda el mundo del vino sin intimidación. Desde cero hasta elegir con criterio en restaurantes, catas y reuniones.
       </p>
       <div class="book-text__meta">
-        <div class="book-meta-item">
-          <strong>204</strong>
-          <span>páginas</span>
-        </div>
-        <div class="book-meta-item">
-          <strong>15</strong>
-          <span>días para aprender</span>
-        </div>
-        <div class="book-meta-item">
-          <strong>100%</strong>
-          <span>sin esnobismo</span>
-        </div>
+        <div class="book-meta"><strong>204</strong><span>páginas</span></div>
+        <div class="book-meta"><strong>15</strong><span>días para aprender</span></div>
+        <div class="book-meta"><strong>100%</strong><span>sin esnobismo</span></div>
       </div>
-      <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-main">
+      <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">
         Quiero el manual →
       </a>
     </div>
 
-    <div class="book3d-wrap" data-rr>
-      <div class="book3d" id="book3d" title="Haz clic para rotar">
-        <!-- Pages -->
-        <div class="book3d__pages"></div>
-        <!-- Spine -->
-        <div class="book3d__spine">
-          <span class="book3d__spine-text">Manual Anti-Snob del Vino · Vinoso</span>
-        </div>
-        <!-- Front cover -->
-        <div class="book3d__front">
-          <div class="book3d__cover-content">
-            <p class="book3d__tagline">
-              Entiende, elige y disfruta el vino<br/>
-              <strong>con seguridad en 15 días</strong>
-            </p>
-            <div class="book3d__ilust-wrap">
-              <img src="img/icons/icon-5.png" alt="Botella de vino"/>
-            </div>
-            <h3 class="book3d__cover-title">
-              Manual<br/>anti-snob<br/>del vino
-            </h3>
-            <p class="book3d__cover-sub">vinoso.mx</p>
-            <div class="book3d__cover-logo">
-              <div class="book3d__cover-logo-circle">
-                <svg viewBox="0 0 24 24" fill="white">
-                  <path d="M12 3C9 3 7 6 7 9c0 2 1 3.5 2.5 4.5L9 18h6l-.5-4.5C16 12.5 17 11 17 9c0-3-2-6-5-6z"/>
-                  <path d="M9 18h6" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-                </svg>
-              </div>
-              <span class="book3d__cover-logo-text">VINOSO</span>
-            </div>
+    <div data-rr>
+      <div class="book-stage">
+        <div class="book-3d" id="book">
+          <div class="book-3d__pages"></div>
+          <div class="book-3d__spine">
+            <span class="book-3d__spine-txt">Manual Anti-Snob del Vino · Vinoso</span>
           </div>
+          <div class="book-3d__front">
+            <img src="img/portada.jpg" alt="Portada del Manual Anti-Snob del Vino"/>
+          </div>
+          <div class="book-3d__back">
+            <img src="img/contraportada.jpg" alt="Contraportada"/>
+          </div>
+          <div class="book-3d__shadow"></div>
         </div>
-        <div class="book3d__shadow"></div>
       </div>
+      <p class="book-hint">← Mueve el mouse sobre el libro →</p>
     </div>
+
   </div>
 </section>
 
-<!-- ── STATS ────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════
+     2. STATS
+══════════════════════════════════════════════ -->
 <section class="stats" id="stats">
   <div class="stats__in">
-    <h2 class="stats__title" data-r>Números que hablan solos</h2>
-    <p class="stats__sub" data-r>Datos reales sobre el vino y por qué este manual importa.</p>
+    <div class="sec-header" data-r>
+      <p class="sec-kicker">Datos reales</p>
+      <h2 class="sec-title">Números que <em>hablan solos</em></h2>
+    </div>
     <div class="stats__grid">
-      <div class="stat-card" data-r data-d1>
-        <div class="stat-card__icon">
-          <img src="img/icons/icon-1.png" alt=""/>
-        </div>
-        <div class="stat-card__num" data-count="73">0</div>
-        <div class="stat-card__label">% de personas se sienten perdidas al elegir vino</div>
-        <div class="stat-card__desc">En México, la mayoría elige por precio o etiqueta, no por conocimiento.</div>
+      <div class="stat-c" data-r data-d1>
+        <div class="stat-c__icon"><img src="img/icons/icon-1.png" alt=""/></div>
+        <div class="stat-c__num" data-count="73" data-suffix="%">0</div>
+        <div class="stat-c__lbl">de personas se sienten perdidas al elegir vino</div>
       </div>
-      <div class="stat-card" data-r data-d2>
-        <div class="stat-card__icon">
-          <img src="img/icons/icon-5.png" alt=""/>
-        </div>
-        <div class="stat-card__num red" data-count="15">0</div>
-        <div class="stat-card__label">días para entender el vino con el manual</div>
-        <div class="stat-card__desc">Estructura de lectura progresiva, sin abrumarte.</div>
+      <div class="stat-c" data-r data-d2>
+        <div class="stat-c__icon"><img src="img/icons/icon-5.png" alt=""/></div>
+        <div class="stat-c__num red" data-count="15" data-suffix=" días">0</div>
+        <div class="stat-c__lbl">para entender el vino con el manual</div>
       </div>
-      <div class="stat-card" data-r data-d3>
-        <div class="stat-card__icon">
-          <img src="img/icons/icon-3.png" alt=""/>
-        </div>
-        <div class="stat-card__num" data-count="204">0</div>
-        <div class="stat-card__label">páginas de contenido real y útil</div>
-        <div class="stat-card__desc">Sin relleno, sin tecnicismos innecesarios, sin pretensiones.</div>
+      <div class="stat-c" data-r data-d3>
+        <div class="stat-c__icon"><img src="img/icons/icon-3.png" alt=""/></div>
+        <div class="stat-c__num" data-count="204" data-suffix="">0</div>
+        <div class="stat-c__lbl">páginas de contenido real y sin relleno</div>
       </div>
-      <div class="stat-card" data-r data-d4>
-        <div class="stat-card__icon">
-          <img src="img/icons/icon-8.png" alt=""/>
-        </div>
-        <div class="stat-card__num red">+50</div>
-        <div class="stat-card__label">tipos de vino y regiones explicados</div>
-        <div class="stat-card__desc">Desde Rioja hasta el Valle de Guadalupe. Mapa completo del mundo vinícola.</div>
+      <div class="stat-c" data-r data-d4>
+        <div class="stat-c__icon"><img src="img/icons/icon-8.png" alt=""/></div>
+        <div class="stat-c__num red">+50</div>
+        <div class="stat-c__lbl">tipos de vino y regiones explicados</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── PAIN POINTS ──────────────────────────── -->
-<section class="pain">
-  <div class="pain__in">
-    <div class="pain__header" data-r>
-      <p class="pain__kicker">¿Te suena familiar?</p>
-      <h2 class="pain__title">
-        Situaciones que ya<br/>
-        <em>no te van a pasar.</em>
-      </h2>
-    </div>
-    <div class="pain__grid">
-      <div class="pain-card" data-r data-d1>
-        <div class="pain-card__emoji">😰</div>
-        <p class="pain-card__title">La carta de vinos te congela</p>
-        <p class="pain-card__text">Miras el menú y no sabes qué pedir. Todo suena igual y terminas eligiendo por precio.</p>
-      </div>
-      <div class="pain-card" data-r data-d2>
-        <div class="pain-card__emoji">🤷</div>
-        <p class="pain-card__title">No entiendes las etiquetas</p>
-        <p class="pain-card__text">Reserva, Gran Reserva, Vintage, Barrica… ¿Qué significa todo eso realmente?</p>
-      </div>
-      <div class="pain-card" data-r data-d3>
-        <div class="pain-card__emoji">😬</div>
-        <p class="pain-card__title">En catas te sientes ajeno</p>
-        <p class="pain-card__text">Todos hablan de "notas de cuero y tierra mojada" y tú no entiendes nada pero finges que sí.</p>
-      </div>
-      <div class="pain-card" data-r data-d4>
-        <div class="pain-card__emoji">💸</div>
-        <p class="pain-card__title">Gastas de más sin razón</p>
-        <p class="pain-card__text">Crees que más caro = mejor. El manual te enseña que eso casi nunca es verdad.</p>
-      </div>
-      <div class="pain-card" data-r data-d5>
-        <div class="pain-card__emoji">🍽️</div>
-        <p class="pain-card__title">No sabes qué va con qué</p>
-        <p class="pain-card__text">Maridaje siempre te pareció complicado. Spoiler: hay reglas simples que funcionan siempre.</p>
-      </div>
-      <div class="pain-card" data-r data-d6>
-        <div class="pain-card__emoji">📦</div>
-        <p class="pain-card__title">No sabes qué comprar ni dónde</p>
-        <p class="pain-card__text">¿Bodega? ¿Super? ¿Online? El manual te da estrategias concretas para cada situación.</p>
-      </div>
-    </div>
-
-    <div class="pain__solution" data-r>
-      <div data-rl>
-        <p class="pain__sol-kicker">La solución</p>
-        <h3 class="pain__sol-title">
-          15 días.<br/>
-          <em>Un manual.</em><br/>
-          Cero pretextos.
-        </h3>
-        <p class="pain__sol-text">
-          El Manual Anti-Snob del Vino está diseñado para que en 15 días tengas las herramientas para elegir, disfrutar y hablar de vino sin sentirte perdido — y sin fingir que sabes.
-        </p>
-        <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-main">
-          Comprar ahora →
-        </a>
-      </div>
-      <div class="pain__sol-img" data-rr>
-        <img src="img/ilust/ilust-10.png" alt="De perdido a experto"/>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── TEMAS ─────────────────────────────────── -->
-<section class="temas" id="temas">
-  <div class="temas__in">
-    <div class="temas__header">
-      <div data-rl>
-        <div class="temas__kicker">Lo que vas a aprender</div>
-        <h2 class="temas__title">
-          Temas del<br/>
-          <em>manual</em>
-        </h2>
-      </div>
-      <p class="temas__desc" data-rr>
-        El manual cubre todo lo que necesitas saber para moverte en el mundo del vino con confianza. De la uva a la copa.
-      </p>
-    </div>
-
-    <div class="temas__grid" data-r>
-      <div class="tema-item">
-        <span class="tema-item__num">01</span>
-        <div class="tema-item__content">
-          <h4 class="tema-item__title">Historia del vino sin aburrirte</h4>
-          <p class="tema-item__text">Orígenes, evolución y por qué importa conocerla para entender lo que bebes.</p>
-        </div>
-        <img class="tema-item__icon" src="img/icons/icon-2.png" alt=""/>
-      </div>
-      <div class="tema-item">
-        <span class="tema-item__num">02</span>
-        <div class="tema-item__content">
-          <h4 class="tema-item__title">Tipos de vino y sus diferencias</h4>
-          <p class="tema-item__text">Tinto, blanco, rosado, espumoso, dulce, seco. Qué son y cuándo tomar cada uno.</p>
-        </div>
-        <img class="tema-item__icon" src="img/icons/icon-1.png" alt=""/>
-      </div>
-      <div class="tema-item">
-        <span class="tema-item__num">03</span>
-        <div class="tema-item__content">
-          <h4 class="tema-item__title">Las uvas que más importan</h4>
-          <p class="tema-item__text">Cabernet, Merlot, Malbec, Chardonnay, Sauvignon Blanc. Sus perfiles y qué esperar de cada una.</p>
-        </div>
-        <img class="tema-item__icon" src="img/icons/icon-9.png" alt=""/>
-      </div>
-      <div class="tema-item">
-        <span class="tema-item__num">04</span>
-        <div class="tema-item__content">
-          <h4 class="tema-item__title">Cómo leer una etiqueta</h4>
-          <p class="tema-item__text">Entiende qué dice (y qué oculta) la etiqueta de una botella antes de comprarla.</p>
-        </div>
-        <img class="tema-item__icon" src="img/icons/icon-4.png" alt=""/>
-      </div>
-      <div class="tema-item">
-        <span class="tema-item__num">05</span>
-        <div class="tema-item__content">
-          <h4 class="tema-item__title">Regiones vinícolas del mundo</h4>
-          <p class="tema-item__text">Europa, Latinoamérica, México. Dónde se hace el vino que probablemente ya conoces.</p>
-        </div>
-        <img class="tema-item__icon" src="img/icons/icon-6.png" alt=""/>
-      </div>
-      <div class="tema-item">
-        <span class="tema-item__num">06</span>
-        <div class="tema-item__content">
-          <h4 class="tema-item__title">Maridaje sin misterio</h4>
-          <p class="tema-item__text">Las combinaciones que funcionan, las que no, y las reglas simples que puedes aplicar hoy.</p>
-        </div>
-        <img class="tema-item__icon" src="img/icons/icon-7.png" alt=""/>
-      </div>
-      <div class="tema-item">
-        <span class="tema-item__num">07</span>
-        <div class="tema-item__content">
-          <h4 class="tema-item__title">Cómo servir y almacenar</h4>
-          <p class="tema-item__text">Temperatura, copas, decantación, conservación. Lo práctico de verdad.</p>
-        </div>
-        <img class="tema-item__icon" src="img/icons/icon-10.png" alt=""/>
-      </div>
-      <div class="tema-item">
-        <span class="tema-item__num">08</span>
-        <div class="tema-item__content">
-          <h4 class="tema-item__title">Elegir en restaurantes y catas</h4>
-          <p class="tema-item__text">Cómo moverte en situaciones sociales sin sentirte intimidado por la carta o el sommelier.</p>
-        </div>
-        <img class="tema-item__icon" src="img/icons/icon-11.png" alt=""/>
-      </div>
-      <div class="tema-item">
-        <span class="tema-item__num">09</span>
-        <div class="tema-item__content">
-          <h4 class="tema-item__title">Glosario anti-pretensioso</h4>
-          <p class="tema-item__text">Las palabras que usan los expertos, explicadas en humano. Sin citas en francés.</p>
-        </div>
-        <img class="tema-item__icon" src="img/icons/icon-12.png" alt=""/>
-      </div>
-    </div>
-
-    <div class="temas__cta" data-r>
-      <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-main">
-        Comprar el manual ahora →
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── SHOWCASE ──────────────────────────────── -->
-<section class="showcase">
-  <div class="showcase__in">
-    <p class="showcase__kicker" data-r>Así se ve el conocimiento</p>
-    <h2 class="showcase__title" data-r>
-      Del caos al <em>control total.</em>
-    </h2>
-    <div class="showcase__grid">
-      <div class="showcase-card" data-r data-d1>
-        <img src="img/ilust/ilust-2.png" alt="Perdido con el vino"/>
-        <h3 class="showcase-card__title">Antes del manual</h3>
-        <p class="showcase-card__text">Mirando la carta de vinos sin entender nada, eligiendo al azar y esperando no quedar mal.</p>
-      </div>
-      <div class="showcase-card" data-r data-d2>
-        <img src="img/ilust/ilust-5.png" alt="Conviviendo con vino"/>
-        <h3 class="showcase-card__title">Con el manual</h3>
-        <p class="showcase-card__text">Disfrutando el vino con amigos, con criterio propio, eligiendo bien y hablando de lo que sabes.</p>
-      </div>
-      <div class="showcase-card" data-r data-d3>
-        <img src="img/ilust/ilust-15.png" alt="Viñedo y origen"/>
-        <h3 class="showcase-card__title">Entendiendo el origen</h3>
-        <p class="showcase-card__text">Sabiendo de dónde vienen las uvas, por qué importa la región y qué hace especial a cada botella.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── REVIEWS ───────────────────────────────── -->
+<!-- ══════════════════════════════════════════════
+     3. REVIEWS
+══════════════════════════════════════════════ -->
 <section class="reviews" id="reviews">
   <div class="reviews__in">
-    <div class="reviews__header">
-      <div>
-        <div class="reviews__kicker">Testimonios</div>
-        <h2 class="reviews__title">
-          Lo que dicen<br/>
-          <em>quienes ya lo leyeron.</em>
-        </h2>
-      </div>
-      <div class="reviews__score">
-        <div class="reviews__score-num">4.9</div>
-        <div class="reviews__score-stars">★★★★★</div>
-        <div class="reviews__score-label">calificación promedio</div>
+    <div class="sec-header" data-r>
+      <p class="sec-kicker">Testimonios reales</p>
+      <h2 class="sec-title">Lo que dicen quienes<br/><em>ya lo leyeron.</em></h2>
+      <div class="reviews__score-row">
+        <span class="reviews__stars">★★★★★</span>
+        <span class="reviews__score-num">4.9</span>
+        <span class="reviews__count">calificación promedio</span>
       </div>
     </div>
 
-    <div class="carousel">
-      <div class="carousel__track" id="carouselTrack">
-
-        <div class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">Llevaba años intimidado en restaurantes. Ahora pido vino como si supiera lo que hago — y cada vez más lo hago de verdad. Este manual cambió mi relación con la carta de vinos.</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">R</div>
-            <div>
-              <p class="review-card__name">Rodrigo Leal</p>
-              <p class="review-card__handle">@rodri.cdmx</p>
-            </div>
-            <span class="review-card__verified">Verificado</span>
-          </div>
+    <div class="carousel__track" id="revTrack">
+      <div class="rev-card">
+        <div class="rev-card__stars">★★★★★</div>
+        <p class="rev-card__text">Llevaba años intimidado en restaurantes. Ahora pido vino como si supiera lo que hago — y cada vez más lo hago de verdad.</p>
+        <div class="rev-card__author">
+          <div class="rev-card__av">R</div>
+          <div><p class="rev-card__name">Rodrigo Leal</p><p class="rev-card__handle">@rodri.cdmx</p></div>
+          <span class="rev-card__badge">Verificado</span>
         </div>
-
-        <div class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">Lo compré pensando que era básico, pero tiene profundidad real. El capítulo de maridaje me voló la cabeza. Ya no pido lo mismo de siempre porque ahora sé qué buscar.</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">S</div>
-            <div>
-              <p class="review-card__name">Sofía Marroquín</p>
-              <p class="review-card__handle">@so.marroquin</p>
-            </div>
-            <span class="review-card__verified">Verificado</span>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">Por fin alguien lo explicó en español de verdad, sin pretensiones. Lo terminé en una semana y ya lo recomendé a cuatro personas de mi trabajo. Ideal para regalarlo también.</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">D</div>
-            <div>
-              <p class="review-card__name">Diego Fuentes</p>
-              <p class="review-card__handle">@diego.fuentes.mx</p>
-            </div>
-            <span class="review-card__verified">Verificado</span>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">Fui a una cata después de leerlo y por primera vez entendí lo que el sommelier decía. Incluso pregunté cosas inteligentes. Eso no me hubiera pasado sin el manual.</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">V</div>
-            <div>
-              <p class="review-card__name">Valentina Torres</p>
-              <p class="review-card__handle">@vale.torres</p>
-            </div>
-            <span class="review-card__verified">Verificado</span>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-card__stars">★★★★☆</div>
-          <p class="review-card__text">Excelente contenido y muy bien organizado. Lo único que pediría es más sobre vinos mexicanos, pero lo que hay de Valle de Guadalupe está muy bueno. Totalmente recomendado.</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">A</div>
-            <div>
-              <p class="review-card__name">Alejandro Ríos</p>
-              <p class="review-card__handle">@alejo.rios</p>
-            </div>
-            <span class="review-card__verified">Verificado</span>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">Lo leí con mi pareja y ahora hacer la selección de vino para la cena es una conversación, no un conflicto. Entendemos juntos qué queremos. Vale cada peso.</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">L</div>
-            <div>
-              <p class="review-card__name">Laura Becerra</p>
-              <p class="review-card__handle">@laurabecerra</p>
-            </div>
-            <span class="review-card__verified">Verificado</span>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">Trabajo en hospitalidad y necesitaba entender más de vinos sin tomar un curso de 3 meses. Este manual me dio lo esencial de forma práctica. Ahora asesoro a los clientes con confianza.</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">C</div>
-            <div>
-              <p class="review-card__name">Carlos Ibarra</p>
-              <p class="review-card__handle">@c.ibarra.hosp</p>
-            </div>
-            <span class="review-card__verified">Verificado</span>
-          </div>
-        </div>
-
       </div>
-      <div class="carousel__controls">
-        <button class="carousel__btn" id="prevBtn" aria-label="Anterior">←</button>
-        <button class="carousel__btn" id="nextBtn" aria-label="Siguiente">→</button>
+      <div class="rev-card">
+        <div class="rev-card__stars">★★★★★</div>
+        <p class="rev-card__text">Lo compré pensando que era básico, pero tiene profundidad real. El capítulo de maridaje me voló la cabeza.</p>
+        <div class="rev-card__author">
+          <div class="rev-card__av">S</div>
+          <div><p class="rev-card__name">Sofía Marroquín</p><p class="rev-card__handle">@so.marroquin</p></div>
+          <span class="rev-card__badge">Verificado</span>
+        </div>
       </div>
+      <div class="rev-card">
+        <div class="rev-card__stars">★★★★★</div>
+        <p class="rev-card__text">Por fin alguien lo explicó en español sin pretensiones. Lo terminé en una semana y ya lo recomendé a cuatro personas.</p>
+        <div class="rev-card__author">
+          <div class="rev-card__av">D</div>
+          <div><p class="rev-card__name">Diego Fuentes</p><p class="rev-card__handle">@diego.fuentes.mx</p></div>
+          <span class="rev-card__badge">Verificado</span>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-card__stars">★★★★★</div>
+        <p class="rev-card__text">Fui a una cata después de leerlo y por primera vez entendí lo que el sommelier decía. Incluso pregunté cosas inteligentes.</p>
+        <div class="rev-card__author">
+          <div class="rev-card__av">V</div>
+          <div><p class="rev-card__name">Valentina Torres</p><p class="rev-card__handle">@vale.torres</p></div>
+          <span class="rev-card__badge">Verificado</span>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-card__stars">★★★★☆</div>
+        <p class="rev-card__text">Excelente contenido y muy bien organizado. Lo que hay de Valle de Guadalupe está muy bueno. Totalmente recomendado.</p>
+        <div class="rev-card__author">
+          <div class="rev-card__av">A</div>
+          <div><p class="rev-card__name">Alejandro Ríos</p><p class="rev-card__handle">@alejo.rios</p></div>
+          <span class="rev-card__badge">Verificado</span>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-card__stars">★★★★★</div>
+        <p class="rev-card__text">Lo leí con mi pareja y ahora elegir el vino para cenar es una conversación, no un conflicto. Vale cada peso.</p>
+        <div class="rev-card__author">
+          <div class="rev-card__av">L</div>
+          <div><p class="rev-card__name">Laura Becerra</p><p class="rev-card__handle">@laurabecerra</p></div>
+          <span class="rev-card__badge">Verificado</span>
+        </div>
+      </div>
+    </div>
+    <div class="carousel__btns">
+      <button class="carousel__btn" id="prevBtn">←</button>
+      <button class="carousel__btn" id="nextBtn">→</button>
     </div>
   </div>
 </section>
 
-<!-- ── TRUST ─────────────────────────────────── -->
-<section class="trust">
-  <div class="trust__in">
-    <div class="trust-item" data-r data-d1>
-      <div class="trust-item__icon">📦</div>
-      <div>
-        <p class="trust-item__title">Acceso inmediato</p>
-        <p class="trust-item__text">Después de tu compra accedes al manual de forma instantánea.</p>
-      </div>
+<!-- ══════════════════════════════════════════════
+     4. TEMAS
+══════════════════════════════════════════════ -->
+<section class="temas" id="temas">
+  <div class="temas__in">
+    <div class="sec-header" data-r>
+      <p class="sec-kicker">Contenido</p>
+      <h2 class="sec-title">Temas del <em>manual</em></h2>
     </div>
-    <div class="trust-item" data-r data-d2>
-      <div class="trust-item__icon">📖</div>
-      <div>
-        <p class="trust-item__title">204 páginas reales</p>
-        <p class="trust-item__text">Sin relleno. Solo contenido útil, directo y aplicable.</p>
-      </div>
+    <div class="temas__grid" data-r>
+      <div class="tema"><span class="tema__num">01</span><div><p class="tema__title">Historia del vino sin aburrirte</p><p class="tema__desc">Orígenes y evolución para entender lo que bebes.</p></div><img class="tema__icon" src="img/icons/icon-2.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">02</span><div><p class="tema__title">Tipos de vino y sus diferencias</p><p class="tema__desc">Tinto, blanco, rosado, espumoso, dulce, seco.</p></div><img class="tema__icon" src="img/icons/icon-1.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">03</span><div><p class="tema__title">Las uvas que más importan</p><p class="tema__desc">Perfiles de Cabernet, Malbec, Chardonnay y más.</p></div><img class="tema__icon" src="img/icons/icon-9.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">04</span><div><p class="tema__title">Cómo leer una etiqueta</p><p class="tema__desc">Qué dice y qué oculta la etiqueta de una botella.</p></div><img class="tema__icon" src="img/icons/icon-4.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">05</span><div><p class="tema__title">Regiones vinícolas del mundo</p><p class="tema__desc">Europa, Latinoamérica, México. Dónde nace cada vino.</p></div><img class="tema__icon" src="img/icons/icon-6.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">06</span><div><p class="tema__title">Maridaje sin misterio</p><p class="tema__desc">Las combinaciones que funcionan y las que no.</p></div><img class="tema__icon" src="img/icons/icon-7.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">07</span><div><p class="tema__title">Cómo servir y almacenar</p><p class="tema__desc">Temperatura, copas, decantación, conservación.</p></div><img class="tema__icon" src="img/icons/icon-10.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">08</span><div><p class="tema__title">Elegir en restaurantes y catas</p><p class="tema__desc">Moverte con criterio sin sentirte intimidado.</p></div><img class="tema__icon" src="img/icons/icon-11.png" alt=""/></div>
+      <div class="tema"><span class="tema__num">09</span><div><p class="tema__title">Glosario anti-pretensioso</p><p class="tema__desc">Las palabras del vino explicadas en humano.</p></div><img class="tema__icon" src="img/icons/icon-12.png" alt=""/></div>
     </div>
-    <div class="trust-item" data-r data-d3>
-      <div class="trust-item__icon">🍷</div>
-      <div>
-        <p class="trust-item__title">Hecho por Vinoso</p>
-        <p class="trust-item__text">Una plataforma dedicada al vino sin pretensiones desde México.</p>
-      </div>
+    <div class="temas__cta" data-r>
+      <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar el manual →</a>
     </div>
   </div>
 </section>
 
-<!-- ── BIG CTA ────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════
+     5. POST-ITS
+══════════════════════════════════════════════ -->
+<section class="postits">
+  <div class="postits__in">
+    <div class="sec-header" data-r>
+      <p class="sec-kicker">Situaciones que ya no te van a pasar</p>
+      <h2 class="sec-title">¿Te suena <em>familiar?</em></h2>
+    </div>
+    <p class="postits__sub" data-r>Toca cada post-it para despedirte de esa situación para siempre.</p>
+
+    <div class="postits__board" data-r>
+      <div class="postit" style="--color:#F9E87B;transform:rotate(-2.1deg)">
+        <span class="postit__emoji">😰</span>
+        <p class="postit__text">La carta de vinos te paraliza y pides lo más barato</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+      <div class="postit" style="--color:#FFCF77;transform:rotate(1.4deg)">
+        <span class="postit__emoji">🤷</span>
+        <p class="postit__text">No entiendes qué significa "Reserva" o "Gran Reserva"</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+      <div class="postit" style="--color:#A8D8EA;transform:rotate(-1.2deg)">
+        <span class="postit__emoji">😬</span>
+        <p class="postit__text">En catas finges entender lo que dice el sommelier</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+      <div class="postit" style="--color:#F9E87B;transform:rotate(2.3deg)">
+        <span class="postit__emoji">💸</span>
+        <p class="postit__text">Crees que más caro siempre significa mejor vino</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+      <div class="postit" style="--color:#B8F0C8;transform:rotate(-1.8deg)">
+        <span class="postit__emoji">🍽️</span>
+        <p class="postit__text">No sabes qué vino va con qué comida</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+      <div class="postit" style="--color:#FFCF77;transform:rotate(1.1deg)">
+        <span class="postit__emoji">🏪</span>
+        <p class="postit__text">En la tienda tomas la botella que tiene la etiqueta más bonita</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+      <div class="postit" style="--color:#F9C0C0;transform:rotate(-2.5deg)">
+        <span class="postit__emoji">🌡️</span>
+        <p class="postit__text">Sirves el vino tinto directo del refrigerador</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+      <div class="postit" style="--color:#A8D8EA;transform:rotate(1.7deg)">
+        <span class="postit__emoji">🍇</span>
+        <p class="postit__text">No distingues la diferencia entre Merlot y Malbec</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+      <div class="postit" style="--color:#B8F0C8;transform:rotate(-1deg)">
+        <span class="postit__emoji">🗣️</span>
+        <p class="postit__text">No sabes hablar de vino sin sonar pretencioso o ignorante</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+      <div class="postit" style="--color:#F9C0C0;transform:rotate(2.2deg)">
+        <span class="postit__emoji">📦</span>
+        <p class="postit__text">Nunca sabes si guardar la botella o abrirla ya</p>
+        <span class="postit__hint">toca para eliminar</span>
+      </div>
+    </div>
+
+    <p class="postits__note" data-r>El manual resuelve todo esto — y más.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════════ -->
 <section class="bigcta">
   <div class="bigcta__in" data-r>
-    <img class="bigcta__ilust" src="img/ilust/ilust-1.png" alt="Brindando"/>
+    <img class="bigcta__img" src="img/ilust/ilust-1.png" alt="Brindando"/>
     <h2 class="bigcta__title">
       No te compliques.<br/>
       <em>Vive el vino.</em>
     </h2>
     <p class="bigcta__sub">
-      El Manual Anti-Snob del Vino está esperando. 204 páginas para que dejes de fingir y empieces a disfrutar.
+      204 páginas para dejar de fingir y empezar a disfrutar.
     </p>
     <div class="bigcta__btns">
-      <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-main">
-        Comprar ahora en vinoso.mx →
-      </a>
-      <a href="#reviews" class="btn-sec">
-        Leer comentarios
-      </a>
+      <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar en vinoso.mx →</a>
+      <a href="#reviews" class="btn-lav">Leer opiniones</a>
     </div>
-    <p class="bigcta__note">Pago seguro · Acceso inmediato · vinoso.mx</p>
+    <p class="bigcta__lock">🔒 Pago seguro · Acceso inmediato · vinoso.mx</p>
   </div>
 </section>
 
@@ -1492,32 +829,30 @@ a{text-decoration:none;color:inherit}
 <footer class="footer">
   <div class="footer__in">
     <p class="footer__logo">Manual Anti-Snob del Vino · <span>Vinoso</span></p>
-    <ul class="footer__links">
-      <li><a href="https://vinoso.mx" target="_blank" rel="noopener">vinoso.mx</a></li>
-      <li><a href="#temas">Temas</a></li>
-      <li><a href="#reviews">Opiniones</a></li>
-    </ul>
-    <p class="footer__copy">© 2026 Vinoso · Hecho con ♥ en México</p>
+    <p class="footer__copy">© 2026 Vinoso · vinoso.mx</p>
   </div>
 </footer>
 
 <script>
-/* ── Reveal ──────────────────────────────── */
+/* ── Reveal ───────────────────────────── */
 const io = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: .1, rootMargin: '0px 0px -50px 0px' });
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+}, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('[data-r],[data-rl],[data-rr]').forEach(el => io.observe(el));
 
-/* ── Count-up ────────────────────────────── */
+/* ── Count-up ─────────────────────────── */
 const co = new IntersectionObserver(es => {
   es.forEach(e => {
     if (!e.isIntersecting) return;
-    const el = e.target, t = +el.dataset.count, dur = 1800, s = performance.now();
-    const tick = n => {
-      const p = Math.min((n-s)/dur,1), ease = 1 - Math.pow(1-p, 3);
-      el.textContent = Math.round(ease * t) + (el.classList.contains('red') ? '+' : '%');
+    const el = e.target;
+    const target = +el.dataset.count;
+    const suffix = el.dataset.suffix || '%';
+    const dur = 1800, start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target) + suffix;
       if (p < 1) requestAnimationFrame(tick);
-      else el.textContent = t + (el.classList.contains('red') ? '' : '%');
     };
     requestAnimationFrame(tick);
     co.unobserve(el);
@@ -1525,24 +860,58 @@ const co = new IntersectionObserver(es => {
 }, { threshold: .5 });
 document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
 
-/* ── Book 3D click ───────────────────────── */
-let rotated = false;
-document.getElementById('book3d').addEventListener('click', function() {
-  rotated = !rotated;
-  this.style.animation = 'none';
-  this.style.transform = rotated
-    ? 'rotateY(10deg) rotateX(3deg)'
-    : 'rotateY(-25deg) rotateX(5deg)';
+/* ── 3D Book — mouse tracking ─────────── */
+const book = document.getElementById('book');
+const stage = book.closest('.book-stage');
+let baseY = -20, baseX = 4;
+let animFrame;
+
+stage.addEventListener('mousemove', e => {
+  const rect = stage.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+  const dx = (e.clientX - cx) / (rect.width / 2);   // -1 to 1
+  const dy = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
+  const targetY = baseY + dx * 30;   // rotate around Y axis
+  const targetX = baseX - dy * 12;   // tilt on X axis
+  cancelAnimationFrame(animFrame);
+  book.style.transition = 'transform .08s linear';
+  book.style.transform = `rotateY(${targetY}deg) rotateX(${targetX}deg)`;
 });
 
-/* ── Carousel ────────────────────────────── */
-const track = document.getElementById('carouselTrack');
-const cardW = () => track.querySelector('.review-card').offsetWidth + 20;
-document.getElementById('nextBtn').addEventListener('click', () => {
-  track.scrollBy({ left: cardW(), behavior: 'smooth' });
+stage.addEventListener('mouseleave', () => {
+  book.style.transition = 'transform .8s cubic-bezier(0.16,1,0.3,1)';
+  book.style.transform = `rotateY(${baseY}deg) rotateX(${baseX}deg)`;
 });
-document.getElementById('prevBtn').addEventListener('click', () => {
-  track.scrollBy({ left: -cardW(), behavior: 'smooth' });
+
+/* Touch tilt for mobile */
+stage.addEventListener('touchmove', e => {
+  e.preventDefault();
+  const t = e.touches[0];
+  const rect = stage.getBoundingClientRect();
+  const dx = (t.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+  book.style.transition = 'transform .1s linear';
+  book.style.transform = `rotateY(${baseY + dx * 25}deg) rotateX(${baseX}deg)`;
+}, { passive: false });
+
+/* ── Carousel ─────────────────────────── */
+const track = document.getElementById('revTrack');
+const cardW = () => (track.querySelector('.rev-card')?.offsetWidth || 300) + 18;
+document.getElementById('nextBtn').addEventListener('click', () => track.scrollBy({ left: cardW(), behavior: 'smooth' }));
+document.getElementById('prevBtn').addEventListener('click', () => track.scrollBy({ left: -cardW(), behavior: 'smooth' }));
+
+/* ── Post-its ─────────────────────────── */
+document.querySelectorAll('.postit').forEach(p => {
+  p.addEventListener('click', () => {
+    p.classList.add('gone');
+    // check if all gone
+    const all = document.querySelectorAll('.postit');
+    const gone = document.querySelectorAll('.postit.gone');
+    if (all.length === gone.length) {
+      document.querySelector('.postits__note').textContent =
+        '¡Listo! Ya los resolviste todos. Ahora compra el manual. 🍷';
+    }
+  });
 });
 </script>
 
