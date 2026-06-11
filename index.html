@@ -84,7 +84,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .book-sec{
   background:var(--pd);
   padding:clamp(2rem,4vw,3.5rem) 0 clamp(3rem,6vw,6rem);
-  overflow:hidden;
   position:relative;
 }
 .book-sec::before{
@@ -143,38 +142,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   perspective:900px;
   padding:2rem 2rem 4rem;
 }
+/* NO filter here — filter flattens transform-style:preserve-3d */
 .book-3d{
-  margin:0;
   position:relative;
+  width:224px;
   transform-style:preserve-3d;
   transform:rotateY(-20deg) rotateX(4deg);
   transition:transform .1s linear;
   will-change:transform;
-  filter:drop-shadow(0 30px 60px rgba(0,0,0,.75));
   cursor:grab;
-}
-/* Pages — right edge */
-.book-3d::before{
-  content:'';
-  position:absolute;
-  top:2px;right:-18px;bottom:2px;
-  width:18px;
-  background:repeating-linear-gradient(
-    180deg,#f8f2ea,#f8f2ea 1px,#e2d8cc 1px,#e2d8cc 2.5px
-  );
-  transform-origin:left center;
-  transform:rotateY(90deg);
-  border-radius:0 2px 2px 0;
-}
-/* Spine — left edge */
-.book-3d::after{
-  content:'';
-  position:absolute;
-  top:0;left:-24px;bottom:0;
-  width:24px;
-  background:linear-gradient(to right,#3a2258,#6b4d96,#8b6aae);
-  transform-origin:right center;
-  transform:rotateY(-90deg);
 }
 #bookCoverImg{
   display:block;
@@ -182,13 +158,78 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   object-fit:cover;
   object-position:center top;
   border-radius:2px 6px 6px 2px;
+  box-shadow:16px 24px 60px rgba(0,0,0,.85),4px 6px 20px rgba(0,0,0,.5);
   pointer-events:none;user-select:none;
+}
+.book-spine{
+  position:absolute;
+  top:0;left:0;
+  width:24px;height:320px;
+  background:linear-gradient(to right,#2d1a4a,#7a5fa0,#9880b8);
+  transform-origin:right center;
+  transform:rotateY(-90deg);
+}
+.book-pages{
+  position:absolute;
+  top:2px;right:-18px;
+  width:18px;height:316px;
+  background:repeating-linear-gradient(
+    180deg,#f8f2ea 0,#f8f2ea 1px,#e2d8cc 1px,#e2d8cc 2.5px
+  );
+  transform-origin:left center;
+  transform:rotateY(90deg);
+  border-radius:0 2px 2px 0;
 }
 /* Hint */
 .book-hint{
   text-align:center;margin-top:1.2rem;
   font-size:.65rem;color:rgba(201,190,221,.28);
   letter-spacing:.08em;
+}
+
+/* ── ACCORDION TEMAS ─────────────────────────── */
+.accordion{
+  max-width:860px;margin:3.5rem auto 0;
+  border:1px solid rgba(65,41,95,.1);border-radius:16px;overflow:hidden;
+}
+.acc-item{border-bottom:1px solid rgba(65,41,95,.08)}
+.acc-item:last-child{border-bottom:none}
+.acc-btn{
+  width:100%;display:flex;align-items:center;gap:1rem;
+  padding:1.1rem 1.5rem;
+  background:var(--wh);
+  cursor:pointer;text-align:left;
+  transition:background .2s;
+}
+.acc-btn:hover{background:#faf8ff}
+.acc-btn.open{background:#f4f0fa}
+.acc-num{
+  font-size:.68rem;font-weight:700;color:var(--w);
+  min-width:2rem;flex-shrink:0;
+}
+.acc-title{
+  font-size:.9rem;font-weight:600;color:var(--p);flex:1;
+}
+.acc-page{
+  font-size:.72rem;color:var(--gr);flex-shrink:0;
+}
+.acc-arrow{
+  font-size:.75rem;color:var(--lavd);flex-shrink:0;
+  transition:transform .3s var(--ease);
+}
+.acc-btn.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s var(--ease),padding .35s;
+  background:#faf8ff;
+  padding:0 1.5rem 0 calc(1.5rem + 2rem + 1rem);
+}
+.acc-body.open{
+  max-height:120px;
+  padding-top:.75rem;padding-bottom:.9rem;
+}
+.acc-desc{
+  font-size:.82rem;color:var(--gr);line-height:1.65;
 }
 
 @media(max-width:768px){
@@ -524,9 +565,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
     <div data-rr>
       <div class="book-stage">
-        <figure class="book-3d" id="book">
+        <div class="book-3d" id="book">
           <img id="bookCoverImg" src="img/portada.jpg" alt="Portada del Manual Anti-Snob del Vino"/>
-        </figure>
+          <div class="book-spine"></div>
+          <div class="book-pages"></div>
+        </div>
       </div>
       <p class="book-hint">← Mueve el mouse sobre el libro →</p>
       <div style="text-align:center;margin-top:1.2rem">
@@ -660,20 +703,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <p class="sec-kicker">Vino sin tecnicismos</p>
       <h2 class="sec-title">Temas del <em>manual</em></h2>
     </div>
-    <div class="temas__grid" data-r>
-      <div class="tema"><span class="tema__num">00</span><div><p class="tema__title">Bienvenida al mundo del vino</p><p class="tema__desc">p. 2</p></div><img class="tema__icon" src="img/icons/icon-2.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">01</span><div><p class="tema__title">El ABC del vino que desbloquea todo</p><p class="tema__desc">p. 8</p></div><img class="tema__icon" src="img/icons/icon-1.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">02</span><div><p class="tema__title">Cómo catar vino sin ser experto</p><p class="tema__desc">p. 13</p></div><img class="tema__icon" src="img/icons/icon-9.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">03</span><div><p class="tema__title">Cómo hablar del vino sin sonar falso</p><p class="tema__desc">p. 18</p></div><img class="tema__icon" src="img/icons/icon-4.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">04</span><div><p class="tema__title">Las uvas que realmente importan</p><p class="tema__desc">p. 22</p></div><img class="tema__icon" src="img/icons/icon-6.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">05</span><div><p class="tema__title">Países y regiones que debes ubicar</p><p class="tema__desc">p. 31</p></div><img class="tema__icon" src="img/icons/icon-7.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">06</span><div><p class="tema__title">Cómo leer una etiqueta y elegir bien</p><p class="tema__desc">p. 40</p></div><img class="tema__icon" src="img/icons/icon-10.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">07</span><div><p class="tema__title">Cómo se hace el vino (sin tecnicismos)</p><p class="tema__desc">p. 47</p></div><img class="tema__icon" src="img/icons/icon-11.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">08</span><div><p class="tema__title">Servicio y protocolo social del vino</p><p class="tema__desc">p. 52</p></div><img class="tema__icon" src="img/icons/icon-12.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">09</span><div><p class="tema__title">Maridaje, vino y comida sin complicaciones</p><p class="tema__desc">p. 59</p></div><img class="tema__icon" src="img/icons/icon-3.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">10</span><div><p class="tema__title">Cómo comprar vino y desarrollar tu gusto</p><p class="tema__desc">p. 66</p></div><img class="tema__icon" src="img/icons/icon-5.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">11</span><div><p class="tema__title">Plan práctico de 15 días</p><p class="tema__desc">p. 74</p></div><img class="tema__icon" src="img/icons/icon-8.png" alt=""/></div>
-      <div class="tema"><span class="tema__num">—</span><div><p class="tema__title">La guía rápida del vino, en una página</p><p class="tema__desc">p. 79</p></div><img class="tema__icon" src="img/icons/icon-13.png" alt=""/></div>
+    <div class="accordion" data-r>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">00</span><span class="acc-title">Bienvenida al mundo del vino</span><span class="acc-page">p. 2</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Punto de partida para entender de qué trata el vino y por qué vale la pena aprenderlo sin pretensiones.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">01</span><span class="acc-title">El ABC del vino que desbloquea todo</span><span class="acc-page">p. 8</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Conceptos básicos que abren todas las puertas: qué es el vino, cómo se clasifica y por qué importa.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">02</span><span class="acc-title">Cómo catar vino sin ser experto</span><span class="acc-page">p. 13</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Una guía práctica para usar tus sentidos y sacar tus propias conclusiones, sin sentirte un impostor.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">03</span><span class="acc-title">Cómo hablar del vino sin sonar falso</span><span class="acc-page">p. 18</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Las palabras clave para describir lo que bebes con naturalidad, sin memorizar jerga innecesaria.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">04</span><span class="acc-title">Las uvas que realmente importan</span><span class="acc-page">p. 22</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Las variedades más relevantes explicadas con sus diferencias reales: sabor, cuerpo y cuándo elegirlas.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">05</span><span class="acc-title">Países y regiones que debes ubicar</span><span class="acc-page">p. 31</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Un mapa mental de las zonas vinícolas más importantes del mundo, incluido México.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">06</span><span class="acc-title">Cómo leer una etiqueta y elegir bien</span><span class="acc-page">p. 40</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Descifra la etiqueta de una botella sin adivinar y elige con criterio desde el primer vistazo.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">07</span><span class="acc-title">Cómo se hace el vino (sin tecnicismos)</span><span class="acc-page">p. 47</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">El proceso de elaboración explicado de forma clara para entender qué hay realmente en tu copa.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">08</span><span class="acc-title">Servicio y protocolo social del vino</span><span class="acc-page">p. 52</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Temperatura ideal, cómo servir, qué copa usar y cómo moverte con soltura en cualquier contexto.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">09</span><span class="acc-title">Maridaje, vino y comida sin complicaciones</span><span class="acc-page">p. 59</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Qué vino va con qué comida sin reglas rígidas. Principios simples que funcionan siempre.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">10</span><span class="acc-title">Cómo comprar vino y desarrollar tu gusto</span><span class="acc-page">p. 66</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Cómo elegir en tiendas, supermercados y restaurantes desarrollando tu propio criterio.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">11</span><span class="acc-title">Plan práctico de 15 días</span><span class="acc-page">p. 74</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Una agenda concreta para poner en práctica todo lo aprendido y salir del manual con confianza real.</p></div></div>
+      <div class="acc-item"><button class="acc-btn" aria-expanded="false"><span class="acc-num">—</span><span class="acc-title">La guía rápida del vino, en una página</span><span class="acc-page">p. 79</span><span class="acc-arrow">▾</span></button><div class="acc-body"><p class="acc-desc">Todo lo esencial resumido en una sola página para consultar siempre que lo necesites.</p></div></div>
     </div>
     <div class="temas__cta" data-r>
       <p style="font-size:.88rem;color:var(--gr);margin-bottom:1.25rem;font-style:italic;">Una guía para disfrutar vino sin pretensión.</p>
@@ -771,7 +814,7 @@ const co = new IntersectionObserver(es => {
     if (!e.isIntersecting) return;
     const el = e.target;
     const target = +el.dataset.count;
-    const suffix = el.dataset.suffix || '%';
+    const suffix = el.dataset.suffix ?? '%';
     const dur = 1800, start = performance.now();
     const tick = now => {
       const p = Math.min((now - start) / dur, 1);
@@ -860,6 +903,26 @@ const track = document.getElementById('revTrack');
 const cardW = () => (track.querySelector('.rev-card')?.offsetWidth || 300) + 18;
 document.getElementById('nextBtn').addEventListener('click', () => track.scrollBy({ left: cardW(), behavior: 'smooth' }));
 document.getElementById('prevBtn').addEventListener('click', () => track.scrollBy({ left: -cardW(), behavior: 'smooth' }));
+
+/* ── Accordion ───────────────────────── */
+document.querySelectorAll('.acc-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // close all
+    document.querySelectorAll('.acc-btn.open').forEach(b => {
+      b.classList.remove('open');
+      b.setAttribute('aria-expanded','false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    // open clicked if it was closed
+    if(!isOpen){
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      body.classList.add('open');
+    }
+  });
+});
 
 /* ── Post-its ─────────────────────────── */
 document.querySelectorAll('.postit').forEach(p => {
