@@ -708,6 +708,44 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   display:flex;align-items:center;gap:.35rem;justify-content:center;
 }
 
+/* ── CINEMA STRIP ──────────────────────────────── */
+.cinema{position:relative;background:#18100a;overflow:hidden;padding:2.2rem 0 0;}
+.cinema__holes{position:absolute;left:0;right:0;height:22px;display:flex;align-items:center;gap:0;}
+.cinema__holes--top{top:0}
+.cinema__holes--bot{bottom:0}
+.cinema__holes-inner{display:flex;gap:10px;padding:0 6px;}
+.cinema__hole{width:14px;height:14px;border-radius:3px;background:#2a1e10;flex-shrink:0;}
+.cinema__content{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:center;gap:2.5rem;max-width:860px;margin:0 auto;padding:1rem 2rem 0;}
+.cinema__text{flex:1;min-width:0;padding-bottom:2.2rem}
+.cinema__text p{font-family:var(--sans);font-size:clamp(1.1rem,2.2vw,1.55rem);font-weight:800;color:#f5ead8;line-height:1.35;margin:0;}
+.cinema__text p em{font-style:normal;color:#e8c96a;}
+.popcorn-box{position:relative;width:120px;flex-shrink:0;align-self:flex-end;}
+.popcorn-cup{width:68px;height:76px;margin:0 auto;background:linear-gradient(160deg,#e53935 0%,#b71c1c 100%);clip-path:polygon(8% 0%,92% 0%,80% 100%,20% 100%);position:relative;overflow:hidden;}
+.popcorn-cup::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(90deg,transparent 0,transparent 10px,rgba(255,255,255,.18) 10px,rgba(255,255,255,.18) 20px);}
+.popcorn-kernel{position:absolute;border-radius:50% 40% 60% 45%;background:#f5c842;}
+/* scattered kernels */
+.pk1{width:18px;height:14px;top:-10px;left:10px;transform:rotate(25deg);background:#f5c842;}
+.pk2{width:22px;height:16px;top:-22px;left:38px;transform:rotate(-15deg);background:#f0b429;}
+.pk3{width:16px;height:13px;top:-14px;left:64px;transform:rotate(40deg);background:#f5c842;}
+.pk4{width:20px;height:15px;top:-30px;left:20px;transform:rotate(-30deg);background:#ffd740;}
+.pk5{width:15px;height:12px;top:-8px;left:82px;transform:rotate(60deg);background:#f0b429;}
+.pk6{width:24px;height:17px;top:-38px;left:50px;transform:rotate(10deg);background:#f5c842;}
+.pk7{width:13px;height:11px;top:-18px;left:92px;transform:rotate(-50deg);background:#ffd740;}
+/* spilled kernels on ground */
+.popcorn-spill{position:absolute;bottom:0;left:-30px;right:-30px;height:32px;}
+.ps1{position:absolute;width:19px;height:14px;bottom:4px;left:0;border-radius:50% 40% 60% 45%;background:#f5c842;transform:rotate(20deg);}
+.ps2{position:absolute;width:15px;height:11px;bottom:12px;left:18px;border-radius:50% 40% 60% 45%;background:#f0b429;transform:rotate(-35deg);}
+.ps3{position:absolute;width:21px;height:15px;bottom:2px;left:36px;border-radius:50% 40% 60% 45%;background:#ffd740;transform:rotate(50deg);}
+.ps4{position:absolute;width:16px;height:12px;bottom:14px;left:58px;border-radius:50% 40% 60% 45%;background:#f5c842;transform:rotate(-10deg);}
+.ps5{position:absolute;width:18px;height:13px;bottom:3px;left:78px;border-radius:50% 40% 60% 45%;background:#f0b429;transform:rotate(70deg);}
+.ps6{position:absolute;width:14px;height:10px;bottom:18px;left:96px;border-radius:50% 40% 60% 45%;background:#ffd740;transform:rotate(-45deg);}
+.ps7{position:absolute;width:20px;height:14px;bottom:6px;left:112px;border-radius:50% 40% 60% 45%;background:#f5c842;transform:rotate(15deg);}
+@media(max-width:640px){
+  .cinema__content{flex-direction:column;align-items:center;gap:1.5rem;padding:.8rem 1.5rem 0;}
+  .cinema__text{text-align:center;padding-bottom:1.5rem;}
+  .popcorn-box{align-self:center;}
+}
+
 /* ── FOOTER ──────────────────────────────────── */
 .footer{
   background:var(--p);
@@ -1097,6 +1135,49 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <a href="https://vinoso.mx" target="_blank" rel="noopener" class="finalcta__btn">Comprar acceso al manual digital →</a>
   </div>
 </section>
+
+<!-- ── CINEMA STRIP ──────────────────────────────── -->
+<section class="cinema">
+  <!-- top sprocket holes -->
+  <div class="cinema__holes cinema__holes--top">
+    <div class="cinema__holes-inner" id="holesTop"></div>
+  </div>
+  <div class="cinema__content">
+    <div class="cinema__text">
+      <p>Aprende todo lo que necesitas saber sobre el vino<br><em>por menos de lo que te cuesta una salida al cine.</em></p>
+    </div>
+    <div class="popcorn-box">
+      <div class="popcorn-cup">
+        <span class="popcorn-kernel pk1"></span>
+        <span class="popcorn-kernel pk2"></span>
+        <span class="popcorn-kernel pk3"></span>
+        <span class="popcorn-kernel pk4"></span>
+        <span class="popcorn-kernel pk5"></span>
+        <span class="popcorn-kernel pk6"></span>
+        <span class="popcorn-kernel pk7"></span>
+      </div>
+      <div class="popcorn-spill">
+        <span class="ps1"></span><span class="ps2"></span><span class="ps3"></span><span class="ps4"></span><span class="ps5"></span><span class="ps6"></span><span class="ps7"></span>
+      </div>
+    </div>
+  </div>
+  <!-- bottom sprocket holes -->
+  <div class="cinema__holes cinema__holes--bot">
+    <div class="cinema__holes-inner" id="holesBot"></div>
+  </div>
+</section>
+<script>
+(function(){
+  function makeHoles(id){
+    var el=document.getElementById(id);
+    if(!el)return;
+    var n=Math.ceil(window.innerWidth/24)+2;
+    var h='';for(var i=0;i<n;i++)h+='<div class="cinema__hole"></div>';
+    el.innerHTML=h;
+  }
+  makeHoles('holesTop');makeHoles('holesBot');
+})();
+</script>
 
 <!-- ── FOOTER ─────────────────────────────────── -->
 <footer class="footer">
