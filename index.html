@@ -717,8 +717,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .cinema__hole{width:16px;height:16px;border-radius:4px;background:#5E3D7F;opacity:.55;flex-shrink:0;}
 .cinema__content{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:2.5rem;max-width:900px;margin:0 auto;padding:1.2rem 3.5rem 0;}
 .cinema__text{flex:1;min-width:0;padding-bottom:2.8rem;}
-.cinema__line1{display:block;font-family:var(--sans);font-size:clamp(1rem,2vw,1.35rem);font-weight:800;color:#fff;line-height:1.3;white-space:nowrap;}
-.cinema__line2{display:block;font-family:var(--sans);font-size:clamp(.95rem,1.8vw,1.25rem);font-weight:700;color:#C9BEDD;line-height:1.4;margin-top:.55rem;}
+.cinema__line1{display:block;font-family:var(--sans);font-size:clamp(1.25rem,2.6vw,1.8rem);font-weight:800;color:#fff;line-height:1.35;white-space:nowrap;}
+.cinema__line2{display:block;font-family:var(--sans);font-size:clamp(1.1rem,2.2vw,1.55rem);font-weight:700;color:#C9BEDD;line-height:1.4;margin-top:.65rem;}
+.cinema__hl{font-family:var(--serif);font-style:italic;font-size:1.18em;font-weight:900;}
 /* right side */
 .cinema__right{flex-shrink:0;position:relative;width:200px;align-self:flex-end;}
 .popcorn-img{width:130px;display:block;position:relative;z-index:3;margin:0 auto;filter:drop-shadow(0 10px 22px rgba(0,0,0,.7));}
@@ -1131,8 +1132,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
   <div class="cinema__content">
     <div class="cinema__text">
-      <span class="cinema__line1">Aprende todo lo que necesitas saber sobre el vino</span>
-      <span class="cinema__line2">por menos de lo que te cuesta una salida al cine.</span>
+      <span class="cinema__line1">Aprende <span class="cinema__hl">todo</span> lo que necesitas saber <span class="cinema__hl">sobre el vino</span></span>
+      <span class="cinema__line2">por <span class="cinema__hl">menos</span> de lo que te cuesta una salida al <span class="cinema__hl">cine.</span></span>
     </div>
     <div class="cinema__right">
       <img class="cinema__ticket1" src="https://em-content.zobj.net/source/apple/391/admission-tickets_1f39f-fe0f.png" alt="" loading="lazy">
