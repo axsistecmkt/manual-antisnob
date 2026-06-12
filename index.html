@@ -163,14 +163,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   display:inline-flex;align-items:center;gap:1rem;flex-wrap:wrap;
   margin-bottom:1.75rem;
   border:2px solid var(--w);
-  border-left:5px solid var(--w);
-  padding:.55rem .9rem;
+  padding:.65rem 1.1rem;
   background:var(--cl);
-  border-radius:0 10px 10px 0;
+  border-radius:12px;
 }
-.btp-old{font-size:1rem;color:rgba(100,60,60,.55);text-decoration:line-through;font-weight:600}
-.btp-new{font-size:clamp(2rem,3.5vw,2.6rem);font-weight:900;color:#1a0a2e;line-height:1}
-.btp-new small{font-size:.78rem;font-weight:600;color:#1a0a2e;opacity:.7}
+.btp-old{font-size:1.2rem;color:rgba(100,60,60,.6);text-decoration:line-through;font-weight:700}
+.btp-new{font-size:clamp(2.2rem,3.8vw,3rem);font-weight:900;color:#1a0a2e;line-height:1}
+.btp-new small{font-size:.82rem;font-weight:600;color:#1a0a2e;opacity:.7}
 .btp-badge{
   background:var(--w);color:#fff;
   font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
@@ -386,12 +385,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .stat-d:last-child{border-right:none}
 .stat-d__num{
-  font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;
-  color:var(--pd);line-height:1;margin-bottom:.55rem;
+  font-size:clamp(3rem,5vw,4.5rem);font-weight:900;
+  color:#7050A0;line-height:1;margin-bottom:.2rem;
 }
-.stat-d__num span{color:#7050A0}
+.stat-d__desc{
+  font-size:1.05rem;font-weight:700;
+  color:var(--p);margin-bottom:.5rem;line-height:1.2;
+}
+.stat-d__pre{
+  font-size:.95rem;font-weight:600;
+  color:var(--gr);margin-bottom:.1rem;
+}
 .stat-d__lbl{
-  font-size:.76rem;font-weight:500;
+  font-size:.75rem;font-weight:500;
   color:var(--gr);line-height:1.55;
 }
 @media(max-width:680px){
@@ -491,6 +497,26 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   padding:0 clamp(1.25rem,4vw,3rem);
 }
 .temas__cta{text-align:center;padding:.75rem 0 .25rem}
+.temas__more{display:none}
+.temas__more.open{display:contents}
+.temas__fade-wrap{position:relative}
+.temas__fade{
+  height:70px;margin-top:-70px;pointer-events:none;
+  background:linear-gradient(transparent,var(--cl));
+  position:relative;z-index:1;
+}
+.temas__more-btn{
+  display:block;margin:1rem auto 0;
+  background:none;border:1.5px solid var(--p);color:var(--p);
+  font-family:var(--sans);font-size:.8rem;font-weight:700;
+  padding:.6rem 1.6rem;border-radius:999px;cursor:pointer;
+  transition:background .2s,color .2s;
+}
+.temas__more-btn:hover{background:var(--p);color:#fff}
+.temas__extra-note{
+  font-size:.82rem;color:var(--gr);text-align:center;
+  font-style:italic;margin-top:1.25rem;
+}
 
 /* ── POST-ITS ────────────────────────────────── */
 .postit.gone{
@@ -721,7 +747,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <li><a href="#reviews">Comentarios</a></li>
       <li><a href="#stats">Más información</a></li>
     </ul>
-    <a href="https://vinoso.mx" target="_blank" rel="noopener" class="header__cta">Obtener acceso →</a>
+    <a href="https://vinoso.mx" target="_blank" rel="noopener" class="header__cta">Comprar acceso →</a>
     <button class="header__ham" aria-label="Menú"><span></span><span></span><span></span></button>
   </div>
   <div class="promo-belt"><span class="promo-belt__track">Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a><span class="promo-belt__dup" aria-hidden="true"> &nbsp;&nbsp;·&nbsp;&nbsp; Aprovecha <strong>50% de descuento</strong> este mes — oferta por tiempo limitado <a href="https://vinoso.mx" target="_blank" rel="noopener">Comprar ahora →</a> &nbsp;&nbsp;·&nbsp;&nbsp;</span></span></div>
@@ -735,10 +761,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
     <div class="book-text" data-rl>
       <h2 class="book-text__title">
-        Vas a ordenar vino con<br/>la seguridad de <span style="white-space:nowrap">un sommelier</span><br/><em>(sin la actitud insufrible)</em>
+        Podrás ordenar vino con<br/>la seguridad de <span style="white-space:nowrap">un sommelier</span><br/><em>(sin la actitud insufrible)</em>
       </h2>
       <div class="book-text__meta">
-        <div class="book-meta"><strong>83</strong><span>páginas</span></div>
+        <div class="book-meta"><strong>83</strong><span>páginas ilustradas</span></div>
         <div class="book-meta"><strong>15</strong><span>días para aprender</span></div>
         <div class="book-meta"><strong>100%</strong><span>sin esnobismo</span></div>
       </div>
@@ -748,10 +774,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <span class="btp-badge">50% OFF este mes</span>
       </div>
       <p class="book-text__body">
-        Disfrutar vino sin sentir que estás en examen. Aprender de vino sin volverse insoportable. Con un manual 100% digital que te guiará para elegir, hablar y brindar con criterio propio.
+        Disfrutar vino sin sentir que estás en un examen. Aprender de vino sin volverse insoportable. Con un manual 100% digital que te guiará para elegir, hablar y brindar con criterio propio.
       </p>
       <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">
-        Obtener acceso al manual digital →
+        Comprar acceso al manual digital →
       </a>
     </div>
 
@@ -785,11 +811,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <p class="sec-kicker" style="margin:0;font-size:.8rem">Vino sin tecnicismos</p>
         <span style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:900;color:var(--p)">Temas del <em>manual</em></span>
       </div>
-      <button class="temas__toggle-btn" id="temasBtn" aria-expanded="false">
-        Ver 13 capítulos <span class="temas__arrow">▾</span>
-      </button>
     </div>
-    <div class="temas__list" id="temasList">
+    <div class="temas__fade-wrap">
       <div class="temas__rows">
         <div class="tema-row"><span class="tema-num">00</span><span class="tema-title">Bienvenida al mundo del vino</span></div>
         <div class="tema-row"><span class="tema-num">01</span><span class="tema-title">El ABC del vino que desbloquea todo</span></div>
@@ -798,17 +821,21 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="tema-row"><span class="tema-num">04</span><span class="tema-title">Las uvas que realmente importan</span></div>
         <div class="tema-row"><span class="tema-num">05</span><span class="tema-title">Países y regiones que debes ubicar</span></div>
         <div class="tema-row"><span class="tema-num">06</span><span class="tema-title">Cómo leer una etiqueta y elegir bien</span></div>
-        <div class="tema-row"><span class="tema-num">07</span><span class="tema-title">Cómo se hace el vino (sin tecnicismos)</span></div>
-        <div class="tema-row"><span class="tema-num">08</span><span class="tema-title">Servicio y protocolo social del vino</span></div>
-        <div class="tema-row"><span class="tema-num">09</span><span class="tema-title">Maridaje, vino y comida sin complicaciones</span></div>
-        <div class="tema-row"><span class="tema-num">10</span><span class="tema-title">Cómo comprar vino y desarrollar tu gusto</span></div>
-        <div class="tema-row"><span class="tema-num">11</span><span class="tema-title">Plan práctico de 15 días</span></div>
-        <div class="tema-row"><span class="tema-num">—</span><span class="tema-title">La guía rápida del vino, en una página</span></div>
+        <div class="temas__more" id="temasMore">
+          <div class="tema-row"><span class="tema-num">07</span><span class="tema-title">Cómo se hace el vino (sin tecnicismos)</span></div>
+          <div class="tema-row"><span class="tema-num">08</span><span class="tema-title">Servicio y protocolo social del vino</span></div>
+          <div class="tema-row"><span class="tema-num">09</span><span class="tema-title">Maridaje, vino y comida sin complicaciones</span></div>
+          <div class="tema-row"><span class="tema-num">10</span><span class="tema-title">Cómo comprar vino y desarrollar tu gusto</span></div>
+          <div class="tema-row"><span class="tema-num">11</span><span class="tema-title">Plan práctico de 15 días</span></div>
+          <div class="tema-row"><span class="tema-num">—</span><span class="tema-title">La guía rápida del vino, en una página</span></div>
+        </div>
       </div>
-      <div class="temas__cta">
-        <p style="font-size:.88rem;color:var(--gr);margin-bottom:1.25rem;font-style:italic;">Una guía para disfrutar vino sin pretensión.</p>
-        <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Obtener acceso al manual digital →</a>
-      </div>
+      <div class="temas__fade" id="temasFade"></div>
+      <button class="temas__more-btn" id="temasMoreBtn">Ver los demás capítulos ▾</button>
+    </div>
+    <div class="temas__cta">
+      <p style="font-size:.88rem;color:var(--gr);margin-bottom:1.25rem;font-style:italic;">Una guía para disfrutar vino sin pretensión.</p>
+      <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Comprar acceso al manual digital →</a>
     </div>
   </div>
 </section>
@@ -819,16 +846,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <section class="stats" id="stats">
   <div class="stats__in">
     <div class="sec-header" data-r>
-      <h2 class="sec-title">Los aficionados del vino <em>aprenderán.</em></h2>
+      <h2 class="sec-title">Si eres amante del vino <em>aprenderás:</em></h2>
     </div>
     <div class="stats__grid">
       <div class="stat-c" data-r data-d1>
         <span class="stat-c__check">✓</span>
-        <div class="stat-c__topic">Saber cómo catar vino</div>
+        <div class="stat-c__topic">Cómo catar vino</div>
       </div>
       <div class="stat-c" data-r data-d2>
         <span class="stat-c__check">✓</span>
-        <div class="stat-c__topic">Sobre uvas vinícolas</div>
+        <div class="stat-c__topic">Las diferentes uvas</div>
       </div>
       <div class="stat-c" data-r data-d3>
         <span class="stat-c__check">✓</span>
@@ -840,27 +867,32 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="stat-c" data-r data-d1>
         <span class="stat-c__check">✓</span>
-        <div class="stat-c__topic">Maridaje, vino y comida</div>
+        <div class="stat-c__topic">Cómo maridar vino y comida</div>
       </div>
       <div class="stat-c" data-r data-d2>
         <span class="stat-c__check">✓</span>
         <div class="stat-c__topic">Cómo elegir un vino</div>
       </div>
     </div>
+    <p class="temas__extra-note" data-r>Y muchas más cosas interesantes sobre el mundo del vino</p>
     <div style="text-align:center;margin:2rem 0 .5rem">
       <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-wine">Obtén acceso al manual digital →</a>
     </div>
     <div class="stats__data">
       <div class="stat-d" data-r>
-        <div class="stat-d__num"><span>8</span> de cada <span>10</span></div>
-        <div class="stat-d__lbl">ya sabe qué vino pedir al salir a cenar o con su crush. (precio, sabor y momento)</div>
+        <div class="stat-d__num">8</div>
+        <div class="stat-d__desc">de cada 10</div>
+        <div class="stat-d__lbl">lectores del manual anti-snob, ya saben qué vino pedir al salir a cenar con su crush.</div>
       </div>
       <div class="stat-d" data-r>
-        <div class="stat-d__num"><span>1</span> solo manual</div>
-        <div class="stat-d__lbl">fue todo lo que necesitaron como guía en su inmersión al mundo del vino</div>
+        <div class="stat-d__num">1</div>
+        <div class="stat-d__desc">solo manual</div>
+        <div class="stat-d__lbl">fue todo lo que necesitaron como inmersión al mundo del vino para sentirse cómodos y seguros</div>
       </div>
       <div class="stat-d" data-r>
-        <div class="stat-d__num"><span>15</span> días</div>
+        <div class="stat-d__pre">Solo</div>
+        <div class="stat-d__num">15</div>
+        <div class="stat-d__desc">días</div>
         <div class="stat-d__lbl">bastaron para conocer sobre el mundo del vino y elegir con criterio propio</div>
       </div>
     </div>
@@ -942,8 +974,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           </div>
           <span class="rev-card__x">𝕏</span>
         </div>
-        <p class="rev-card__text">Excelente contenido y muy bien organizado. Lo que hay de Valle de Guadalupe está muy bueno. Totalmente recomendado.</p>
+        <p class="rev-card__text">Excelente contenido y muy bien organizado, lo que hay sobre las regiones del vino está muy bueno. Totalmente recomendado.</p>
         <div class="rev-card__stars">★★★★☆</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-card__head">
+          <div class="rev-card__av"><img src="https://i.pravatar.cc/80?img=44" alt="Mariana Herrera" loading="lazy"/></div>
+          <div class="rev-card__meta">
+            <p class="rev-card__name">Mariana Herrera</p>
+            <p class="rev-card__handle">@mari.herrera</p>
+          </div>
+          <span class="rev-card__x">𝕏</span>
+        </div>
+        <p class="rev-card__text">La plataforma de acceso al manual me pareció muy útil, puedo consultarlo desde mi cel en el lugar y momento que lo necesito.</p>
+        <div class="rev-card__stars">★★★★★</div>
       </div>
       <div class="rev-card">
         <div class="rev-card__head">
@@ -1030,7 +1074,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
     </div>
 
-    <p class="postits__note" data-r>El manual resuelve todo esto — y más.</p>
+    <p class="postits__note" data-r>Toca cada post-it, conforme vas aprendiendo, para despedirte...</p>
   </div>
 </section>
 
@@ -1046,7 +1090,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <span class="finalcta__price">$199 MXN</span>
       <span class="finalcta__badge">50% OFF este mes</span>
     </div>
-    <a href="https://vinoso.mx" target="_blank" rel="noopener" class="finalcta__btn">Obtener acceso al manual digital →</a>
+    <a href="https://vinoso.mx" target="_blank" rel="noopener" class="finalcta__btn">Comprar acceso al manual digital →</a>
   </div>
 </section>
 
@@ -1163,22 +1207,17 @@ const cardW = () => (track.querySelector('.rev-card')?.offsetWidth || 300) + 18;
 document.getElementById('nextBtn').addEventListener('click', () => track.scrollBy({ left: cardW(), behavior: 'smooth' }));
 document.getElementById('prevBtn').addEventListener('click', () => track.scrollBy({ left: -cardW(), behavior: 'smooth' }));
 
-/* ── Temas toggle ────────────────────── */
-const temasBtn = document.getElementById('temasBtn');
-const temasList = document.getElementById('temasList');
-function openTemas(){
-  temasList.classList.add('open');
-  temasBtn.setAttribute('aria-expanded','true');
-}
-if(temasBtn && temasList){
-  temasBtn.addEventListener('click', () => {
-    const open = temasList.classList.toggle('open');
-    temasBtn.setAttribute('aria-expanded', open);
+/* ── Temas more ──────────────────────── */
+const temasMoreBtn = document.getElementById('temasMoreBtn');
+const temasMore    = document.getElementById('temasMore');
+const temasFade    = document.getElementById('temasFade');
+if(temasMoreBtn){
+  temasMoreBtn.addEventListener('click', () => {
+    temasMore.classList.add('open');
+    temasFade.style.display = 'none';
+    temasMoreBtn.style.display = 'none';
   });
 }
-document.querySelectorAll('a[href="#temas"]').forEach(a => {
-  a.addEventListener('click', () => setTimeout(openTemas, 400));
-});
 
 /* ── Post-its ─────────────────────────── */
 document.querySelectorAll('.postit').forEach(p => {
