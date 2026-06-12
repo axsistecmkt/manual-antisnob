@@ -460,18 +460,23 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   font-size:.86rem;color:#1a1a2e;line-height:1.72;flex:1;
 }
 .rev-card__badge{display:none}
-.carousel__btns{
-  display:flex;gap:.65rem;justify-content:center;margin-top:2.25rem;
+.carousel__wrap{
+  position:relative;
 }
+.carousel__btns{display:none}
 .carousel__btn{
+  position:absolute;top:50%;transform:translateY(-50%);
   width:42px;height:42px;border-radius:50%;
   background:rgba(255,255,255,.08);
   border:1px solid rgba(201,190,221,.15);
   color:var(--lavl);font-size:1.1rem;
   display:flex;align-items:center;justify-content:center;
   transition:background .25s,border-color .25s;
+  z-index:2;
 }
 .carousel__btn:hover{background:rgba(255,255,255,.16);border-color:var(--lavd)}
+#prevBtn{left:-22px}
+#nextBtn{right:-22px}
 
 /* ── TEMAS ───────────────────────────────────── */
 #temas{scroll-margin-top:90px}
@@ -878,6 +883,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
     </div>
 
+    <div class="carousel__wrap">
+    <button class="carousel__btn" id="prevBtn">←</button>
     <div class="carousel__track" id="revTrack">
       <div class="rev-card">
         <div class="rev-card__head">
@@ -952,9 +959,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="rev-card__stars">★★★★★</div>
       </div>
     </div>
-    <div class="carousel__btns">
-      <button class="carousel__btn" id="prevBtn">←</button>
-      <button class="carousel__btn" id="nextBtn">→</button>
+    <button class="carousel__btn" id="nextBtn">→</button>
     </div>
     <div style="text-align:center;margin-top:2.5rem">
       <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-lav">Tú también sé parte →</a>
