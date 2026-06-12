@@ -709,21 +709,30 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 
 /* ── CINEMA STRIP ──────────────────────────────── */
-.cinema{position:relative;background:#18100a;overflow:hidden;padding:2.2rem 0 0;}
-.cinema__holes{position:absolute;left:0;right:0;height:22px;display:flex;align-items:center;gap:0;}
+.cinema{position:relative;background:#18100a;overflow:hidden;padding:2.8rem 0 0;}
+.cinema__holes{position:absolute;left:0;right:0;height:24px;background:#0e0905;display:flex;align-items:center;}
 .cinema__holes--top{top:0}
 .cinema__holes--bot{bottom:0}
-.cinema__holes-inner{display:flex;gap:10px;padding:0 6px;}
-.cinema__hole{width:14px;height:14px;border-radius:3px;background:#2a1e10;flex-shrink:0;}
-.cinema__content{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:center;gap:2.5rem;max-width:860px;margin:0 auto;padding:1rem 2rem 0;}
-.cinema__text{flex:1;min-width:0;padding-bottom:2.2rem}
-.cinema__text p{font-family:var(--sans);font-size:clamp(1.1rem,2.2vw,1.55rem);font-weight:800;color:#f5ead8;line-height:1.35;margin:0;}
-.cinema__text p em{font-style:normal;color:#e8c96a;}
-.popcorn-img{width:140px;flex-shrink:0;align-self:flex-end;position:relative;bottom:-4px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.5));}
+.cinema__holes-inner{display:flex;gap:10px;padding:0 8px;}
+.cinema__hole{width:15px;height:15px;border-radius:4px;background:#18100a;flex-shrink:0;}
+.cinema__content{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:center;gap:3rem;max-width:900px;margin:0 auto;padding:1.2rem 3rem 0;}
+.cinema__text{flex:1;min-width:0;padding-bottom:2.8rem}
+.cinema__text p{font-family:var(--sans);font-size:clamp(1rem,2vw,1.4rem);font-weight:700;color:rgba(245,234,216,.75);line-height:1.5;margin:0;}
+.cinema__hl{font-family:var(--serif);font-style:italic;font-weight:900;color:#e8c96a;font-size:1.22em;line-height:1;}
+/* right side stack */
+.cinema__right{flex-shrink:0;position:relative;width:160px;align-self:flex-end;}
+.popcorn-img{width:140px;display:block;position:relative;z-index:2;filter:drop-shadow(0 10px 20px rgba(0,0,0,.6));}
+/* ticket */
+.cinema__ticket{position:absolute;z-index:1;bottom:30px;right:-18px;width:100px;transform:rotate(14deg);filter:drop-shadow(0 4px 10px rgba(0,0,0,.5));}
+/* scattered loose kernels */
+.cinema__scatter{position:absolute;inset:0;pointer-events:none;z-index:3;}
+.ck{position:absolute;filter:drop-shadow(0 2px 5px rgba(0,0,0,.4));}
 @media(max-width:640px){
-  .cinema__content{flex-direction:column;align-items:center;gap:1rem;padding:.8rem 1.5rem 0;}
+  .cinema__content{flex-direction:column;align-items:center;gap:1.5rem;padding:.8rem 1.5rem 0;}
   .cinema__text{text-align:center;padding-bottom:1rem;}
-  .popcorn-img{width:110px;}
+  .cinema__right{width:130px;}
+  .popcorn-img{width:115px;}
+  .cinema__ticket{width:80px;bottom:22px;right:-12px;}
 }
 
 /* ── FOOTER ──────────────────────────────────── */
@@ -1122,11 +1131,23 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   <div class="cinema__holes cinema__holes--top">
     <div class="cinema__holes-inner" id="holesTop"></div>
   </div>
+  <!-- scattered loose kernels -->
+  <div class="cinema__scatter">
+    <img class="ck" style="width:44px;top:28%;left:4%;transform:rotate(-20deg)" src="https://em-content.zobj.net/source/apple/391/popcorn_1f37f.png" alt="" loading="lazy">
+    <img class="ck" style="width:32px;top:55%;left:10%;transform:rotate(40deg)" src="https://em-content.zobj.net/source/apple/391/popcorn_1f37f.png" alt="" loading="lazy">
+    <img class="ck" style="width:28px;top:15%;left:18%;transform:rotate(70deg)" src="https://em-content.zobj.net/source/apple/391/popcorn_1f37f.png" alt="" loading="lazy">
+    <img class="ck" style="width:38px;top:68%;right:22%;transform:rotate(-55deg)" src="https://em-content.zobj.net/source/apple/391/popcorn_1f37f.png" alt="" loading="lazy">
+    <img class="ck" style="width:30px;top:20%;right:8%;transform:rotate(25deg)" src="https://em-content.zobj.net/source/apple/391/popcorn_1f37f.png" alt="" loading="lazy">
+    <img class="ck" style="width:36px;top:72%;left:46%;transform:rotate(-10deg)" src="https://em-content.zobj.net/source/apple/391/popcorn_1f37f.png" alt="" loading="lazy">
+  </div>
   <div class="cinema__content">
     <div class="cinema__text">
-      <p>Aprende todo lo que necesitas saber sobre el vino<br><em>por menos de lo que te cuesta una salida al cine.</em></p>
+      <p>Aprende <span class="cinema__hl">todo</span> lo que necesitas saber<br><span class="cinema__hl">sobre el vino</span> por <span class="cinema__hl">menos</span><br>de lo que te cuesta una salida al <span class="cinema__hl">cine.</span></p>
     </div>
-    <img class="popcorn-img" src="https://em-content.zobj.net/source/apple/391/popcorn_1f37f.png" alt="palomitas" loading="lazy">
+    <div class="cinema__right">
+      <img class="cinema__ticket" src="https://em-content.zobj.net/source/apple/391/admission-tickets_1f39f-fe0f.png" alt="ticket" loading="lazy">
+      <img class="popcorn-img" src="https://em-content.zobj.net/source/apple/391/popcorn_1f37f.png" alt="palomitas" loading="lazy">
+    </div>
   </div>
   <!-- bottom sprocket holes -->
   <div class="cinema__holes cinema__holes--bot">
