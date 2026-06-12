@@ -1169,12 +1169,19 @@ document.getElementById('prevBtn').addEventListener('click', () => track.scrollB
 /* ── Temas toggle ────────────────────── */
 const temasBtn = document.getElementById('temasBtn');
 const temasList = document.getElementById('temasList');
+function openTemas(){
+  temasList.classList.add('open');
+  temasBtn.setAttribute('aria-expanded','true');
+}
 if(temasBtn && temasList){
   temasBtn.addEventListener('click', () => {
     const open = temasList.classList.toggle('open');
     temasBtn.setAttribute('aria-expanded', open);
   });
 }
+document.querySelectorAll('a[href="#temas"]').forEach(a => {
+  a.addEventListener('click', () => setTimeout(openTemas, 400));
+});
 
 /* ── Post-its ─────────────────────────── */
 document.querySelectorAll('.postit').forEach(p => {
