@@ -723,6 +723,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 /* right side */
 .cinema__right{flex-shrink:0;position:relative;width:200px;align-self:flex-end;}
 .popcorn-img{width:130px;display:block;position:relative;z-index:3;margin:0 auto;filter:drop-shadow(0 10px 22px rgba(0,0,0,.7));}
+.cinema__cta{display:inline-block;margin-top:1.4rem;background:#C9BEDD;color:#1a0a2e;font-family:var(--sans);font-size:.9rem;font-weight:800;letter-spacing:.04em;padding:.7rem 2rem;border-radius:999px;text-decoration:none;transition:background .2s,transform .15s;}
+.cinema__cta:hover{background:#fff;transform:translateY(-2px);}
 .cinema__ticket1{position:absolute;z-index:1;bottom:20px;left:-10px;width:110px;transform:rotate(-18deg);filter:drop-shadow(0 4px 12px rgba(0,0,0,.6));}
 .cinema__ticket2{position:absolute;z-index:2;bottom:25px;right:-5px;width:105px;transform:rotate(12deg);filter:drop-shadow(0 4px 12px rgba(0,0,0,.6));}
 @media(max-width:640px){
@@ -1134,6 +1136,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div class="cinema__text">
       <span class="cinema__line1">Aprende <span class="cinema__hl">todo</span> lo que necesitas saber <span class="cinema__hl">sobre el vino</span></span>
       <span class="cinema__line2">por <span class="cinema__hl">menos</span> de lo que te cuesta una salida al <span class="cinema__hl">cine.</span></span>
+      <a href="https://vinoso.mx" target="_blank" rel="noopener" class="cinema__cta">Experiméntalo →</a>
     </div>
     <div class="cinema__right">
       <img class="cinema__ticket1" src="https://em-content.zobj.net/source/apple/391/admission-tickets_1f39f-fe0f.png" alt="" loading="lazy">
