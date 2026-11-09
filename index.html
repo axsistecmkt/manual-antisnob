@@ -7,9 +7,50 @@
   <title>Manual Anti-Snob del Vino — Vinoso</title>
   <meta name="description" content="Entiende, elige y disfruta el vino con seguridad en 15 días."/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Caveat:wght@700&display=swap" rel="stylesheet"/>
-  <style>
+</head>
+<body>
+<div id="masdv">
+<style>
+/* ── GOOGLE FONTS (import fallback for WordPress) ── */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Caveat:wght@700&display=swap');
 
-/* ── POPPINS via Google Fonts CDN ────────────── */
+/* ── WORDPRESS ARMOR ────────────────────────── */
+#masdv{
+  width:100vw!important;
+  max-width:100vw!important;
+  position:relative!important;
+  left:50%!important;
+  right:50%!important;
+  margin-left:-50vw!important;
+  margin-right:-50vw!important;
+  overflow-x:hidden!important;
+  padding:0!important;
+  box-sizing:border-box!important;
+  font-family:'Poppins',system-ui,-apple-system,sans-serif!important;
+  line-height:1.6!important;
+  -webkit-text-size-adjust:100%!important;
+  -moz-text-size-adjust:100%!important;
+}
+#masdv *,#masdv *::before,#masdv *::after{
+  box-sizing:border-box!important;
+  margin:0;padding:0;
+}
+#masdv img{display:block;max-width:100%;height:auto}
+#masdv a{text-decoration:none;color:inherit}
+#masdv button{font-family:inherit;cursor:pointer;border:none;background:none}
+#masdv ul,#masdv ol{list-style:none}
+#masdv h1,#masdv h2,#masdv h3,#masdv h4,#masdv p{
+  margin:0!important;padding:0!important;
+  border:none!important;
+  background:none!important;
+}
+#masdv section{
+  width:100%!important;
+  max-width:100%!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  float:none!important;
+}
 
 /* ── TOKENS ──────────────────────────────────── */
 :root{
@@ -29,6 +70,10 @@ body{font-family:var(--sans);background:var(--cl);color:var(--blk);overflow-x:hi
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* WP admin bar offset */
+.admin-bar #masdv .header{top:32px!important}
+@media screen and (max-width:782px){.admin-bar #masdv .header{top:46px!important}}
 
 /* ── PROMO BELT ──────────────────────────────── */
 .promo-belt{
@@ -848,9 +893,64 @@ body{padding-top:0}
   .btn-wine,.btn-lav,.finalcta__btn,.cinema__cta,.header__cta,.temas__more-btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
   #flipBtn{min-height:44px}
 }
-  </style>
-</head>
-<body>
+
+/* ════════════════════════════════════════
+   WORDPRESS MOBILE OVERRIDES (high specificity)
+   ════════════════════════════════════════ */
+@media(max-width:860px){
+  #masdv .header__in{flex-wrap:wrap!important;position:relative!important;padding:.6rem clamp(1rem,3vw,2rem)!important}
+  #masdv .header__logo img{height:52px!important;width:auto!important}
+  #masdv .header__nav{display:none!important;width:100%!important;order:99!important;flex-direction:column!important;gap:.25rem!important;padding:.75rem 0 .5rem!important}
+  #masdv .header__nav.open{display:flex!important}
+  #masdv .header__nav a{padding:1rem .85rem!important;font-size:.95rem!important;width:100%!important;border-radius:0!important;border-bottom:1px solid rgba(65,41,95,.07)!important;min-height:44px!important;display:flex!important;align-items:center!important}
+  #masdv .header__ham{display:flex!important;min-width:44px!important;min-height:44px!important}
+  #masdv .promo-belt{padding:.38rem 0!important;text-align:left!important;font-size:.62rem!important}
+}
+@media(max-width:768px){
+  #masdv .book-sec{margin-top:90px!important}
+  #masdv .book-sec__in{grid-template-columns:1fr!important;text-align:center!important;gap:1.5rem!important}
+  #masdv .book-text__kicker{justify-content:center!important}
+  #masdv .book-stage{order:-1!important;padding:1rem 1rem 2rem!important}
+  #masdv .book-3d{width:220px!important}
+  #masdv #bookCoverImg,#masdv #bookCoverFront,#masdv #bookCoverBack,#masdv .book-cover-img{width:220px!important;height:390px!important}
+  #masdv .book-spine{height:390px!important}
+  #masdv .book-pages{height:386px!important}
+  #masdv .book-text__price{flex-direction:row!important;flex-wrap:wrap!important;justify-content:center!important;align-items:center!important;padding:.75rem 1.2rem!important;gap:.5rem .75rem!important;margin:0 auto 1.75rem!important;max-width:300px!important}
+  #masdv .book-hint{display:none!important}
+  #masdv .carousel__btn{display:none!important}
+  #masdv .carousel__swipe-hint{display:block!important}
+  #masdv .rev-card{flex:0 0 82vw!important}
+}
+@media(max-width:680px){
+  #masdv .stats__data{grid-template-columns:1fr!important}
+  #masdv .stat-d{border-right:none!important;border-bottom:1px solid rgba(65,41,95,.12)!important;padding:1.25rem 1rem!important}
+  #masdv .stat-d:last-child{border-bottom:none!important}
+}
+@media(max-width:640px){
+  #masdv .postits{padding:clamp(2.5rem,6vw,4rem) 0!important}
+  #masdv .postit{width:clamp(130px,42vw,170px)!important;min-height:clamp(110px,30vw,145px)!important;padding:1.3rem .8rem .8rem!important}
+  #masdv .postit__text{font-size:.72rem!important}
+  #masdv .cinema__content{flex-direction:column!important;align-items:center!important;gap:1.2rem!important;padding:.8rem 1.2rem 0!important;text-align:center!important}
+  #masdv .cinema__line1{white-space:normal!important;font-size:clamp(1rem,4.5vw,1.4rem)!important}
+  #masdv .cinema__line2{font-size:clamp(.88rem,3.8vw,1.15rem)!important}
+  #masdv .finalcta__btn{font-size:.78rem!important;padding:.9rem 2rem!important;width:100%!important;max-width:340px!important;text-align:center!important}
+  #masdv .footer__in{flex-direction:column!important;text-align:center!important;gap:.5rem!important}
+}
+@media(max-width:480px){
+  #masdv .book-sec{margin-top:80px!important}
+  #masdv .header__logo img{height:42px!important}
+  #masdv .book-3d{width:190px!important}
+  #masdv #bookCoverImg,#masdv #bookCoverFront,#masdv #bookCoverBack,#masdv .book-cover-img{width:190px!important;height:337px!important}
+  #masdv .book-spine{height:337px!important}
+  #masdv .book-pages{height:333px!important}
+  #masdv .book-text__title{font-size:1.5rem!important;line-height:1.12!important}
+  #masdv .book-meta strong{font-size:1.8rem!important}
+  #masdv .stats__grid{grid-template-columns:1fr!important}
+  #masdv .rev-card{padding:1.1rem 1.2rem!important}
+  #masdv .rev-card__text{font-size:.8rem!important}
+  #masdv .temas{padding:2rem 0 1.5rem!important}
+}
+</style>
 
 <!-- ── HEADER ────────────────────────────────── -->
 <header class="header">
@@ -1394,6 +1494,7 @@ document.querySelectorAll('.postit').forEach(p => {
   });
 });
 </script>
+</div><!-- /#masdv -->
 
 </body>
 </html>
