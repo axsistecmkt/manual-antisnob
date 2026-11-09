@@ -64,13 +64,6 @@
   --ease:cubic-bezier(0.16,1,0.3,1);
 }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--cl);color:var(--blk);overflow-x:hidden}
-img{display:block;max-width:100%}
-a{text-decoration:none;color:inherit}
-button{font-family:inherit;cursor:pointer;border:none;background:none}
-
 /* WP admin bar offset */
 .admin-bar #masdv .header{top:32px!important}
 @media screen and (max-width:782px){.admin-bar #masdv .header{top:46px!important}}
@@ -102,8 +95,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(65,41,95,.09);
 }
-body{padding-top:0}
-.book-sec{margin-top:110px}
+#masdv .book-sec{margin-top:110px}
 .header__in{
   max-width:1200px;margin:0 auto;
   padding:.85rem clamp(1.25rem,4vw,3rem);
