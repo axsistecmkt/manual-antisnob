@@ -6,17 +6,10 @@
   <link rel="icon" type="image/png" href="https://vinoso.mx/wp-content/uploads/2026/11/Logo-MASDV.png"/>
   <title>Manual Anti-Snob del Vino — Vinoso</title>
   <meta name="description" content="Entiende, elige y disfruta el vino con seguridad en 15 días."/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Caveat:wght@700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Caveat:wght@700&display=swap" rel="stylesheet"/>
   <style>
 
-/* ── POPPINS LOCAL ───────────────────────────── */
-@font-face{font-family:'Poppins';src:url('fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Poppins';src:url('fonts/Poppins-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
-@font-face{font-family:'Poppins';src:url('fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:'Poppins';src:url('fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:'Poppins';src:url('fonts/Poppins-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:'Poppins';src:url('fonts/Poppins-BoldItalic.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap}
-@font-face{font-family:'Poppins';src:url('fonts/Poppins-ExtraBold.ttf') format('truetype');font-weight:800;font-style:normal;font-display:swap}
+/* ── POPPINS via Google Fonts CDN ────────────── */
 
 /* ── TOKENS ──────────────────────────────────── */
 :root{
@@ -99,11 +92,17 @@ body{padding-top:0}
 .header__ham{display:none;flex-direction:column;gap:5px;padding:.35rem}
 .header__ham span{display:block;width:20px;height:1.5px;background:var(--p);border-radius:2px}
 @media(max-width:860px){
-  .header__in{flex-wrap:wrap;position:relative}
+  .header__in{flex-wrap:wrap;position:relative;padding:.6rem clamp(1rem,3vw,2rem)}
+  .header__logo img{height:52px}
   .header__nav{display:none;width:100%;order:99;flex-direction:column;gap:.25rem;padding:.75rem 0 .5rem}
   .header__nav.open{display:flex}
-  .header__nav a{padding:1rem .85rem;font-size:.95rem;width:100%;border-radius:0;border-bottom:1px solid rgba(65,41,95,.07);box-shadow:none;background:none}
-  .header__ham{display:flex}
+  .header__nav a{padding:1rem .85rem;font-size:.95rem;width:100%;border-radius:0;border-bottom:1px solid rgba(65,41,95,.07);box-shadow:none;background:none;min-height:44px;display:flex;align-items:center}
+  .header__cta{font-size:.7rem;padding:.5rem 1.1rem}
+  .header__ham{display:flex;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+}
+@media(max-width:480px){
+  .header__logo img{height:42px}
+  .header__cta{font-size:.65rem;padding:.45rem .9rem;letter-spacing:.04em}
 }
 
 /* ── BOOK SECTION ────────────────────────────── */
@@ -325,14 +324,34 @@ body{padding-top:0}
 .tema-title{font-size:.82rem;font-weight:500;color:var(--p);line-height:1.3}
 
 @media(max-width:768px){
-  .book-sec__in{grid-template-columns:1fr;text-align:center}
+  .book-sec{margin-top:90px}
+  .book-sec__in{grid-template-columns:1fr;text-align:center;gap:1.5rem}
   .book-text__kicker{justify-content:center}
   .book-text__meta{justify-content:center}
-  .book-stage{order:-1}
-  .book-text__price{flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;padding:.75rem 1.2rem;gap:.5rem .75rem;margin:0 auto 1.75rem;max-width:280px}
+  .book-stage{order:-1;padding:1rem 1rem 2rem}
+  .book-3d{width:220px}
+  #bookCoverImg,#bookCoverFront,#bookCoverBack,.book-cover-img{width:220px;height:390px}
+  .book-spine{height:390px}
+  .book-pages{height:386px}
+  .book-text__price{flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;padding:.75rem 1.2rem;gap:.5rem .75rem;margin:0 auto 1.75rem;max-width:300px}
   .btp-new{font-size:2.4rem}
   .btp-old{font-size:1.1rem}
   .btp-badge{font-size:.68rem;padding:.38em 1em}
+  .book-text__body{font-size:.85rem;line-height:1.75}
+  .btn-wine{font-size:.78rem;padding:.85rem 1.8rem}
+  .book-hint{display:none}
+}
+@media(max-width:480px){
+  .book-sec{margin-top:80px}
+  .book-sec__in{gap:1rem}
+  .book-text__title{font-size:1.5rem;line-height:1.12}
+  .book-meta strong{font-size:1.8rem}
+  .book-meta span{font-size:.55rem}
+  .book-meta{padding:.85rem .6rem}
+  .book-3d{width:190px}
+  #bookCoverImg,#bookCoverFront,#bookCoverBack,.book-cover-img{width:190px;height:337px}
+  .book-spine{height:337px}
+  .book-pages{height:333px}
 }
 
 /* ── STATS ───────────────────────────────────── */
@@ -378,8 +397,12 @@ body{padding-top:0}
   font-size:.88rem;font-weight:600;
   color:var(--p);line-height:1.3;
 }
-@media(max-width:860px){.stats__grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.stats__grid{grid-template-columns:1fr}}
+@media(max-width:860px){.stats__grid{grid-template-columns:repeat(2,1fr);gap:.6rem}}
+@media(max-width:480px){
+  .stats__grid{grid-template-columns:1fr;gap:.5rem}
+  .stat-c{padding:.65rem .85rem}
+  .stat-c__topic{font-size:.82rem}
+}
 
 .stats__data{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -409,8 +432,11 @@ body{padding-top:0}
 }
 @media(max-width:680px){
   .stats__data{grid-template-columns:1fr}
-  .stat-d{border-right:none;border-bottom:1px solid rgba(65,41,95,.12)}
+  .stat-d{border-right:none;border-bottom:1px solid rgba(65,41,95,.12);padding:1.25rem 1rem}
   .stat-d:last-child{border-bottom:none}
+  .stat-d__num{font-size:clamp(2.5rem,8vw,3.5rem)}
+  .stat-d__desc{font-size:.92rem}
+  .stat-d__lbl{font-size:.72rem}
 }
 
 /* ── REVIEWS ─────────────────────────────────── */
@@ -477,6 +503,7 @@ body{padding-top:0}
   position:relative;
 }
 .carousel__btns{display:none}
+.carousel__swipe-hint{display:none;text-align:center;font-size:.68rem;color:rgba(201,190,221,.35);margin-top:.5rem}
 .carousel__btn{
   position:absolute;top:50%;transform:translateY(-50%);
   width:42px;height:42px;border-radius:50%;
@@ -490,6 +517,11 @@ body{padding-top:0}
 .carousel__btn:hover{background:rgba(255,255,255,.16);border-color:var(--lavd)}
 #prevBtn{left:-22px}
 #nextBtn{right:-22px}
+@media(max-width:768px){
+  .carousel__btn{display:none!important}
+  .carousel__swipe-hint{display:block}
+  .rev-card{flex:0 0 82vw}
+}
 
 /* ── TEMAS ───────────────────────────────────── */
 #temas{scroll-margin-top:90px}
@@ -634,6 +666,15 @@ body{padding-top:0}
   font-style:italic;
   font-size:1rem;color:var(--p);opacity:.55;
 }
+@media(max-width:640px){
+  .postits{padding:clamp(2.5rem,6vw,4rem) 0}
+  .postits__board{gap:.7rem}
+  .postit{width:clamp(130px,42vw,170px);min-height:clamp(110px,30vw,145px);padding:1.3rem .8rem .8rem}
+  .postit__text{font-size:.72rem;line-height:1.45}
+  .postit__hint{font-size:.52rem}
+  .postits__sub{font-size:.78rem;margin-bottom:2rem}
+  .postits__note{font-size:.85rem;margin-top:1.5rem}
+}
 
 /* ── BIG CTA (removed) ── */
 .bigcta__btns{
@@ -731,12 +772,16 @@ body{padding-top:0}
 .cinema__ticket1{position:absolute;z-index:1;bottom:14px;left:-8px;width:85px;transform:rotate(-18deg);filter:drop-shadow(0 4px 12px rgba(0,0,0,.6));}
 .cinema__ticket2{position:absolute;z-index:2;bottom:18px;right:-5px;width:80px;transform:rotate(12deg);filter:drop-shadow(0 4px 12px rgba(0,0,0,.6));}
 @media(max-width:640px){
-  .cinema__content{flex-direction:column;align-items:flex-start;gap:1.5rem;padding:.8rem 1.5rem 0;}
-  .cinema__text{padding-bottom:.8rem;}
-  .cinema__line1{white-space:normal;}
-  .cinema__right{width:160px;align-self:center;}
-  .cinema__ticket1{width:85px;left:-8px;}
-  .cinema__ticket2{width:80px;right:-5px;}
+  .cinema{padding:2rem 0 22px}
+  .cinema__content{flex-direction:column;align-items:center;gap:1.2rem;padding:.8rem 1.2rem 0;text-align:center}
+  .cinema__text{padding-bottom:.6rem}
+  .cinema__line1{white-space:normal;font-size:clamp(1rem,4.5vw,1.4rem)}
+  .cinema__line2{font-size:clamp(.88rem,3.8vw,1.15rem)}
+  .cinema__cta{font-size:.8rem;padding:.6rem 1.6rem;margin-top:1rem}
+  .cinema__right{width:140px;align-self:center}
+  .cinema__ticket1{width:70px;left:-5px}
+  .cinema__ticket2{width:65px;right:-2px}
+  .popcorn-img{width:80px}
 }
 
 /* ── FOOTER ──────────────────────────────────── */
@@ -765,6 +810,44 @@ body{padding-top:0}
 [data-rr].in{opacity:1;transform:none}
 [data-d1]{transition-delay:.1s}[data-d2]{transition-delay:.2s}[data-d3]{transition-delay:.3s}
 [data-d4]{transition-delay:.4s}[data-d5]{transition-delay:.5s}[data-d6]{transition-delay:.6s}
+
+/* ── MOBILE: Final CTA ────────────────── */
+@media(max-width:640px){
+  .finalcta{padding:clamp(2.5rem,6vw,4rem) 0}
+  .finalcta__title{font-size:clamp(1.6rem,6vw,2.5rem);margin:.8rem 0 1rem}
+  .finalcta__sub{font-size:.82rem;line-height:1.7;margin-bottom:1.5rem}
+  .finalcta__offer{gap:.6rem;margin-bottom:1.5rem}
+  .finalcta__price-old{font-size:1.1rem}
+  .finalcta__price{font-size:1.6rem}
+  .finalcta__btn{font-size:.78rem;padding:.9rem 2rem;width:100%;max-width:340px;text-align:center}
+}
+
+/* ── MOBILE: Footer ───────────────────── */
+@media(max-width:640px){
+  .footer__in{flex-direction:column;text-align:center;gap:.5rem}
+  .footer__logo{font-size:.88rem}
+}
+
+/* ── MOBILE: Review cards ─────────────── */
+@media(max-width:480px){
+  .rev-card{padding:1.1rem 1.2rem}
+  .rev-card__text{font-size:.8rem;line-height:1.65}
+  .reviews .sec-title{font-size:clamp(1.4rem,5vw,2rem)}
+}
+
+/* ── MOBILE: Temas section ────────────── */
+@media(max-width:480px){
+  .temas{padding:2rem 0 1.5rem}
+  .tema-row{padding:.6rem .8rem}
+  .tema-title{font-size:.76rem}
+  .temas__more-btn{font-size:.75rem;padding:.55rem 1.3rem}
+}
+
+/* ── Touch-friendly tap targets ───────── */
+@media(pointer:coarse){
+  .btn-wine,.btn-lav,.finalcta__btn,.cinema__cta,.header__cta,.temas__more-btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  #flipBtn{min-height:44px}
+}
   </style>
 </head>
 <body>
@@ -1039,6 +1122,7 @@ body{padding-top:0}
     </div>
     <button class="carousel__btn" id="nextBtn">→</button>
     </div>
+    <p class="carousel__swipe-hint">← Desliza para ver más →</p>
     <div style="text-align:center;margin-top:2.5rem">
       <a href="https://vinoso.mx" target="_blank" rel="noopener" class="btn-lav">Tú también sé parte →</a>
     </div>
@@ -1288,6 +1372,12 @@ if(temasMoreBtn){
     temasFade.style.display = 'none';
     temasMoreBtn.style.display = 'none';
   });
+}
+
+/* ── Book hint: touch text ────────────── */
+const bookHint = document.querySelector('.book-hint');
+if(bookHint && ('ontouchstart' in window || navigator.maxTouchPoints > 0)){
+  bookHint.textContent = '← Desliza sobre el libro →';
 }
 
 /* ── Post-its ─────────────────────────── */
