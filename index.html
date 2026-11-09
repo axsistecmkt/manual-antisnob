@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" href="img/logo-masdv.png"/>
+  <link rel="icon" type="image/png" href="https://vinoso.mx/wp-content/uploads/2026/11/Logo-MASDV.png"/>
   <title>Manual Anti-Snob del Vino — Vinoso</title>
   <meta name="description" content="Entiende, elige y disfruta el vino con seguridad en 15 días."/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Caveat:wght@700&display=swap" rel="stylesheet"/>
@@ -59,11 +59,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* ── HEADER ──────────────────────────────────── */
 .header{
-  position:sticky;top:0;z-index:300;
+  position:fixed;top:0;left:0;right:0;z-index:9999;
   background:rgba(245,240,232,.96);
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(65,41,95,.09);
 }
+body{padding-top:0}
+.book-sec{margin-top:110px}
 .header__in{
   max-width:1200px;margin:0 auto;
   padding:.85rem clamp(1.25rem,4vw,3rem);
@@ -771,7 +773,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <header class="header">
   <div class="header__in">
     <a href="#" class="header__logo">
-      <img src="img/logo-masdv.png" alt="Manual Anti-Snob del Vino"
+      <img src="https://vinoso.mx/wp-content/uploads/2026/11/Logo-MASDV.png" alt="Manual Anti-Snob del Vino"
            onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
       <span style="display:none;font-family:var(--serif);font-size:1rem;font-weight:900;color:var(--p)">MASDV</span>
     </a>
@@ -817,7 +819,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div data-rr>
       <div class="book-stage">
         <div class="book-3d" id="book">
-          <img id="bookCoverFront" src="img/portada-web.jpg" alt="Portada del Manual Anti-Snob del Vino" class="book-cover-img"/>
+          <img id="bookCoverFront" src="https://vinoso.mx/wp-content/uploads/2026/11/Portada-MASDV.jpg" alt="Portada del Manual Anti-Snob del Vino" class="book-cover-img"/>
           <img id="bookCoverBack"  src="img/contraportada-web.jpg" alt="Contraportada del Manual Anti-Snob del Vino" class="book-cover-img" style="display:none"/>
           <div class="book-spine"></div>
           <div class="book-pages"></div>
